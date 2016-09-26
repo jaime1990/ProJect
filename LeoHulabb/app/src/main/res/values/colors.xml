@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  general color -->
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="black">#5a5a5a</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#00FF00</color>
+    <color name="blue">#0000FF</color>
+    <color name="gray">#ff333333</color>
+    <color name="orange">#ff991c</color>
+    <!--  general color end -->
+
+    <!--app normal color start-->
+    <color name="normal_text_color">#5d5d5d</color>
+    <color name="normal_textgray_color">#9099a7</color>
+    <color name="normal_background_color">#F3F3F3</color>
+    <!--app normal color end-->
+
+    <!--app整体基调色-->
+    <color name="base_color">#5dd27b</color>
+</resources>
