@@ -52,4 +52,5 @@ dependencies {
     compile rootProject.ext.dependencies.appcompatV7
     compile project(':commonui')
     compile project(':commonutils')
+    testCompile 'junit:junit:4.12'
 }
