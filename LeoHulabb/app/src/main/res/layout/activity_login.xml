@@ -50,11 +50,12 @@
         android:layout_marginLeft="15dp"
         android:background="#dedede" />
 
-    <Button
+    <com.commonui.button.Button
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="15dp"
+        android:gravity="center"
         android:background="@color/green"
         android:text="登录" />
 </LinearLayout>

@@ -3,7 +3,6 @@ apply plugin: 'com.android.application'
 android {
 
     def config = rootProject.ext.android              // 配置
-    def dep = rootProject.ext.dependencies     // 依赖
     def signConfig = rootProject.ext.signingConfig    // 打包配置
 
     compileSdkVersion config.compileSdkVersion
@@ -50,7 +49,8 @@ dependencies {
     compile rootProject.ext.dependencies.picasso
     compile rootProject.ext.dependencies.design
     compile rootProject.ext.dependencies.appcompatV7
+    compile rootProject.ext.dependencies.junit
+
     compile project(':commonui')
     compile project(':commonutils')
-    testCompile 'junit:junit:4.12'
 }

@@ -23,5 +23,8 @@ android {
 
 dependencies {
     compile rootProject.ext.dependencies.appcompatV7
+    compile rootProject.ext.dependencies.rebound
+    compile rootProject.ext.dependencies.junit
     compile project(':commonutils')
+    compile files('libs/nineoldandroids-2.4.0.jar')
 }

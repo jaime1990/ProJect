@@ -22,10 +22,16 @@ public class ProgressBarWebView extends AppWebView
 
     public ProgressBarWebView(Context context) {
         this(context, null, 0);
+        createProsserBar(context);
+        addView(progressBar);
+        setWebChromeClient(new WebClient());
     }
 
     public ProgressBarWebView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
+        createProsserBar(context);
+        addView(progressBar);
+        setWebChromeClient(new WebClient());
     }
 
     public ProgressBarWebView(Context context, AttributeSet attrs, int defStyle)

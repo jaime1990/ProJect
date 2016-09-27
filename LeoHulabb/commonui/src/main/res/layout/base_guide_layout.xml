@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+         />
+
+    <TextView
+        android:id="@+id/tv_jump"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="246.7dp"
+        android:layout_marginRight="73.3dp"
+        android:layout_marginLeft="73.3dp"
+        android:gravity="center"
+        android:background="@color/base_color"
+        android:paddingBottom="8dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingTop="8dp"
+        android:text="开启全新体验方式"
+        android:textColor="#ffffff"
+        android:textSize="16.7sp" />
+
+</RelativeLayout>
