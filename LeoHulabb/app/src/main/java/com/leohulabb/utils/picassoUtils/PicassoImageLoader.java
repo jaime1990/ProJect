@@ -14,10 +14,17 @@ import com.squareup.picasso.Transformation;
 
 public class PicassoImageLoader
 {
-    private final static PicassoImageLoader PICASSO_IMAGE_LOADER = new PicassoImageLoader();
+    private static PicassoImageLoader instance ;
 
     public static PicassoImageLoader getImageLoader() {
-        return PICASSO_IMAGE_LOADER;
+        if (instance == null) {
+            synchronized (PicassoUtils.class) {
+                if (instance == null) {
+                    instance = new PicassoImageLoader();
+                }
+            }
+        }
+        return instance;
     }
 
     private Bitmap.Config mConfig;

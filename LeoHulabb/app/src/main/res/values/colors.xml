@@ -9,6 +9,7 @@
     <color name="blue">#0000FF</color>
     <color name="gray">#ff333333</color>
     <color name="orange">#ff991c</color>
+    <color name="alpha_black">#90333333</color>
     <!--  general color end -->
 
     <!--app normal color start-->
@@ -19,4 +20,5 @@
 
     <!--app整体基调色-->
     <color name="base_color">#5dd27b</color>
+
 </resources>

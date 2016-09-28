@@ -22,6 +22,19 @@ public class PicassoUtils
     private final static PicassoUtils REQUEST_IMPL = new PicassoUtils();
     public static Picasso mPicasso;
 
+    private static PicassoUtils instance ;
+
+    public static PicassoUtils getInstance() {
+        if (instance == null) {
+            synchronized (PicassoUtils.class) {
+                if (instance == null) {
+                    instance = new PicassoUtils();
+                }
+            }
+        }
+        return instance;
+    }
+
     private PicassoUtils()
     {
         Picasso.Builder picasso = new Picasso.Builder(BaseApplication.getContext());
