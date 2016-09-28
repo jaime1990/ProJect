@@ -49,8 +49,9 @@ dependencies {
     compile rootProject.ext.dependencies.picasso
     compile rootProject.ext.dependencies.design
     compile rootProject.ext.dependencies.appcompatV7
+    compile rootProject.ext.dependencies.recyclerviewV7
     compile rootProject.ext.dependencies.junit
 
-    compile project(':commonui')
     compile project(':commonutils')
+    compile project(':commonui')
 }

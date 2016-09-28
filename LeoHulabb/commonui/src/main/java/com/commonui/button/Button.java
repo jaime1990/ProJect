@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.commonui.animation.AnimationManager;
 
 /**
  * @desc:   自定义动画Button
@@ -37,7 +36,6 @@ public class Button extends android.widget.Button implements View.OnClickListene
 //            case MotionEvent.ACTION_MOVE:
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
-                AnimationManager.scaleAnimate(this);
                 break;
         }
         return super.onTouchEvent(event);

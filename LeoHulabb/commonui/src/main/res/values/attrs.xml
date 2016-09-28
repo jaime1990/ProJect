@@ -24,37 +24,4 @@
         <attr name="footer" format="reference"/>
     </declare-styleable>
 
-    <!--引导页  start-->
-    <declare-styleable name="BaseIndicatorBanner">
-        <attr name="bb_indicatorStyle"/>
-        <attr name="bb_indicatorWidth"/>
-        <attr name="bb_indicatorHeight"/>
-        <attr name="bb_indicatorGap"/>
-        <attr name="bb_indicatorSelectColor"/>
-        <attr name="bb_indicatorUnselectColor"/>
-        <attr name="bb_indicatorCornerRadius"/>
-        <attr name="bb_indicatorSelectRes"/>
-        <attr name="bb_indicatorUnselectRes"/>
-    </declare-styleable>
-
-    <declare-styleable name="BaseBanner">
-        <attr name="bb_scale"/>
-        <attr name="bb_isLoopEnable"/>
-        <attr name="bb_delay"/>
-        <attr name="bb_period"/>
-        <attr name="bb_isAutoScrollEnable"/>
-        <attr name="bb_barColor"/>
-        <attr name="bb_isBarShowWhenLast"/>
-        <attr name="bb_barPaddingLeft"/>
-        <attr name="bb_barPaddingTop"/>
-        <attr name="bb_barPaddingRight"/>
-        <attr name="bb_barPaddingBottom"/>
-        <attr name="bb_textColor"/>
-        <attr name="bb_textSize"/>
-        <attr name="bb_isTitleShow"/>
-        <attr name="bb_isIndicatorShow"/>
-        <attr name="bb_indicatorGravity"/>
-    </declare-styleable>
-    <!--引导页  end-->
-
 </resources>
