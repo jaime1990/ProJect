@@ -13,7 +13,6 @@ import com.commonui.guideview.BGABanner;
 import com.commonui.guideview.BGABannerUtil;
 import com.leohulabb.R;
 import com.leohulabb.module.MainActivity;
-import com.leohulabb.module.TabSelectorLayoutActivity;
 import com.leohulabb.utils.BGABannerAdapter;
 
 import java.util.ArrayList;
@@ -108,7 +107,7 @@ public class GuideActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_guide_enter) {
-            startActivity(new Intent(GuideActivity.this, TabSelectorLayoutActivity.class));
+            startActivity(new Intent(GuideActivity.this, MainActivity.class));
         }
 
         if (view.getId() == R.id.tv_guide_skip)

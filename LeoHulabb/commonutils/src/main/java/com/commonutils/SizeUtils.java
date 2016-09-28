@@ -1,5 +1,6 @@
 package com.commonutils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -157,6 +158,31 @@ public class SizeUtils {
         }
         view.measure(width, height);
         */
+    }
+
+    /**
+     * 获取运行屏幕宽度
+     * @param context 上下文
+     * @return 屏幕尺寸
+     */
+    public static int getScreenWidth(Activity context) {
+        DisplayMetrics dm = new DisplayMetrics();
+        context.getWindowManager().getDefaultDisplay().getMetrics(dm);
+        //宽度 dm.widthPixels
+        //高度 dm.heightPixels
+        return dm.widthPixels;
+    }
+
+    /**
+     * 获取控件宽
+     * @param view 指定控件
+     * @return 控件宽度
+     */
+    public static int getWidth(View view) {
+        int w = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        view.measure(w, h);
+        return (view.getMeasuredWidth());
     }
 
     /**
