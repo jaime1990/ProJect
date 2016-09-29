@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="titlebarview">
-        <attr name="title_text" format="string|reference"/>
-        <attr name="backfinish_enable" format="boolean"/>
-    </declare-styleable>
-
     <declare-styleable name="TabStripView">
         <attr name="navigateTabTextColor" format="color|reference"/>
         <attr name="navigateTabSelectedTextColor" format="color|reference"/>

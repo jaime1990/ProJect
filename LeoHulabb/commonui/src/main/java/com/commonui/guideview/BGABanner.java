@@ -30,7 +30,8 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BGABanner extends RelativeLayout implements BGAViewPager.AutoPlayDelegate, ViewPager.OnPageChangeListener {
+public class BGABanner extends RelativeLayout implements BGAViewPager.AutoPlayDelegate, ViewPager.OnPageChangeListener
+{
     private static final int RMP = RelativeLayout.LayoutParams.MATCH_PARENT;
     private static final int RWC = RelativeLayout.LayoutParams.WRAP_CONTENT;
     private static final int LWC = LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -51,7 +52,7 @@ public class BGABanner extends RelativeLayout implements BGAViewPager.AutoPlayDe
     private int mPointContainerLeftRightPadding;
     private int mTipTextSize;
     private int mTipTextColor = Color.WHITE;
-    private int mPointDrawableResId = R.drawable.bga_banner_selector_point_solid;
+    private int mPointDrawableResId = R.drawable.base_banner_point_solid;
     private Drawable mPointContainerBackgroundDrawable;
     private AutoPlayTask mAutoPlayTask;
     private int mPageScrollPosition;
@@ -106,7 +107,7 @@ public class BGABanner extends RelativeLayout implements BGAViewPager.AutoPlayDe
 
     private void initCustomAttr(int attr, TypedArray typedArray) {
         if (attr == R.styleable.BGABanner_banner_pointDrawable) {
-            mPointDrawableResId = typedArray.getResourceId(attr, R.drawable.bga_banner_selector_point_solid);
+            mPointDrawableResId = typedArray.getResourceId(attr, R.drawable.base_banner_point_solid);
         } else if (attr == R.styleable.BGABanner_banner_pointContainerBackground) {
             mPointContainerBackgroundDrawable = typedArray.getDrawable(attr);
         } else if (attr == R.styleable.BGABanner_banner_pointLeftRightMargin) {

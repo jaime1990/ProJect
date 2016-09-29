@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="true">
+        <shape android:shape="oval">
+            <size android:width="@dimen/circle_indicator_size"
+                  android:height="@dimen/circle_indicator_size" />
+            <solid android:color="@color/selected_circle_indicator" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <size android:width="@dimen/circle_indicator_size"
+                  android:height="@dimen/circle_indicator_size" />
+            <solid android:color="@color/normal_circle_indicator" />
+        </shape>
+    </item>
+</selector>

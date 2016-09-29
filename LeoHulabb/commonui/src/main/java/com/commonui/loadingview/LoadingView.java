@@ -15,14 +15,16 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.commonui.R;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
- * 网络加载界面
- * @author Leo
- * Created at 2016/9/28
+ * @desc:   网络加载界面
+ * @author: Leo
+ * @date:   2016/9/28
  */
 public class LoadingView extends RelativeLayout {
 

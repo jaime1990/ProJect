@@ -1,5 +1,8 @@
 package com.commonui.animation;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 
@@ -60,5 +63,15 @@ public class AnimationManager {
 
         // Set the spring in motion; moving from 0 to 1
         spring.setEndValue(1);
+    }
+
+    public static ActSwitchAnimTool largeAnimation(Activity activity, View view, Intent intent)
+    {
+        return new ActSwitchAnimTool(activity).setAnimType(0)
+                .target(view)
+                .setShrinkBack(true)
+                .setmColorStart(Color.parseColor("#FF5777"))
+                .setmColorEnd(Color.parseColor("#FF5777"))
+                .startActivity(intent, false);
     }
 }

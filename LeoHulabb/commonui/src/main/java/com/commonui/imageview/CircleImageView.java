@@ -21,9 +21,9 @@ import android.widget.ImageView;
 import com.commonui.R;
 
 /**
- * 显示圆形图片
- * @author Leo
- * Created at 2016/9/26
+ * @desc:   显示圆形图片
+ * @author: Leo
+ * @date:   2016/9/28
  */
 public class CircleImageView extends ImageView {
 

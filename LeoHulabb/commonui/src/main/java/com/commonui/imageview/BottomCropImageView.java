@@ -7,9 +7,9 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 
 /**
- * ImageView实现只裁剪底部图片
- * @author Leo
- * Created at 2016/9/26
+ * @desc:   ImageView实现只裁剪底部图片
+ * @author: Leo
+ * @date:   2016/9/28
  */
 public class BottomCropImageView extends ImageView {
 

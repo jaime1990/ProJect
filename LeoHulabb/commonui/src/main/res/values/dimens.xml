@@ -2,4 +2,20 @@
 <resources>
     <!--分割线高度-->
     <dimen name="view_gap_size_0.5">0.5dp</dimen>
+
+    <!--WidgeBtn尺寸-->
+    <dimen name="widget_view_size">@dimen/navigation_view_size</dimen>
+    <dimen name="widget_view_divider">0.5dp</dimen>
+    <dimen name="widget_image_size">25dp</dimen>
+    <dimen name="widget_text_size">14dp</dimen>
+
+    <!--Navigation尺寸-->
+    <dimen name="navigation_view_size">50dp</dimen>
+    <dimen name="navigation_text_size">17dp</dimen>
+    <dimen name="navigation_side_max_size">70dp</dimen>
+    <dimen name="navigation_content_size">49dp</dimen>
+    <dimen name="navigation_view_divider">@dimen/widget_view_divider</dimen>
+
+    <!--圆点滑页指示器直径-->
+    <dimen name="circle_indicator_size">5dp</dimen>
 </resources>
