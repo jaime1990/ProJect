@@ -6,23 +6,18 @@
               android:background="@android:color/white"
               android:orientation="vertical">
 
-    <com.commonui.navigation.NavigationBar
-        android:id="@+id/navigationBar"
+    <com.commonui.guideview.BGABanner
+        android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/navigation_view_size" />
-
-    <!--<com.commonui.guideview.BGABanner-->
-        <!--android:id="@+id/banner"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="220dp"-->
-        <!--app:banner_pageChangeDuration="600"-->
-        <!--app:banner_pointAutoPlayAble="true"-->
-        <!--app:banner_pointContainerBackground="@color/alpha_black"-->
-        <!--app:banner_pointTopBottomMargin="5dp"-->
-        <!--app:banner_transitionEffect="alpha"-->
-        <!--app:banner_indicatorGravity="right"-->
-        <!--app:banner_tipTextSize="15dp"-->
-        <!--app:banner_tipTextColor="@color/white"/>-->
+        android:layout_height="220dp"
+        app:banner_pageChangeDuration="600"
+        app:banner_pointAutoPlayAble="true"
+        app:banner_pointContainerBackground="@color/alpha_black"
+        app:banner_pointTopBottomMargin="5dp"
+        app:banner_transitionEffect="alpha"
+        app:banner_indicatorGravity="right"
+        app:banner_tipTextSize="15dp"
+        app:banner_tipTextColor="@color/white"/>
 
     <Button
         android:id="@+id/button"

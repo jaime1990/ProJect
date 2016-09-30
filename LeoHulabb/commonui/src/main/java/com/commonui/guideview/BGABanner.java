@@ -11,6 +11,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -684,6 +685,9 @@ public class BGABanner extends RelativeLayout implements BGAViewPager.AutoPlayDe
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
+            //回收内存
+            Log.e("BGABanner", position + "");
+            container.removeView((View) object);
         }
 
         @Override

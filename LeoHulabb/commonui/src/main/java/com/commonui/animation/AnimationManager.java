@@ -65,9 +65,9 @@ public class AnimationManager {
         spring.setEndValue(1);
     }
 
-    public static ActSwitchAnimTool largeAnimation(Activity activity, View view, Intent intent)
+    public static ActSwitchAnimTool largeAnimation(View view, Intent intent)
     {
-        return new ActSwitchAnimTool(activity).setAnimType(0)
+        return new ActSwitchAnimTool((Activity) view.getContext()).setAnimType(0)
                 .target(view)
                 .setShrinkBack(true)
                 .setmColorStart(Color.parseColor("#FF5777"))

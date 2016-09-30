@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.commonui.guideview.BGABanner;
-import com.commonui.guideview.BGABannerUtil;
 import com.leohulabb.R;
 import com.leohulabb.module.MainActivity;
 import com.leohulabb.utils.BGABannerAdapter;
@@ -80,6 +79,7 @@ public class GuideActivity extends Activity implements View.OnClickListener {
 
         // 初始化方式1：通过传入数据模型并结合Adapter的方式初始化
         mBackgroundBanner.setAdapter(new BGABannerAdapter(this));
+        mForegroundBanner.setAdapter(new BGABannerAdapter(this));
 
         List<String> list = new ArrayList<>();
 
@@ -93,25 +93,23 @@ public class GuideActivity extends Activity implements View.OnClickListener {
         lists.add(R.drawable.uoko_guide_background_1);
         lists.add(R.drawable.uoko_guide_background_2);
         lists.add(R.drawable.uoko_guide_background_3);
+
+        List<Integer> forback = new ArrayList<>();
+
+        forback.add(R.drawable.uoko_guide_foreground_1);
+        forback.add(R.drawable.uoko_guide_foreground_2);
+        forback.add(R.drawable.uoko_guide_foreground_3);
+
         mBackgroundBanner.setData(lists, null);
-
-
-        // 初始化方式2：通过直接传入视图集合的方式初始化
-        List<View> views = new ArrayList<>();
-        views.add(BGABannerUtil.getItemImageView(this, R.drawable.uoko_guide_foreground_1));
-        views.add(BGABannerUtil.getItemImageView(this, R.drawable.uoko_guide_foreground_2));
-        views.add(BGABannerUtil.getItemImageView(this, R.drawable.uoko_guide_foreground_3));
-        mForegroundBanner.setData(views);
+        mForegroundBanner.setData(forback, null);
     }
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.btn_guide_enter) {
+        if (view.getId() == R.id.btn_guide_enter || view.getId() == R.id.tv_guide_skip) {
             startActivity(new Intent(GuideActivity.this, MainActivity.class));
+            onBackPressed();
         }
-
-        if (view.getId() == R.id.tv_guide_skip)
-            startActivity(new Intent(GuideActivity.this, MainActivity.class));
     }
 
     @Override
