@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.commonui.guideview.BGABanner;
+import com.commonutils.ScreenUtils;
 import com.leohulabb.R;
 import com.leohulabb.module.MainActivity;
 import com.leohulabb.utils.BGABannerAdapter;
@@ -27,13 +28,14 @@ public class GuideActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        this.requestWindowFeature(android.view.Window.FEATURE_NO_TITLE);
         initView();
         setListener();
         processLogic();
     }
 
     private void initView() {
+        ScreenUtils.hideStatusBar(this);
         setContentView(R.layout.activity_guide);
         mSkipTv = (TextView) findViewById(R.id.tv_guide_skip);
         mEnterBtn = (Button) findViewById(R.id.btn_guide_enter);

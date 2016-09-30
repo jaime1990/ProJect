@@ -2,25 +2,24 @@ package com.leohulabb.module;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.Window;
 
 import com.commonui.navigation.NavigationBar;
 import com.commonui.navigation.WidgeButton;
 import com.leohulabb.R;
+import com.leohulabb.module.base.BaseActivity;
 import com.leohulabb.module.login.LoginFragment;
 import com.leohulabb.module.login.TestFragment;
 import com.leohulabb.utils.widget.TabStripView;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends BaseActivity {
 
     private TabStripView navigateTabBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.requestWindowFeature(android.view.Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
         WidgeButton[] widgeButtons = new WidgeButton[] {
@@ -54,6 +53,16 @@ public class MainActivity extends FragmentActivity {
         navigateTabBar.addTab(LoginFragment.class, new TabStripView.TabParam(R.mipmap.ic_tab_bar_home, R.mipmap.ic_tab_bar_home_selected, "首页"));
         navigateTabBar.addTab(TestFragment.class, new TabStripView.TabParam(R.mipmap.ic_tab_bar_find, R.mipmap.ic_tab_bar_find_selected, "收藏"));
         navigateTabBar.addTab(LoginFragment.class, new TabStripView.TabParam(R.mipmap.ic_tab_bar_person, R.mipmap.ic_tab_bar_person_selected, "会员中心"));
+    }
+
+    @Override
+    protected int getLayoutResource() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void onInitView() {
+
     }
 
 

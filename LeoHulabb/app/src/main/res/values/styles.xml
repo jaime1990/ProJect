@@ -9,10 +9,18 @@
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <!--<item name="colorPrimary">@color/transparent</item>-->
-        <!--<item name="colorPrimaryDark">@color/transparent</item>-->
-        <!--<item name="colorAccent">@color/transparent</item>-->
+        <item name="colorPrimary">@color/transparent</item>
+        <item name="colorPrimaryDark">@color/transparent</item>
+        <item name="colorAccent">@color/transparent</item>
     </style>
+
+    <!--纯图片状态栏不遮挡-->
+    <style name="ImageTranslucentTheme" parent="AppTheme">
+        <!--在Android 4.4之前的版本上运行，直接跟随系统主题-->
+    </style>
+
+    <!--4.4以上设置状态栏颜色-->
+    <style name="ColorTranslucentTheme" parent="AppTheme"/>
 
     <declare-styleable name="ProgressWheel">
         <attr format="boolean" name="matProg_progressIndeterminate"/>
