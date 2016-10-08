@@ -3,24 +3,22 @@ package com.commonui.listener;
 import android.app.Activity;
 import android.view.View;
 
- /**
-  * @desc:         判断当前用户是否已登录
-  * @author:       Leo
-  * @date:         2016/10/8
-  */
-public abstract class OnClickLoginedListener extends BaseClickListener {
+/**
+ * @desc:         判断当前用户是否已登录
+ * @author:       Leo
+ * @date:         2016/10/8
+ */
+public abstract class OnClickLoginedListener extends OnClickFastListener {
 
     private Activity context = null;
-
 
     public OnClickLoginedListener(Activity context) {
         this.context = context;
     }
 
     @Override
-    public void onClick(View view) {
-        super.onClick(view);
-
+    public void onFastClick(View view)
+    {
         if (isLogined(context, view)) {
             onLoginedClick(view);
         } else {

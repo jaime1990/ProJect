@@ -5,11 +5,15 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.facebook.rebound.SimpleSpringListener;
 import com.facebook.rebound.Spring;
+import com.facebook.rebound.SpringChain;
 import com.facebook.rebound.SpringConfig;
 import com.facebook.rebound.SpringSystem;
+
+import java.util.List;
 
 /**
  * @desc:   FaceBook弹性动画类
@@ -63,6 +67,30 @@ public class AnimationManager {
 
         // Set the spring in motion; moving from 0 to 1
         spring.setEndValue(1);
+    }
+
+    public static void chainAnim(ViewGroup viewGroup)
+    {
+        if (null == viewGroup || viewGroup.getChildCount() <= 0)
+            return;
+
+        viewGroup.setVisibility(View.VISIBLE);
+        SpringChain springChain = SpringChain.create();
+        int childCount = viewGroup.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            final View view = viewGroup.getChildAt(i);
+            springChain.addSpring(new SimpleSpringListener() {
+                @Override
+                public void onSpringUpdate(Spring spring) {
+                    view.setTranslationX((float) spring.getCurrentValue());
+                }
+            });
+        }
+        List<Spring> springs = springChain.getAllSprings();
+        for (int i = 0; i < springs.size(); i++) {
+            springs.get(i).setCurrentValue(1080);
+        }
+        springChain.setControlSpringIndex(0).getControlSpring().setEndValue(0);
     }
 
     public static ActSwitchAnimTool largeAnimation(View view, Intent intent)

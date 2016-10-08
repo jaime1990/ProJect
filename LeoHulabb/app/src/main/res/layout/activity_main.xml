@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:background="@color/navigation_background_color"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".module.MainActivity">
+    android:fitsSystemWindows="true">
 
     <!--标题布局-->
     <RelativeLayout
@@ -19,7 +17,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="QQ Music"
             android:textColor="@color/base_color"
             android:textSize="20sp" />
 
@@ -35,23 +32,21 @@
         android:layout_below="@id/navigationBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/navigateTabBar" />
+        android:layout_above="@+id/tab_layout" />
 
-    <TextView
+    <com.commonui.tabview.CommonBottomTabLayout
+        android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"
-        android:background="#dedede" />
-
-    <com.leohulabb.utils.widget.TabStripView
-        android:id="@+id/navigateTabBar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        app:containerId="@id/main_container"
-        app:navigateTabSelectedTextColor="@color/white"
-        app:navigateTabTextColor="@color/normal_text_color"
-        app:navigateTabTextSize="9sp" />
+        tl:tab_indicator_height="0dp"
+        tl:tab_iconHeight="20dp"
+        tl:tab_iconWidth="20dp"
+        tl:tab_indicator_color="@color/gray"
+        tl:tab_textSelectColor="@color/selector_text_color"
+        tl:tab_textUnselectColor="@color/normal_text_color"
+        tl:tab_textsize="11sp"
+        tl:tab_underline_height="0dp" />
 
 </RelativeLayout>

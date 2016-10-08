@@ -12,10 +12,10 @@ import com.commonutils.NetworkUtils;
  * @author:       Leo
  * @date:         2016/10/8
  */
-public abstract class OnClickNetworkListener extends BaseClickListener
+public abstract class OnClickNetworkListener extends OnClickFastListener
 {
     @Override
-    public void onClick(View v) {
+    public void onFastClick(View v) {
         boolean isNetworkOk = NetworkUtils.isWorked(v.getContext());
 
         if (isNetworkOk) {

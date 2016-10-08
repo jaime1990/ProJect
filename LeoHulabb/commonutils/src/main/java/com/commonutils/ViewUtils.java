@@ -1,13 +1,10 @@
 package com.commonutils;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
 
 import java.util.regex.Matcher;
@@ -47,17 +44,6 @@ public class ViewUtils
         return true;
     }
 
-    public static int getWidth(Context context) {
-        WindowManager wm = (WindowManager) context
-                .getSystemService(Context.WINDOW_SERVICE);
-        return wm.getDefaultDisplay().getWidth();
-    }
-    public static int getHeight(Context context) {
-        WindowManager wm = (WindowManager) context
-                .getSystemService(Context.WINDOW_SERVICE);
-        return wm.getDefaultDisplay().getHeight();
-    }
-
     public static void setViewHide(View... targetViews) {
         for (View v : targetViews) {
             if (v != null) {
@@ -90,16 +76,6 @@ public class ViewUtils
         }
     }
 
-    public static void setBackgroundDrawable(Drawable drawable,
-                                             View... targetViews) {
-        for (View v : targetViews) {
-            if (v != null) {
-                Drawable clone = drawable.getConstantState().newDrawable();
-                v.setBackgroundDrawable(clone);
-            }
-        }
-    }
-
     public static void setImageDrawable(final ImageView imageView,
                                         int drawableInt, String url, final int dimenSize) {
         if (drawableInt > 0) {
@@ -125,25 +101,6 @@ public class ViewUtils
             return actual;
         }
         return expect;
-    }
-
-    //记录上次点击的时间点
-    private static long lastClickTime;
-
-    /**
-     * 防止用户重复点击
-     * @return bool
-     *         true 未重复
-     *         false 重复
-     */
-    public synchronized static boolean isFastRepeatClick()
-    {
-        long time = System.currentTimeMillis();
-        if (time - lastClickTime < 500) {
-            return true;
-        }
-        lastClickTime = time;
-        return false;
     }
 
     /**

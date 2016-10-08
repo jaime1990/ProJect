@@ -7,20 +7,19 @@ import android.view.View;
   * @author:       Leo
   * @date:         2016/10/8
   */
-public abstract class OnClickCostomListener extends BaseClickListener {
+public abstract class OnClickCustomListener extends OnClickFastListener {
 
-    @Override
-    public void onClick(View view) {
-        super.onClick(view);
+     @Override
+     public void onFastClick(View v)
+     {
+         if (isCorrect()) {
+             onCorrentClick(v);
+         } else {
+             onNoCorrentClick(v);
+         }
+     }
 
-        if (isCorrect()) {
-            onCorrentClick(view);
-        } else {
-            onNoCorrentClick(view);
-        }
-    }
-
-    /**
+     /**
      * 判断是否逻辑通过
      * @return
      */

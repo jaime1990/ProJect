@@ -144,4 +144,53 @@
         <attr name="share_text" format="string"/>
     </declare-styleable>
 
+    <declare-styleable name="CommonBottomTabLayout">
+        <attr name="tab_indicator_color" format="color"/>
+        <attr name="tab_indicator_height" format="dimension"/>
+        <attr name="tab_indicator_width" format="dimension"/>
+        <attr name="tab_indicator_margin_left" format="dimension"/>
+        <attr name="tab_indicator_margin_top" format="dimension"/>
+        <attr name="tab_indicator_margin_right" format="dimension"/>
+        <attr name="tab_indicator_margin_bottom" format="dimension"/>
+        <attr name="tab_indicator_corner_radius" format="dimension"/>
+        <attr name="tab_indicator_gravity" format="dimension"/>
+        <attr name="tab_indicator_style" format="dimension"/>
+        <attr name="tab_indicator_anim_enable" format="boolean"/>
+        <attr name="tab_indicator_anim_duration" format="dimension"/>
+        <attr name="tab_indicator_bounce_enable" format="boolean"/>
+        <attr format="dimension" name="tab_iconWidth"/>
+        <attr format="dimension" name="tab_iconHeight"/>
+        <attr format="boolean" name="tab_iconVisible"/>
+        <attr format="enum" name="tab_iconGravity">
+        <enum name="LEFT" value="3"/>
+        <enum name="TOP" value="48"/>
+        <enum name="RIGHT" value="5"/>
+        <enum name="BOTTOM" value="80"/>
+        </attr>
+        <attr format="dimension" name="tab_iconMargin"/>
+        <attr name="tab_divider_color" format="color"/>
+        <attr name="tab_divider_width" format="dimension"/>
+        <attr name="tab_divider_padding" format="dimension"/>
+        <attr name="tab_tab_padding" format="dimension"/>
+        <attr name="tab_tab_space_equal" format="boolean"/>
+        <attr name="tab_tab_width" format="dimension"/>
+        <attr name="tab_textsize" format="dimension"/>
+        <attr name="tab_textSelectColor" format="color"/>
+        <attr name="tab_textUnselectColor" format="color"/>
+        <attr name="tab_textBold" format="dimension"/>
+        <attr name="tab_textAllCaps" format="boolean"/>
+        <attr name="tab_underline_color" format="color"/>
+        <attr name="tab_underline_height" format="dimension"/>
+        <attr name="tab_underline_gravity" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="MsgView">
+        <attr format="color" name="mv_backgroundColor"/>
+        <attr format="dimension" name="mv_cornerRadius"/>
+        <attr format="dimension" name="mv_strokeWidth"/>
+        <attr format="color" name="mv_strokeColor"/>
+        <attr format="boolean" name="mv_isRadiusHalfHeight"/>
+        <attr format="boolean" name="mv_isWidthHeightEqual"/>
+    </declare-styleable>
+
 </resources>

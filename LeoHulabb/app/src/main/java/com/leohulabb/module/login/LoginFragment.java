@@ -1,11 +1,16 @@
 package com.leohulabb.module.login;
 
-import android.content.Intent;
+import android.app.Activity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.commonui.animation.AnimationManager;
 import com.commonui.guideview.BGABanner;
+import com.commonui.listener.OnClickCustomListener;
+import com.commonui.listener.OnClickLoginedListener;
+import com.commonui.listener.OnClickNetworkListener;
+import com.commonui.toast.ToastManager;
 import com.leohulabb.R;
 import com.leohulabb.module.base.BaseFragment;
 import com.leohulabb.utils.BGABannerAdapter;
@@ -24,6 +29,14 @@ public class LoginFragment extends BaseFragment
         return R.layout.activity_login;
     }
 
+    int count;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        AnimationManager.chainAnim((ViewGroup) rootView);
+    }
+
     @Override
     protected void onInitView() {
         BGABanner banner = (BGABanner) rootView.findViewById(R.id.banner);
@@ -37,13 +50,67 @@ public class LoginFragment extends BaseFragment
         banner.setData(list, null);
 
         Button button = (Button) rootView.findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button button1 = (Button) rootView.findViewById(R.id.button1);
+        Button button2 = (Button) rootView.findViewById(R.id.button2);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(context, GuideActivity.class);
+//                AnimationManager.largeAnimation(v, intent).setAnimType(0).build();
+//            }
+//        });
+
+        button.setOnClickListener(new OnClickCustomListener() {
+
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, GuideActivity.class);
-                AnimationManager.largeAnimation(v, intent).setAnimType(0).build();
+            public boolean isCorrect() {
+                count ++;
+                return false;
+            }
+
+            @Override
+            public void onCorrentClick(View v) {
+                ToastManager.show(context, "click");
+            }
+
+            @Override
+            public void onNoCorrentClick(View v) {
+                if (count % 2 ==0 )
+                    ToastManager.show(context, "don't click");
+                else
+                    ToastManager.show(context, "don't click click click");
             }
         });
+
+        button1.setOnClickListener(new OnClickLoginedListener(getActivity()) {
+            @Override
+            public boolean isLogined(Activity context, View view) {
+                return false;
+            }
+
+            @Override
+            public void onLoginedClick(View v) {
+                ToastManager.show(getActivity(), "已登录");
+            }
+
+            @Override
+            public void onNoLoginedClick(View v) {
+                ToastManager.show(getActivity(), "暂未登录");
+            }
+        });
+
+        button2.setOnClickListener(new OnClickNetworkListener() {
+            @Override
+            public void onNetworkClick(View v) {
+                ToastManager.show(getActivity(), "网络已连接");
+            }
+
+            @Override
+            public void onNoNetworkClick(View v) {
+                ToastManager.show(getActivity(), "网络未连接");
+            }
+        });
+
     }
 
 }

@@ -14,6 +14,12 @@ public abstract class OnClickFastListener extends BaseClickListener {
     private long DELAY_TIME = 900;
     private static long lastClickTime;
 
+    /**
+     * 判断重复点击时间间隔是否满足条件
+     * @return
+     *     ture  点击重复
+     *     false 点击未重复
+     */
     private boolean isFastDoubleClick() {
         long time = System.currentTimeMillis();
         long timeD = time - lastClickTime;
@@ -26,12 +32,14 @@ public abstract class OnClickFastListener extends BaseClickListener {
 
     @Override
     public void onClick(View v) {
-        // 判断当前点击事件与前一次点击事件时间间隔是否小于阙值
-        if (isFastDoubleClick()) {
-            return;
-        }
+        super.onClick(v);
 
-        onFastClick(v);
+        // 判断当前点击事件与前一次点击事件时间间隔是否小于阙值
+        // 小于间隔时间时截断
+        // 大于间隔时间执行点击逻辑
+        if (!isFastDoubleClick()) {
+            onFastClick(v);
+        }
     }
 
     /**
