@@ -7,6 +7,13 @@ import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
 
 /**
+ *
+ * 1，显示连接已保存，但标题栏没有，即没有实质连接上，  输出为：not connect， available
+ * 2，显示连接已保存，标题栏也有已连接上的图标，       输出为：connect， available
+ * 3，选择不保存后                                  输出为：not connect， available
+ * 4，选择连接，在正在获取IP地址时                   输出为：not connect， not available
+ * 5，连接上后                                     输出为：connect， available
+ *
  * @desc:   网络相关工具类
  * @author: Leo
  * @date:   2016/09/26
@@ -40,6 +47,17 @@ public class NetworkUtils {
         } else {
             context.startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
         }
+    }
+
+    /**
+     * 判断网络是否可用(网络有效的唯一判断)
+     * <p>需添加权限 {@code <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>}</p>
+     *
+     * @param context 上下文
+     * @return {@code true}: 可用<br>{@code false}: 不可用
+     */
+    public static boolean isWorked(Context context) {
+        return isAvailable(context) && isConnected(context);
     }
 
     /**

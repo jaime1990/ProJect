@@ -36,7 +36,7 @@ ext {
                 recyclerviewV7     : "com.android.support:recyclerview-v7:${depsVersion.support}",
 
                 picasso            : "com.squareup.picasso:picasso:${depsVersion.picasso}",
-                glide            : "com.github.bumptech.glide:glide:${depsVersion.glide}",
+                glide              : "com.github.bumptech.glide:glide:${depsVersion.glide}",
                 rebound            : "com.facebook.rebound:rebound:${depsVersion.rebound}",
                 nineold            : "com.nineoldandroids:library:${depsVersion.nineold}",
                 banner             : "cn.bingoogolapple:bga-banner:${depsVersion.banner}",
