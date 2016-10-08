@@ -25,6 +25,10 @@
         <activity
             android:theme="@style/ColorTranslucentTheme"
             android:name=".module.MainActivity"/>
+
+        <activity
+            android:theme="@style/ColorTranslucentTheme"
+            android:name=".module.login.TestReboundActivity"/>
     </application>
 
 </manifest>

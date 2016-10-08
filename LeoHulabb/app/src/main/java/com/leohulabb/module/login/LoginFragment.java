@@ -1,6 +1,7 @@
 package com.leohulabb.module.login;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -102,7 +103,8 @@ public class LoginFragment extends BaseFragment
         button2.setOnClickListener(new OnClickNetworkListener() {
             @Override
             public void onNetworkClick(View v) {
-                ToastManager.show(getActivity(), "网络已连接");
+                startActivity(new Intent(context, TestReboundActivity.class));
+//                ToastManager.show(getActivity(), "网络已连接");
             }
 
             @Override

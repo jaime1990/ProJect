@@ -93,6 +93,31 @@ public class AnimationManager {
         springChain.setControlSpringIndex(0).getControlSpring().setEndValue(0);
     }
 
+    public static void chainAnimOrizontal(ViewGroup viewGroup)
+    {
+        if (null == viewGroup || viewGroup.getChildCount() <= 0)
+            return;
+
+        viewGroup.setVisibility(View.VISIBLE);
+        SpringChain springChain = SpringChain.create();
+        int childCount = viewGroup.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            final View view = viewGroup.getChildAt(i);
+            springChain.addSpring(new SimpleSpringListener() {
+                @Override
+                public void onSpringUpdate(Spring spring) {
+                    view.setTranslationY((float) spring.getCurrentValue());
+                    Log.e("Animation", spring.getCurrentValue() + "");
+                }
+            });
+        }
+        List<Spring> springs = springChain.getAllSprings();
+        for (int i = 0; i < springs.size(); i++) {
+            springs.get(i).setCurrentValue(1080);
+        }
+        springChain.setControlSpringIndex(0).getControlSpring().setEndValue(0);
+    }
+
     public static ActSwitchAnimTool largeAnimation(View view, Intent intent)
     {
         return new ActSwitchAnimTool((Activity) view.getContext()).setAnimType(0)

@@ -13,6 +13,7 @@ import com.leohulabb.utils.widget.ProgressWheel;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
+    public View rootView;
     private ProgressWheel mLoadingView;
     protected BasePresenter mPresenter;
 
@@ -21,6 +22,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(getLayoutResource());
+        rootView = getWindow().getDecorView().getRootView();
+
         mLoadingView = new ProgressWheel(this);
         onInitView();
     }

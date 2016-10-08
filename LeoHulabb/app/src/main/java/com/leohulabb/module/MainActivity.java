@@ -25,7 +25,7 @@ public class MainActivity extends BaseActivity
 {
     private CommonBottomTabLayout tabLayout;
 
-    private String[] mTitles = {"首页", "美女","视频","关注"};
+    private String[] mTitles = {"美女","视频"};
     private int[] mIconUnselectIds = {
             R.mipmap.ic_tab_bar_home,R.mipmap.ic_tab_bar_find,R.mipmap.ic_tab_bar_person,R.mipmap.ic_tab_bar_home};
     private int[] mIconSelectIds = {
@@ -34,8 +34,6 @@ public class MainActivity extends BaseActivity
 
     private LoginFragment newsMainFragment;
     private TestFragment photosMainFragment;
-    private LoginFragment videoMainFragment;
-    private TestFragment careMainFragment;
     private static int tabLayoutHeight;
 
     @Override
@@ -67,7 +65,6 @@ public class MainActivity extends BaseActivity
         initFragment(savedInstanceState);
         tabLayout.measure(0,0);
         tabLayoutHeight=tabLayout.getMeasuredHeight();
-        tabLayout.showDot(2);
     }
 
     @Override
@@ -108,19 +105,13 @@ public class MainActivity extends BaseActivity
         if (savedInstanceState != null) {
             newsMainFragment = (LoginFragment) getSupportFragmentManager().findFragmentByTag("newsMainFragment");
             photosMainFragment = (TestFragment) getSupportFragmentManager().findFragmentByTag("photosMainFragment");
-            videoMainFragment = (LoginFragment) getSupportFragmentManager().findFragmentByTag("videoMainFragment");
-            careMainFragment = (TestFragment) getSupportFragmentManager().findFragmentByTag("careMainFragment");
             currentTabPosition = savedInstanceState.getInt("HOME_CURRENT_TAB_POSITION");
         } else {
             newsMainFragment = new LoginFragment();
             photosMainFragment = new TestFragment();
-            videoMainFragment = new LoginFragment();
-            careMainFragment = new TestFragment();
 
             transaction.add(R.id.main_container, newsMainFragment, "newsMainFragment");
             transaction.add(R.id.main_container, photosMainFragment, "photosMainFragment");
-            transaction.add(R.id.main_container, videoMainFragment, "videoMainFragment");
-            transaction.add(R.id.main_container, careMainFragment, "careMainFragment");
         }
         transaction.commit();
         SwitchTo(currentTabPosition);
@@ -132,21 +123,19 @@ public class MainActivity extends BaseActivity
      */
     private void SwitchTo(int position) {
         LogUtils.d("TAG", "主页菜单position" + position);
+        tabLayout.showDot(position);
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         switch (position) {
             //首页
             case 0:
                 transaction.hide(photosMainFragment);
-                transaction.hide(videoMainFragment);
-                transaction.hide(careMainFragment);
                 transaction.show(newsMainFragment);
                 transaction.commitAllowingStateLoss();
                 break;
             //美女
             case 1:
                 transaction.hide(newsMainFragment);
-                transaction.hide(videoMainFragment);
-                transaction.hide(careMainFragment);
                 transaction.show(photosMainFragment);
                 transaction.commitAllowingStateLoss();
                 break;
@@ -154,16 +143,12 @@ public class MainActivity extends BaseActivity
             case 2:
                 transaction.hide(newsMainFragment);
                 transaction.hide(photosMainFragment);
-                transaction.hide(careMainFragment);
-                transaction.show(videoMainFragment);
                 transaction.commitAllowingStateLoss();
                 break;
             //关注
             case 3:
                 transaction.hide(newsMainFragment);
                 transaction.hide(photosMainFragment);
-                transaction.hide(videoMainFragment);
-                transaction.show(careMainFragment);
                 transaction.commitAllowingStateLoss();
                 break;
             default:
