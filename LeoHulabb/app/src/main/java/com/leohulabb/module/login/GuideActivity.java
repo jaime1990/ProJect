@@ -1,16 +1,14 @@
 package com.leohulabb.module.login;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.commonui.activity.base.BaseActivity;
 import com.commonui.guideview.BGABanner;
-import com.commonutils.ScreenUtils;
 import com.leohulabb.R;
 import com.leohulabb.module.MainActivity;
 import com.leohulabb.utils.BGABannerAdapter;
@@ -18,7 +16,8 @@ import com.leohulabb.utils.BGABannerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GuideActivity extends Activity implements View.OnClickListener {
+public class GuideActivity extends BaseActivity implements View.OnClickListener
+{
     private static final String TAG = GuideActivity.class.getSimpleName();
     private TextView mSkipTv;
     private Button mEnterBtn;
@@ -26,24 +25,33 @@ public class GuideActivity extends Activity implements View.OnClickListener {
     private BGABanner mForegroundBanner;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.requestWindowFeature(android.view.Window.FEATURE_NO_TITLE);
-        initView();
-        setListener();
-        processLogic();
+    public int getLayoutId()
+    {
+        return R.layout.activity_guide;
     }
 
-    private void initView() {
-        ScreenUtils.hideStatusBar(this);
-        setContentView(R.layout.activity_guide);
+    @Override
+    public void initPresenter()
+    {
+    }
+
+    @Override
+    public void initView()
+    {
         mSkipTv = (TextView) findViewById(R.id.tv_guide_skip);
         mEnterBtn = (Button) findViewById(R.id.btn_guide_enter);
         mBackgroundBanner = (BGABanner) findViewById(R.id.banner_guide_background);
         mForegroundBanner = (BGABanner) findViewById(R.id.banner_guide_foreground);
     }
 
-    private void setListener() {
+    @Override
+    public void setData()
+    {
+        processLogic();
+    }
+
+    @Override
+    public void setListener() {
         mSkipTv.setOnClickListener(this);
         mEnterBtn.setOnClickListener(this);
 

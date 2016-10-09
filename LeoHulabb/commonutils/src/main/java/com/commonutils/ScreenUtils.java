@@ -5,6 +5,7 @@ import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -100,7 +101,6 @@ public class ScreenUtils {
 
     /**
      * 获取状态栏高度
-     *
      * @param context 上下文
      * @return 状态栏高度
      */
@@ -284,5 +284,22 @@ public class ScreenUtils {
         KeyguardManager km = (KeyguardManager) context
                 .getSystemService(Context.KEYGUARD_SERVICE);
         return km.inKeyguardRestrictedInputMode();
+    }
+
+    /**
+     * 状态栏透明
+     * @param activity activity
+     */
+    public static void translateStatusBar(Activity activity)
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            View decorview = activity.getWindow().getDecorView();
+            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorview.setSystemUiVisibility(option);
+            activity.getWindow().setStatusBarColor(Color.TRANSPARENT);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            WindowManager.LayoutParams localLayoutParams = activity.getWindow().getAttributes();
+            localLayoutParams.flags = LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags;
+        }
     }
 }

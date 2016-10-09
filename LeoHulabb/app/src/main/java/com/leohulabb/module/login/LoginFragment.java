@@ -50,7 +50,7 @@ public class LoginFragment extends BaseFragment
         list.add("http://picqn.hulabanban.com/Carousel/80624ebdca8e4077bf0d1f0cb9b6b602.jpg");
         banner.setData(list, null);
 
-        Button button = (Button) rootView.findViewById(R.id.button);
+        com.commonui.button.Button button = (com.commonui.button.Button) rootView.findViewById(R.id.button);
         Button button1 = (Button) rootView.findViewById(R.id.button1);
         Button button2 = (Button) rootView.findViewById(R.id.button2);
 //        button.setOnClickListener(new View.OnClickListener() {

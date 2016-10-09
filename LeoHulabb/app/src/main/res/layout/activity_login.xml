@@ -19,10 +19,11 @@
         app:banner_tipTextSize="15dp"
         app:banner_tipTextColor="@color/white"/>
 
-    <Button
+    <com.commonui.button.Button
         android:id="@+id/button"
         android:background="@color/base_color"
         android:text="Anim"
+        android:gravity="center"
         android:layout_marginTop="30dp"
         android:layout_gravity="center"
         android:layout_width="50dp"

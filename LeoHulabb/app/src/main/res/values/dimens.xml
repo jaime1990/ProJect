@@ -10,4 +10,5 @@
     <dimen name="little_text_size">11sp</dimen>
     <!--app normal dimen end-->
 
+    <dimen name="status_view_height">0dp</dimen>
 </resources>

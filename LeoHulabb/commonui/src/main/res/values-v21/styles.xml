@@ -13,6 +13,7 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
+    <!--纯图片时无需任何操作便可让图片顶靠屏幕上端，此时状态栏重叠在应用界面上层-->
     <style name="TranslucentTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">false</item>

@@ -22,6 +22,9 @@
     <!--4.4以上设置状态栏颜色-->
     <style name="ColorTranslucentTheme" parent="AppTheme"/>
 
+    <!--4.4以上设置状态栏颜色-->
+    <style name="TranslucentTheme" parent="AppTheme"/>
+
     <declare-styleable name="ProgressWheel">
         <attr format="boolean" name="matProg_progressIndeterminate"/>
         <attr format="color" name="matProg_barColor"/>

@@ -50,11 +50,13 @@ android {
 
 dependencies {
     compile rootProject.ext.dependencies.picasso
+
     compile rootProject.ext.dependencies.design
     compile rootProject.ext.dependencies.appcompatV7
     compile rootProject.ext.dependencies.recyclerviewV7
 
     compile rootProject.ext.dependencies.glide
+
     compile rootProject.ext.dependencies.junit
 
     compile project(':commonutils')

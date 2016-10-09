@@ -18,4 +18,7 @@
 
     <!--圆点滑页指示器直径-->
     <dimen name="circle_indicator_size">5dp</dimen>
+
+    <!--状态栏高度-->
+    <dimen name="status_view_height">0dp</dimen>
 </resources>
