@@ -106,7 +106,7 @@ public class AnimationManager {
             springChain.addSpring(new SimpleSpringListener() {
                 @Override
                 public void onSpringUpdate(Spring spring) {
-                    view.setTranslationY((float) spring.getCurrentValue());
+                    view.setTranslationY((float) -spring.getCurrentValue());
                     Log.e("Animation", spring.getCurrentValue() + "");
                 }
             });

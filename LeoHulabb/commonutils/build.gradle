@@ -23,4 +23,6 @@ android {
 
 dependencies {
     compile rootProject.ext.dependencies.junit
+    compile rootProject.ext.dependencies.design
+    compile rootProject.ext.dependencies.supportV4
 }
