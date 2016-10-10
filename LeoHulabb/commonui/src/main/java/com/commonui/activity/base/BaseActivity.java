@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.Window;
 
 import com.commonui.R;
 import com.commonutils.ActivityManager;
 import com.commonutils.ScreenUtils;
 import com.commonutils.TranslateUtil;
+import com.commonutils.ViewUtils;
 
 /**
  * @desc:         基类
@@ -54,7 +56,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
 {
     public T mPresenter;
     public E mModel;
-    public Context mContext;
+    public Context context;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,7 +72,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
 
     private void initActivity()
     {
-        mContext = this;
+        context = this;
         mPresenter = TranslateUtil.getT(this, 0);
         mModel=TranslateUtil.getT(this,1);
 
@@ -142,6 +144,10 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
             intent.putExtras(bundle);
         }
         startActivity(intent);
+    }
+
+    public <E extends View> E findView(int resId) {
+        return ViewUtils.findViewById(this, resId);
     }
 
     /**

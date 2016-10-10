@@ -91,24 +91,17 @@ public class GuideActivity extends BaseActivity implements View.OnClickListener
         mBackgroundBanner.setAdapter(new BGABannerAdapter(this));
         mForegroundBanner.setAdapter(new BGABannerAdapter(this));
 
-        List<String> list = new ArrayList<>();
-
-        list.add("http://odog3v89f.bkt.clouddn.com/banner/banner1.png");
-        list.add("http://odog3v89f.bkt.clouddn.com/banner/banner2.png");
-        list.add("http://odog3v89f.bkt.clouddn.com/banner/banner3.png");
-        list.add("http://odog3v89f.bkt.clouddn.com/banner/banner4.png");
-
         List<Integer> lists = new ArrayList<>();
 
-        lists.add(R.drawable.uoko_guide_background_1);
-        lists.add(R.drawable.uoko_guide_background_2);
-        lists.add(R.drawable.uoko_guide_background_3);
+        lists.add(R.mipmap.guide_main);
+        lists.add(R.mipmap.guide_next);
+        lists.add(R.mipmap.guide_third);
 
         List<Integer> forback = new ArrayList<>();
 
-        forback.add(R.drawable.uoko_guide_foreground_1);
-        forback.add(R.drawable.uoko_guide_foreground_2);
-        forback.add(R.drawable.uoko_guide_foreground_3);
+        forback.add(R.mipmap.uoko_guide_foreground_1);
+        forback.add(R.mipmap.uoko_guide_foreground_2);
+        forback.add(R.mipmap.uoko_guide_foreground_3);
 
         mBackgroundBanner.setData(lists, null);
         mForegroundBanner.setData(forback, null);

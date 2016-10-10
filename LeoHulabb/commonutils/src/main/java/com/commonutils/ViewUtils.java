@@ -1,5 +1,6 @@
 package com.commonutils;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
@@ -17,6 +18,13 @@ import java.util.regex.Pattern;
  */
 public class ViewUtils
 {
+    public static <E extends View> E findViewById(Activity activity, int resId) {
+        return (E) activity.findViewById(resId);
+    }
+
+    public static <E extends View> E findViewById(View view, int resId) {
+        return (E) view.findViewById(resId);
+    }
 
     public static void switchViewVisibility(View... targetViews) {
         for (View v : targetViews) {

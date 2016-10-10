@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">commonUI</string>
+    <string name="app_name">Test Project</string>
     <string name="base_connecting">连接中...</string>
 
     <string name="base_back">返回</string>
