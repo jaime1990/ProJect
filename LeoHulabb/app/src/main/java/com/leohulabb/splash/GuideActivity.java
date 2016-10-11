@@ -1,4 +1,4 @@
-package com.leohulabb.module.login;
+package com.leohulabb.splash;
 
 import android.content.Intent;
 import android.support.v4.view.ViewCompat;
@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.commonui.activity.base.BaseActivity;
 import com.commonui.guideview.BGABanner;
 import com.leohulabb.R;
-import com.leohulabb.module.MainActivity;
 import com.leohulabb.utils.BGABannerAdapter;
 
 import java.util.ArrayList;
@@ -18,7 +17,6 @@ import java.util.List;
 
 public class GuideActivity extends BaseActivity implements View.OnClickListener
 {
-    private static final String TAG = GuideActivity.class.getSimpleName();
     private TextView mSkipTv;
     private Button mEnterBtn;
     private BGABanner mBackgroundBanner;

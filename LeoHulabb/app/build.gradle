@@ -56,6 +56,7 @@ dependencies {
     compile rootProject.ext.dependencies.recyclerviewV7
 
     compile rootProject.ext.dependencies.glide
+    compile rootProject.ext.dependencies.gson
 
     compile rootProject.ext.dependencies.junit
 

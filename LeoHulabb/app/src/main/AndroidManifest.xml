@@ -24,11 +24,14 @@
         </activity>
 
         <activity
-            android:name=".module.MainActivity"/>
+            android:name=".splash.MainActivity"/>
 
         <activity
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            android:name=".module.login.GuideActivity"/>
+            android:name=".splash.GuideActivity"/>
+
+        <activity
+            android:name=".testmsp.TestActivityActivity"/>
 
         <activity
             android:name=".module.login.TestReboundActivity"/>

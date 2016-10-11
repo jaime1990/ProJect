@@ -1,13 +1,13 @@
-package com.leohulabb.module;
+package com.leohulabb.splash;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.view.ViewGroup;
 
+import com.commonui.activity.base.BaseActivity;
 import com.commonui.navigation.NavigationBar;
 import com.commonui.navigation.WidgeButton;
 import com.commonui.tabview.CommonBottomTabLayout;
@@ -15,7 +15,7 @@ import com.commonui.tabview.CustomTabEntity;
 import com.commonui.tabview.OnTabSelectListener;
 import com.commonutils.LogUtils;
 import com.leohulabb.R;
-import com.leohulabb.module.base.BaseActivity;
+import com.leohulabb.module.TabEntity;
 import com.leohulabb.module.login.LoginFragment;
 import com.leohulabb.module.login.TestFragment;
 
@@ -24,6 +24,7 @@ import java.util.ArrayList;
 public class MainActivity extends BaseActivity
 {
     private CommonBottomTabLayout tabLayout;
+    private NavigationBar navigationBar;
 
     private String[] mTitles = {"美女","视频"};
     private int[] mIconUnselectIds = {
@@ -37,10 +38,17 @@ public class MainActivity extends BaseActivity
     private static int tabLayoutHeight;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public int getLayoutId() {
+        return R.layout.activity_main;
+    }
 
+    @Override
+    public void initPresenter() {
+    }
+
+
+    @Override
+    public void initView() {
         tabLayout = (CommonBottomTabLayout) findViewById(R.id.tab_layout);
 
         WidgeButton[] widgeButtons = new WidgeButton[] {
@@ -48,32 +56,24 @@ public class MainActivity extends BaseActivity
                 new WidgeButton(this, R.string.base_confirm),
                 new WidgeButton(this, R.string.base_back) };
 
-        NavigationBar navigationBar = (NavigationBar) findViewById(R.id.navigationBar);
+        navigationBar = (NavigationBar) findViewById(R.id.navigationBar);
         navigationBar.setAppWidgeTitle("首页");
         navigationBar.setLeftMenus(widgeButtons);
         navigationBar.setRightMenu(new WidgeButton(this, R.string.base_back));
 
-        widgeButtons[0].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
         initTab();
         //初始化frament
-        initFragment(savedInstanceState);
         tabLayout.measure(0,0);
         tabLayoutHeight=tabLayout.getMeasuredHeight();
     }
 
     @Override
-    protected int getLayoutResource() {
-        return R.layout.activity_main;
+    public void setData() {
     }
 
+
     @Override
-    protected void onInitView() {
+    public void setListener() {
 
     }
 
@@ -96,10 +96,13 @@ public class MainActivity extends BaseActivity
             }
         });
     }
+
     /**
      * 初始化碎片
      */
-    private void initFragment(Bundle savedInstanceState) {
+    @Override
+    public void initFragment(Bundle savedInstanceState) {
+        super.initFragment(savedInstanceState);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         int currentTabPosition = 0;
         if (savedInstanceState != null) {

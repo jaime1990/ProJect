@@ -3,11 +3,10 @@ package com.leohulabb.module.login;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.commonui.activity.base.BaseFragment;
 import com.leohulabb.R;
-import com.leohulabb.module.base.BaseFragment;
 import com.leohulabb.module.testpicasso.TestPicassoItemAdapter;
 import com.leohulabb.module.testpicasso.TestPicassoItemAdapter.Type;
-import com.leohulabb.utils.picassoUtils.PicassoPauseOnScrollListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,17 +22,25 @@ public class TestFragment extends BaseFragment
     }
 
     @Override
-    protected void onInitView() {
+    public void initPresenter() {
+    }
 
+    @Override
+    protected void initView() {
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        if (setData() != null) {
-            List<Type> types = setData();
+        if (setDatas() != null) {
+            List<Type> types = setDatas();
             recyclerView.setAdapter(new TestPicassoItemAdapter(types));
         }
     }
 
-    private List<Type> setData()
+    @Override
+    public void setData() {
+
+    }
+
+    private List<Type> setDatas()
     {
         List<Type> dataSet = new ArrayList<>();
         dataSet.add(Type.BLUR);
@@ -47,5 +54,10 @@ public class TestFragment extends BaseFragment
             return dataSet;
 
         return null;
+    }
+
+    @Override
+    public void setListener() {
+
     }
 }

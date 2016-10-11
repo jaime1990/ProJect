@@ -66,6 +66,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         initActivity();
         this.initPresenter();
         this.initView();
+        this.initFragment(savedInstanceState);
         this.setData();
         this.setListener();
     }
@@ -74,12 +75,17 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
     {
         context = this;
         mPresenter = TranslateUtil.getT(this, 0);
-        mModel=TranslateUtil.getT(this,1);
+        mModel = TranslateUtil.getT(this,1);
 
-        if(mPresenter!=null) {
-            mPresenter.mContext=this;
+        if(mPresenter != null) {
+            mPresenter.context = this;
         }
     }
+
+    /**
+     * 初始化碎片
+     */
+    public void initFragment(Bundle savedInstanceState) { }
 
     /**
      * 设置layout前配置

@@ -27,6 +27,16 @@
         <item name="android:minWidth">@dimen/widget_view_size</item>
     </style>
 
+    <style name="style_title_text" parent="style_text_item">
+        <item name="android:textSize">@dimen/title_text_size</item>
+        <item name="android:textColor">@color/navigation_widge_text_color</item>
+    </style>
+
+    <style name="style_describe_text" parent="style_text_item">
+        <item name="android:textSize">@dimen/normal_text_size</item>
+        <item name="android:textColor">@color/navigation_widge_text_color</item>
+    </style>
+
     <style name="style_nav_title_item" parent="style_text_item">
         <item name="android:textSize">@dimen/navigation_text_size</item>
         <item name="android:textColor">@color/navigation_title_text_color</item>

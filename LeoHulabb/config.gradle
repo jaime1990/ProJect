@@ -27,6 +27,7 @@ ext {
             nineold    : "2.4.0",
             junit      : "4.12",
             banner     : "2.0.9",
+            gson       : "2.7",
     ]
 
     dependencies = [
@@ -40,6 +41,8 @@ ext {
                 rebound            : "com.facebook.rebound:rebound:${depsVersion.rebound}",
                 nineold            : "com.nineoldandroids:library:${depsVersion.nineold}",
                 banner             : "cn.bingoogolapple:bga-banner:${depsVersion.banner}",
+
+                gson               : "com.google.code.gson:gson:${depsVersion.gson}",
 
                 junit              : "junit:junit:${depsVersion.junit}"
     ]

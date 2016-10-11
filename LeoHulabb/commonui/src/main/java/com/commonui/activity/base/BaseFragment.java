@@ -1,5 +1,6 @@
 package com.commonui.activity.base;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.commonutils.TranslateUtil;
+import com.commonutils.ViewUtils;
 
 /**
  * des:基类fragment
@@ -50,6 +52,7 @@ import com.commonutils.TranslateUtil;
 //}
 public abstract  class BaseFragment<T extends BasePresenter, E extends BaseModel> extends Fragment {
     protected View rootView;
+    protected Context context;
     public T mPresenter;
     public E mModel;
 
@@ -58,14 +61,24 @@ public abstract  class BaseFragment<T extends BasePresenter, E extends BaseModel
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (rootView == null)
             rootView = inflater.inflate(getLayoutResource(), container, false);
-        mPresenter = TranslateUtil.getT(this, 0);
-        mModel= TranslateUtil.getT(this,1);
-        if(mPresenter!=null){
-            mPresenter.mContext=this.getActivity();
-        }
-        initPresenter();
-        initView();
+
+        initFragmet();
+        this.initPresenter();
+        this.initView();
+        this.setData();
+        this.setListener();
+
         return rootView;
+    }
+
+    private void initFragmet()
+    {
+        context = this.getActivity();
+        mPresenter = TranslateUtil.getT(this, 0);
+        mModel = TranslateUtil.getT(this,1);
+        if(mPresenter != null){
+            mPresenter.context = this.getActivity();
+        }
     }
 
     //获取布局文件
@@ -74,7 +87,10 @@ public abstract  class BaseFragment<T extends BasePresenter, E extends BaseModel
     public abstract void initPresenter();
     //初始化view
     protected abstract void initView();
-
+    //设置监听
+    public abstract void setData();
+    //设置监听
+    public abstract void setListener();
 
     /**
      * 通过Class跳转界面
@@ -115,7 +131,9 @@ public abstract  class BaseFragment<T extends BasePresenter, E extends BaseModel
         startActivity(intent);
     }
 
-
+    public <E extends View> E findView(int resId) {
+        return ViewUtils.findViewById(rootView, resId);
+    }
 
     /**
      * 开启加载进度条

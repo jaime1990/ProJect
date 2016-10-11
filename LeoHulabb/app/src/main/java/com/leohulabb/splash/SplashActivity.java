@@ -5,26 +5,25 @@ import android.animation.PropertyValuesHolder;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.commonui.R;
 import com.commonui.activity.base.BaseActivity;
-import com.leohulabb.module.MainActivity;
-import com.leohulabb.module.login.GuideActivity;
+import com.commonui.activity.base.BaseModel;
+import com.leohulabb.R;
 import com.leohulabb.splash.contract.SplashContract;
-import com.leohulabb.splash.model.SplashModelImpl;
 import com.leohulabb.splash.presenter.SplashPresenterImpl;
 
 /**
- * 启动页
- * Created by zwl on 16/9/5.
+ * @desc:
+ * @author: Leo
+ * @date: 2016/10/10
  */
-public class SplashActivity extends BaseActivity<SplashPresenterImpl, SplashModelImpl> implements SplashContract.View
+public class SplashActivity extends BaseActivity<SplashPresenterImpl, BaseModel> implements SplashContract.View
 {
     private ImageView ivLogo;
     private LinearLayout tvName;
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_guide;
+        return R.layout.splash_activity;
     }
 
     @Override
@@ -51,6 +50,7 @@ public class SplashActivity extends BaseActivity<SplashPresenterImpl, SplashMode
 
     @Override
     public void setListener() {
+
     }
 
     @Override

@@ -28,7 +28,7 @@ public class SplashPresenterImpl extends SplashContract.Presenter {
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.playTogether(items[0], items[1]);
         animatorSet.setInterpolator(new AccelerateInterpolator());
-        animatorSet.setDuration(2000);
+        animatorSet.setDuration(3000);
         animatorSet.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {

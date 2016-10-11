@@ -18,10 +18,7 @@ public interface SplashContract
         void readyToGuide();
     }
 
-    abstract class Presenter extends BasePresenter<View, Model> {
+    abstract class Presenter extends BasePresenter<View, BaseModel> {
         public abstract void checkIsFirstIn(Context context, Animator... items);
-    }
-
-    interface Model extends BaseModel {
     }
 }

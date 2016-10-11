@@ -10,9 +10,9 @@ import android.view.View;
  * @author: Leo
  * @date:   2016/09/27
  */
-public class Button extends ScalableTextView {
+public class BaseButton extends ScalableTextView {
 
-    public Button(Context context, AttributeSet attrs) {
+    public BaseButton(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
