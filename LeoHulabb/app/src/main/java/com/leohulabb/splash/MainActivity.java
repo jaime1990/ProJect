@@ -46,7 +46,6 @@ public class MainActivity extends BaseActivity
     public void initPresenter() {
     }
 
-
     @Override
     public void initView() {
         tabLayout = (CommonBottomTabLayout) findViewById(R.id.tab_layout);

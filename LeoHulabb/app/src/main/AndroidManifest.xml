@@ -27,6 +27,9 @@
             android:name=".splash.MainActivity"/>
 
         <activity
+            android:name=".testmsp.TestListActivityActivity"/>
+
+        <activity
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:name=".splash.GuideActivity"/>
 

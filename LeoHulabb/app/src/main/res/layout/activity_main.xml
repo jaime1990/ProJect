@@ -9,11 +9,6 @@
     <include
         android:id="@+id/navigationAndStatus"
         layout="@layout/base_navigation_status"/>
-    <!--<com.commonui.navigation.NavigationBar-->
-        <!--android:id="@+id/navigationBar"-->
-        <!--android:background="@color/base_color"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/navigation_view_size" />-->
 
     <FrameLayout
         android:id="@+id/main_container"

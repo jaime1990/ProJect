@@ -1,15 +1,18 @@
 package com.leohulabb.module.login;
 
+import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.commonui.activity.base.BaseFragment;
 import com.commonui.animation.AnimationManager;
-import com.commonui.button.BaseButton;
 import com.commonui.guideview.BGABanner;
+import com.commonui.listener.OnClickLoginedListener;
+import com.commonui.toast.ToastManager;
 import com.leohulabb.R;
 import com.leohulabb.testmsp.TestActivityActivity;
+import com.leohulabb.testmsp.TestListActivityActivity;
 import com.leohulabb.utils.BGABannerAdapter;
 
 import java.util.ArrayList;
@@ -22,8 +25,8 @@ public class LoginFragment extends BaseFragment
 {
     private BGABanner banner;
     private Button button;
-    private BaseButton button1;
-    private BaseButton button2;
+    private Button button1;
+    private Button button2;
 
     @Override
     protected int getLayoutResource() {
@@ -38,8 +41,8 @@ public class LoginFragment extends BaseFragment
     protected void initView() {
         banner = (BGABanner) findView(R.id.banner);
         button = (Button) findView(R.id.button);
-        button1 = (BaseButton) findView(R.id.button1);
-        button2 = (BaseButton) findView(R.id.button2);
+        button1 = (Button) findView(R.id.button1);
+        button2 = (Button) findView(R.id.button2);
     }
 
     @Override
@@ -53,17 +56,24 @@ public class LoginFragment extends BaseFragment
         list.add("http://picqn.hulabanban.com/Carousel/ca4771c0e5a3426281ec35dd3e661123.jpg");
         list.add("http://picqn.hulabanban.com/Carousel/80624ebdca8e4077bf0d1f0cb9b6b602.jpg");
         banner.setData(list, null);
+    }
 
+    @Override
+    public void setListener() {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(TestActivityActivity.class);
             }
         });
-    }
 
-    @Override
-    public void setListener() {
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(TestListActivityActivity.class);
+            }
+        });
+
 //        button.setOnClickListener(new OnClickCustomListener() {
 //
 //            @Override
@@ -86,23 +96,23 @@ public class LoginFragment extends BaseFragment
 //            }
 //        });
 
-//        button1.setOnClickListener(new OnClickLoginedListener(getActivity()) {
-//            @Override
-//            public boolean isLogined(Activity context, View view) {
-//                return false;
-//            }
-//
-//            @Override
-//            public void onLoginedClick(View v) {
-//                ToastManager.show(getActivity(), "已登录");
-//            }
-//
-//            @Override
-//            public void onNoLoginedClick(View v) {
-//                ToastManager.show(getActivity(), "暂未登录");
-//                startActivity(TestActivityActivity.class);
-//            }
-//        });
+        button1.setOnClickListener(new OnClickLoginedListener(getActivity()) {
+            @Override
+            public boolean isLogined(Activity context, View view) {
+                return false;
+            }
+
+            @Override
+            public void onLoginedClick(View v) {
+                ToastManager.show(getActivity(), "已登录");
+            }
+
+            @Override
+            public void onNoLoginedClick(View v) {
+                ToastManager.show(getActivity(), "暂未登录");
+                startActivity(TestListActivityActivity.class);
+            }
+        });
 //
 //        button2.setOnClickListener(new OnClickNetworkListener() {
 //            @Override

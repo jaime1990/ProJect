@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.Window;
 
 import com.commonui.R;
+import com.commonui.navigation.NavigationBar;
+import com.commonui.navigation.WidgeButton;
 import com.commonutils.ActivityManager;
 import com.commonutils.ScreenUtils;
 import com.commonutils.TranslateUtil;
@@ -57,6 +59,8 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
     public T mPresenter;
     public E mModel;
     public Context context;
+    private NavigationBar navigationBar;
+    private WidgeButton btnBack;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,8 +68,8 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         doBeforeSetcontentView();
         setContentView(getLayoutId());
         initActivity();
-        this.initPresenter();
         this.initView();
+        this.initPresenter();
         this.initFragment(savedInstanceState);
         this.setData();
         this.setListener();
@@ -80,6 +84,25 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         if(mPresenter != null) {
             mPresenter.context = this;
         }
+
+        navigationBar = findView(R.id.navigationBar);
+    }
+
+    public NavigationBar getNavigationBar(boolean isCanBack) {
+
+        if (null != navigationBar) {
+            if (isCanBack)
+                navigationBar.setLeftMenu(getBtnBack());
+            return navigationBar;
+        }
+        return null;
+    }
+
+    public WidgeButton getBtnBack()
+    {
+        btnBack = new WidgeButton(context);
+        btnBack.setBackgroundResource(R.drawable.icon_fb);
+        return btnBack;
     }
 
     /**
