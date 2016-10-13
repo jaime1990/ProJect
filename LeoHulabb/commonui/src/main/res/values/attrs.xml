@@ -193,4 +193,10 @@
         <attr format="boolean" name="mv_isWidthHeightEqual"/>
     </declare-styleable>
 
+    <!--AutoLinkStyleTextView-->
+    <declare-styleable name="AutoLinkStyleTextView">
+        <attr name="AutoLinkStyleTextView_text_value" format="string|reference"/>
+        <attr name="AutoLinkStyleTextView_default_color" format="color|reference"/>
+        <attr name="AutoLinkStyleTextView_has_under_line" format="boolean"/>
+    </declare-styleable>
 </resources>
