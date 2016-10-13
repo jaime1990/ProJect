@@ -1,5 +1,8 @@
 package com.commonutils;
 
+import android.app.Application;
+import android.util.Log;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -29,7 +32,23 @@ import static com.commonutils.ConstUtils.KB;
 public class FileUtils {
 
     private FileUtils() {
-        throw new UnsupportedOperationException("u can't fuck me...");
+        throw new UnsupportedOperationException("error...");
+    }
+
+    /**
+     * @return  创建缓存目录
+     */
+    public static File getcacheDirectory(Application application)
+    {
+        File file = new File(application.getApplicationContext().getExternalCacheDir(), "MyCache");
+        if(!file.exists())
+        {
+            boolean b = file.mkdirs();
+            Log.e("file", "文件不存在  创建文件    "+b);
+        }else{
+            Log.e("file", "文件存在"+file.toString());
+        }
+        return file;
     }
 
     /**

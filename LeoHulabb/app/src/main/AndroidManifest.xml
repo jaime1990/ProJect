@@ -37,6 +37,9 @@
             android:name=".testmsp.TestActivityActivity"/>
 
         <activity
+            android:name=".testmsp.ListActivity"/>
+
+        <activity
             android:name=".module.login.TestReboundActivity"/>
     </application>
 

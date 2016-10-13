@@ -13,4 +13,7 @@ public class Constant
 
     public static String EMPTY_TITLE="没有找到数据";
     public static String EMPTY_CONTEXT="换个条件试试吧";
+
+    //服务器路径
+    public static final String API_SERVER = "http://123.59.57.18:8018";
 }

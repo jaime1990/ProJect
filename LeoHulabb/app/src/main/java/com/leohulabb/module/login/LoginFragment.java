@@ -1,6 +1,5 @@
 package com.leohulabb.module.login;
 
-import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -8,9 +7,8 @@ import android.widget.Button;
 import com.commonui.activity.base.BaseFragment;
 import com.commonui.animation.AnimationManager;
 import com.commonui.guideview.BGABanner;
-import com.commonui.listener.OnClickLoginedListener;
-import com.commonui.toast.ToastManager;
 import com.leohulabb.R;
+import com.leohulabb.testmsp.ListActivity;
 import com.leohulabb.testmsp.TestActivityActivity;
 import com.leohulabb.testmsp.TestListActivityActivity;
 import com.leohulabb.utils.BGABannerAdapter;
@@ -74,6 +72,12 @@ public class LoginFragment extends BaseFragment
             }
         });
 
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(ListActivity.class);
+            }
+        });
 //        button.setOnClickListener(new OnClickCustomListener() {
 //
 //            @Override
@@ -96,23 +100,23 @@ public class LoginFragment extends BaseFragment
 //            }
 //        });
 
-        button1.setOnClickListener(new OnClickLoginedListener(getActivity()) {
-            @Override
-            public boolean isLogined(Activity context, View view) {
-                return false;
-            }
-
-            @Override
-            public void onLoginedClick(View v) {
-                ToastManager.show(getActivity(), "已登录");
-            }
-
-            @Override
-            public void onNoLoginedClick(View v) {
-                ToastManager.show(getActivity(), "暂未登录");
-                startActivity(TestListActivityActivity.class);
-            }
-        });
+//        button1.setOnClickListener(new OnClickLoginedListener(getActivity()) {
+//            @Override
+//            public boolean isLogined(Activity context, View view) {
+//                return false;
+//            }
+//
+//            @Override
+//            public void onLoginedClick(View v) {
+//                ToastManager.show(getActivity(), "已登录");
+//            }
+//
+//            @Override
+//            public void onNoLoginedClick(View v) {
+//                ToastManager.show(getActivity(), "暂未登录");
+//                startActivity(TestListActivityActivity.class);
+//            }
+//        });
 //
 //        button2.setOnClickListener(new OnClickNetworkListener() {
 //            @Override

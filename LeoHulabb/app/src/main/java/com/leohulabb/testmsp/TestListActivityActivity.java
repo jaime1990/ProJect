@@ -14,12 +14,12 @@ import com.commonui.pulltorefresh.SpringView;
 import com.commonui.pulltorefresh.container.RotationHeader;
 import com.leohulabb.R;
 import com.leohulabb.data.Constant;
-import com.leohulabb.data.TestData;
+import com.leohulabb.data.UniversityListDto;
 import com.leohulabb.testmsp.contract.TestListContract;
 import com.leohulabb.testmsp.model.TestListModelImpl;
 import com.leohulabb.testmsp.presenter.TestListPresenterImpl;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class TestListActivityActivity extends BaseActivity<TestListPresenterImpl, TestListModelImpl> implements
         BaseQuickAdapter.RequestLoadMoreListener,SpringView.OnFreshListener, TestListContract.View {
@@ -38,7 +38,7 @@ public class TestListActivityActivity extends BaseActivity<TestListPresenterImpl
     @Override
     public void initPresenter()
     {
-        mPresenter.setVM(this, mModel);
+//        mPresenter.setVM(this, mModel);
         //设置下拉刷新监听
         springview.setListener(this);
         //设置下拉刷新样式
@@ -59,7 +59,7 @@ public class TestListActivityActivity extends BaseActivity<TestListPresenterImpl
         rvList.setAdapter(mQuickAdapter);
 
         //请求网络数据
-        mPresenter.loadData(12, 1, false);
+        mPresenter.loadData(1, 12, false);
     }
 
     @Override
@@ -123,7 +123,7 @@ public class TestListActivityActivity extends BaseActivity<TestListPresenterImpl
     }
 
     @Override
-    public void loadData(ArrayList<TestData> list) {
+    public void loadData(List<UniversityListDto> list) {
         //进入显示的初始数据或者下拉刷新显示的数据
         mQuickAdapter.setNewData(list);//新增数据
         mQuickAdapter.openLoadMore(10, true);//设置是否可以上拉加载  以及加载条数
@@ -131,7 +131,7 @@ public class TestListActivityActivity extends BaseActivity<TestListPresenterImpl
     }
 
     @Override
-    public void addDatas(final ArrayList<TestData> list) {
+    public void addDatas(final List<UniversityListDto> list) {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
