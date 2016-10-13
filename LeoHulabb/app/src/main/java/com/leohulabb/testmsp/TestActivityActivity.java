@@ -18,6 +18,8 @@ public class TestActivityActivity extends BaseActivity<TestPresenterImpl, TestMo
     private TextView tvAddress;
     private TextView tvName;
 
+    private String imageStr;
+
     @Override
     public int getLayoutId() {
         return R.layout.test_activity;
@@ -26,6 +28,7 @@ public class TestActivityActivity extends BaseActivity<TestPresenterImpl, TestMo
     @Override
     public void initPresenter() {
         mPresenter.setVM(this, mModel);
+        imageStr = getIntent().getStringExtra("Picture");
     }
 
     @Override

@@ -34,7 +34,7 @@ public abstract class BaseListActivity<T extends BasePresenter, E extends BaseMo
     protected RecyclerView       recyclerView;
     protected RecyclerView.LayoutManager layoutManager;
 
-    private BaseQuickAdapter   mQuickAdapter;
+    protected BaseQuickAdapter   mQuickAdapter;
 
     public int PageSize = 8;
     public int PageIndex = 1;
@@ -85,6 +85,8 @@ public abstract class BaseListActivity<T extends BasePresenter, E extends BaseMo
         mQuickAdapter.openLoadMore(6, true);
         //将适配器添加到RecyclerView
         recyclerView.setAdapter(mQuickAdapter);
+        //设置自动加载监听
+        mQuickAdapter.setOnLoadMoreListener(this);
     }
 
     protected abstract BaseQuickAdapter getAdapter();
@@ -142,13 +144,6 @@ public abstract class BaseListActivity<T extends BasePresenter, E extends BaseMo
         recyclerView.setLayoutManager(manager);
         //如果Item高度固定  增加该属性能够提高效率
         recyclerView.setHasFixedSize(true);
-    }
-
-    @Override
-    public void setListener()
-    {
-        //设置自动加载监听
-        mQuickAdapter.setOnLoadMoreListener(this);
     }
 
     @Override

@@ -1,5 +1,8 @@
 package com.leohulabb.testmsp;
 
+import android.content.Intent;
+import android.view.View;
+
 import com.commonui.activity.base.BaseListActivity;
 import com.commonui.listview.BaseQuickAdapter;
 import com.leohulabb.R;
@@ -52,5 +55,19 @@ public class ListActivity extends BaseListActivity<TestListPresenterImpl, TestLi
     protected void loadMoreData() {
         PageIndex++;
         mPresenter.loadData(PageIndex, PageSize, true);
+    }
+
+    @Override
+    public void setListener() {
+        mQuickAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                UniversityListDto item = (UniversityListDto) mQuickAdapter.getItem(position);
+                Intent intent = new Intent(context, TestActivityActivity.class);
+                intent.putExtra("Picture", item.getLogo().getPictureUrl());
+
+                startActivity(intent);
+            }
+        });
     }
 }
