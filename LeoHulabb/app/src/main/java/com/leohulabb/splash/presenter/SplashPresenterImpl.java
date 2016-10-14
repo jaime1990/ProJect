@@ -23,7 +23,7 @@ public class SplashPresenterImpl extends SplashContract.Presenter {
     @Override
     public void checkIsFirstIn(Context context, Animator... items)
     {
-        final boolean isFirstIn = true;
+        final boolean isFirstIn = false;
 
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.playTogether(items[0], items[1]);

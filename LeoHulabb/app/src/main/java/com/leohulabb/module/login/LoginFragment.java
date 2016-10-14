@@ -17,7 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Leo on 2016/7/7.
+ * @desc:
+ * @author: Leo
+ * @date:   2016/10/14
  */
 public class LoginFragment extends BaseFragment
 {

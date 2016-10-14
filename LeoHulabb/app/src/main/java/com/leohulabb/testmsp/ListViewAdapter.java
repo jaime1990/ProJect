@@ -3,10 +3,10 @@ package com.leohulabb.testmsp;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.commonui.animation.AnimationManager;
 import com.commonui.listview.BaseQuickAdapter;
 import com.commonui.listview.BaseViewHolder;
 import com.leohulabb.R;
-import com.leohulabb.data.TestData;
 import com.leohulabb.data.UniversityListDto;
 
 import java.util.List;
@@ -27,5 +27,7 @@ public class ListViewAdapter extends BaseQuickAdapter<UniversityListDto> {
                 .crossFade()
                 .placeholder(R.mipmap.bg_square_ing)
                 .into((ImageView) helper.getView(R.id.listview_image_url));
+
+        AnimationManager.showItemAnim(helper.convertView, helper.getLayoutPosition());
     }
 }

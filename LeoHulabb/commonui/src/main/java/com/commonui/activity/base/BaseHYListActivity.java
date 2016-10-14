@@ -1,13 +1,14 @@
 package com.commonui.activity.base;
 
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.commonui.listview.BaseQuickAdapter;
+import com.commonui.R;
 import com.commonui.loadingview.LoadingView;
 import com.commonui.pulltorefresh.SpringView;
 import com.commonui.pulltorefresh.container.RotationFooter;
 import com.commonui.pulltorefresh.container.RotationHeader;
+import com.commonui.recyclerview.adapter.CommonAdapter;
+import com.commonui.recyclerview.wrapper.LoadMoreWrapper;
 import com.commonui.toast.ToastManager;
 
 /**
@@ -20,9 +21,8 @@ import com.commonui.toast.ToastManager;
  * @author: Leo
  * @date:   2016/10/12
  */
-public abstract class BaseListActivity<T extends BasePresenter, E extends BaseModel> extends BaseActivity<T, E>
-        implements BaseQuickAdapter.RequestLoadMoreListener, SpringView.OnFreshListener, BaseListView
-{
+public abstract class BaseHYListActivity<T extends BasePresenter, E extends BaseModel> extends BaseActivity<T, E>
+        implements SpringView.OnFreshListener, BaseListView, LoadMoreWrapper.OnLoadMoreListener {
     //预加载view
     protected LoadingView        loadingView;
     
@@ -30,20 +30,16 @@ public abstract class BaseListActivity<T extends BasePresenter, E extends BaseMo
     protected SpringView         springView;
     protected RecyclerView       recyclerView;
     protected RecyclerView.LayoutManager layoutManager;
+    protected CommonAdapter adapter;
 
-    protected BaseQuickAdapter   mQuickAdapter;
-
-    //页大小
-    protected int                PageSize = 8;
-    //页序号
-    protected int                PageIndex = 1;
-    //是否加载更多数据
-    protected boolean            isLoadMore;
+    public int PageSize = 8;
+    public int PageIndex = 1;
 
     @Override
     public void initView() {
         setNavigation();
         initBaseView();
+        initAdapter();
     }
 
     @Override
@@ -54,8 +50,6 @@ public abstract class BaseListActivity<T extends BasePresenter, E extends BaseMo
         }
         mPresenter.setVM(this, mModel);
         initRefreshView();
-        initRecyclerView(layoutManager);
-        initAdapter();
 
         //请求网络数据
         initLoadData();
@@ -76,21 +70,7 @@ public abstract class BaseListActivity<T extends BasePresenter, E extends BaseMo
     }
 
     //初始化适配器
-    private void initAdapter()
-    {
-        //设置适配器
-        mQuickAdapter = getAdapter();
-        //设置加载动画
-        mQuickAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
-        //设置是否自动加载以及加载个数
-//        mQuickAdapter.openLoadMore(PageSize, true);
-        //将适配器添加到RecyclerView
-        recyclerView.setAdapter(mQuickAdapter);
-        //设置自动加载监听
-        mQuickAdapter.setOnLoadMoreListener(this);
-    }
-
-    protected abstract BaseQuickAdapter getAdapter();
+    protected abstract void initAdapter();
     //第一次初始化数据
     protected abstract void initLoadData();
     protected abstract void loadRefreshData();
@@ -110,6 +90,10 @@ public abstract class BaseListActivity<T extends BasePresenter, E extends BaseMo
         springView.setHeader(new RotationHeader(this));
         //设置上拉加载样式
         springView.setHeader(new RotationFooter(this));
+
+        LoadMoreWrapper mLoadMoreWrapper = new LoadMoreWrapper(adapter);
+        mLoadMoreWrapper.setLoadMoreView(R.layout.base_list_loading);
+        mLoadMoreWrapper.setOnLoadMoreListener(this);
     }
 
     /**
@@ -132,25 +116,6 @@ public abstract class BaseListActivity<T extends BasePresenter, E extends BaseMo
         if (null != refreshFooter) {
             springView.setHeader(refreshFooter);
         }
-    }
-
-    //初始化列表
-    private void initRecyclerView(RecyclerView.LayoutManager manager)
-    {
-        if (null == manager) {
-            manager = new LinearLayoutManager(this);
-        }
-
-        //设置RecyclerView的显示模式  当前List模式
-        recyclerView.setLayoutManager(manager);
-        //如果Item高度固定  增加该属性能够提高效率
-        recyclerView.setHasFixedSize(true);
-    }
-
-    @Override
-    public void onLoadMoreRequested()
-    {
-        loadMoreData();
     }
 
     @Override
@@ -188,7 +153,7 @@ public abstract class BaseListActivity<T extends BasePresenter, E extends BaseMo
     @Override
     public void showLoadCompleteAllData() {
         //所有数据加载完成后显示
-        mQuickAdapter.notifyDataChangedAfterLoadMore(false);
+//        mQuickAdapter.notifyDataChangedAfterLoadMore(false);
         ToastManager.show(context, "暂无数据");
 //        View view = getLayoutInflater().inflate(R.layout.not_loading, (ViewGroup) recyclerView.getParent(), false);
 //        mQuickAdapter.addFooterView(view);
@@ -198,5 +163,10 @@ public abstract class BaseListActivity<T extends BasePresenter, E extends BaseMo
     public void showNoData() {
         ToastManager.show(context, "暂无数据");
 //        loadingView.showEmpty(getResources().getDrawable(R.mipmap.bg_square_no), Constant.EMPTY_TITLE, Constant.EMPTY_CONTEXT);
+    }
+
+    @Override
+    public void onLoadMoreRequested() {
+        loadMoreData();
     }
 }

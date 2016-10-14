@@ -17,24 +17,14 @@ import rx.Observable;
  */
 public class TestListContract
 {
-    public interface View {
-        //显示加载页
-        void showProgress();
-        //关闭加载页
-        void hideProgress();
+    public interface View<T> extends BaseListView {
         //加载新数据
-        void loadData(List<UniversityListDto> list);
+        void loadData(List<T> list);
         //添加更多数据
-        void addDatas(List<UniversityListDto> list);
-        //显示加载失败
-        void showLoadFailMsg();
-        //显示已加载所有数据
-        void showLoadCompleteAllData();
-        //显示无数据
-        void showNoData();
+        void addData(List<T> list);
     }
 
-    public abstract static class Presenter extends BasePresenter<BaseListView, Model> {
+    public abstract static class Presenter extends BasePresenter<View, Model> {
         public abstract void loadData(int pageSize, int pageIndex, boolean isLoadMore);
     }
 

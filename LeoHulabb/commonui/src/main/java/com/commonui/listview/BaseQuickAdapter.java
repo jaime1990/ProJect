@@ -27,8 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public abstract class BaseQuickAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
+public abstract class BaseQuickAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+{
     private boolean mNextLoadEnable = false;
     private boolean mLoadingMoreEnable = false;
     private boolean mFirstOnlyEnable = true;
@@ -37,7 +37,7 @@ public abstract class BaseQuickAdapter<T> extends RecyclerView.Adapter<RecyclerV
     private boolean mHeadAndEmptyEnable;
     private boolean mFootAndEmptyEnable;
     private Interpolator mInterpolator = new LinearInterpolator();
-    private int mDuration = 300;
+    private int mDuration = 100;
     private int mLastPosition = -1;
     private OnRecyclerViewItemClickListener onRecyclerViewItemClickListener;
     private OnRecyclerViewItemLongClickListener onRecyclerViewItemLongClickListener;
@@ -53,7 +53,6 @@ public abstract class BaseQuickAdapter<T> extends RecyclerView.Adapter<RecyclerV
      */
     private View mEmptyView;
 
-    protected static final String TAG = BaseQuickAdapter.class.getSimpleName();
     protected Context mContext;
     protected int mLayoutResId;
     protected LayoutInflater mLayoutInflater;
@@ -242,6 +241,10 @@ public abstract class BaseQuickAdapter<T> extends RecyclerView.Adapter<RecyclerV
         }
         mLastPosition = -1;
         notifyDataSetChanged();
+    }
+
+    public void clearData() {
+        this.mData = null;
     }
 
     /**
