@@ -25,7 +25,8 @@ import com.commonutils.LogUtils;
 /**
  * Created by aspsine on 16/3/3.
  */
-public class IRecyclerView extends RecyclerView {
+public class IRecyclerView extends RecyclerView
+{
     private static final String TAG = IRecyclerView.class.getSimpleName();
 
     private static final int STATUS_DEFAULT = 0;
@@ -189,8 +190,8 @@ public class IRecyclerView extends RecyclerView {
     }
 
     /**
-     * 设置刷新状态
-     * @param refreshing
+     * 设置头部刷新动画开关
+     * @param refreshing <false 停止刷新， true 开启刷新>
      */
     public void setRefreshing(boolean refreshing) {
         if (mStatus == STATUS_DEFAULT && refreshing) {
@@ -779,7 +780,6 @@ public class IRecyclerView extends RecyclerView {
         return statusLog;
     }
 
-
     /**
      * 设置上拉加载更多状态
      *
@@ -819,5 +819,15 @@ public class IRecyclerView extends RecyclerView {
         }
     }
 
+    /**
+     * 设置刷新底部重试事件
+     *
+     * @param listener  重试监听事件
+     */
+    public void setFootViewRetry(LoadMoreFooterView.OnRetryListener listener) {
+        if (mLoadMoreFooterView != null && mLoadMoreFooterView instanceof LoadMoreFooterView) {
+            ((LoadMoreFooterView) mLoadMoreFooterView).setOnRetryListener(listener);
+        }
+    }
 
 }

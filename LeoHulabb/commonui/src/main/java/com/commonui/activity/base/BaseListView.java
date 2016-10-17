@@ -1,11 +1,12 @@
 package com.commonui.activity.base;
 
-/**
- * des:baseview
- * Created by xsf
- * on 2016.07.11:53
- */
-public interface BaseListView {
+ /**
+  * @desc:         数据加载基本状态
+  * @author:       Leo
+  * @date:         2016/10/17
+  */
+public interface BaseListView
+ {
     //显示加载页
     void showProgress();
     //关闭加载页

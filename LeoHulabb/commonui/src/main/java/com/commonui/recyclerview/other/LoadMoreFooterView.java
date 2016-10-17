@@ -107,5 +107,4 @@ public class LoadMoreFooterView extends FrameLayout {
     public interface OnRetryListener {
         void onRetry(LoadMoreFooterView view);
     }
-
 }

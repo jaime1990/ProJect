@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/5/5.
  */
-public class UniversityListDto implements Serializable {
+public class TestListData implements Serializable {
 
     /**
      * CollegeId : 838

@@ -1,6 +1,6 @@
-package com.leohulabb.testmsp.presenter;
-import com.leohulabb.data.UniversityListDto;
-import com.leohulabb.testmsp.contract.TestListContract;
+package com.leohulabb.testmvp.presenter;
+import com.leohulabb.data.TestListData;
+import com.leohulabb.testmvp.contract.TestListContract;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class TestListPresenterImpl extends TestListContract.Presenter
         if (!isLoadMore)
             mView.showProgress();
 
-        mModel.loadData(pageIndex, pageSize, null).subscribe(new Subscriber<List<UniversityListDto>>() {
+        mRxManage.add(mModel.loadData(pageIndex, pageSize, null).subscribe(new Subscriber<List<TestListData>>() {
             @Override
             public void onCompleted() {
                 mView.hideProgress();
@@ -31,7 +31,7 @@ public class TestListPresenterImpl extends TestListContract.Presenter
             }
 
             @Override
-            public void onNext(List<UniversityListDto> data) {
+            public void onNext(List<TestListData> data) {
                 if (isLoadMore) {
                     if (data.size() == 0)
                         mView.showLoadCompleteAllData();
@@ -44,6 +44,6 @@ public class TestListPresenterImpl extends TestListContract.Presenter
                         mView.loadData(data);
                 }
             }
-        });
+        }));
     }
 }

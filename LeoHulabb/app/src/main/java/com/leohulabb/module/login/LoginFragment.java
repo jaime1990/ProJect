@@ -8,9 +8,9 @@ import com.commonui.activity.base.BaseFragment;
 import com.commonui.animation.AnimationManager;
 import com.commonui.guideview.BGABanner;
 import com.leohulabb.R;
-import com.leohulabb.testmsp.ListActivity;
-import com.leohulabb.testmsp.TestActivityActivity;
-import com.leohulabb.testmsp.TestListActivityActivity;
+import com.leohulabb.listmvp.ListMvpActivity;
+import com.leohulabb.testmvp.ListActivity;
+import com.leohulabb.testmvp.TestActivityActivity;
 import com.leohulabb.utils.BGABannerAdapter;
 
 import java.util.ArrayList;
@@ -63,14 +63,14 @@ public class LoginFragment extends BaseFragment
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(TestActivityActivity.class);
+                startActivity(ListMvpActivity.class);
             }
         });
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(TestListActivityActivity.class);
+                startActivity(TestActivityActivity.class);
             }
         });
 

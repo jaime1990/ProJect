@@ -1,10 +1,10 @@
-package com.leohulabb.testmsp.contract;
+package com.leohulabb.testmvp.contract;
 
 import com.commonui.activity.base.BaseListView;
 import com.commonui.activity.base.BaseModel;
 import com.commonui.activity.base.BasePresenter;
-import com.leohulabb.data.UniversityListDto;
-import com.leohulabb.testmsp.OnLoadDataListListener;
+import com.leohulabb.data.TestListData;
+import com.leohulabb.testmvp.OnLoadDataListListener;
 
 import java.util.List;
 
@@ -29,6 +29,6 @@ public class TestListContract
     }
 
     public interface Model extends BaseModel {
-        Observable<List<UniversityListDto>> loadData(int PageIndex, int PageSize, final OnLoadDataListListener listener);
+        Observable<List<TestListData>> loadData(int PageIndex, int PageSize, final OnLoadDataListListener listener);
     }
 }

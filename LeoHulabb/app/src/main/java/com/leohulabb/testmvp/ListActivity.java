@@ -1,4 +1,4 @@
-package com.leohulabb.testmsp;
+package com.leohulabb.testmvp;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -7,10 +7,10 @@ import android.view.View;
 import com.commonui.activity.base.BaseListActivity;
 import com.commonui.listview.BaseQuickAdapter;
 import com.leohulabb.R;
-import com.leohulabb.data.UniversityListDto;
-import com.leohulabb.testmsp.contract.TestListContract;
-import com.leohulabb.testmsp.model.TestListModelImpl;
-import com.leohulabb.testmsp.presenter.TestListPresenterImpl;
+import com.leohulabb.data.TestListData;
+import com.leohulabb.testmvp.contract.TestListContract;
+import com.leohulabb.testmvp.model.TestListModelImpl;
+import com.leohulabb.testmvp.presenter.TestListPresenterImpl;
 
 import java.util.List;
 
@@ -69,7 +69,7 @@ public class ListActivity extends BaseListActivity<TestListPresenterImpl, TestLi
         mQuickAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                UniversityListDto item = (UniversityListDto) mQuickAdapter.getItem(position);
+                TestListData item = (TestListData) mQuickAdapter.getItem(position);
                 Intent intent = new Intent(context, TestActivityActivity.class);
                 intent.putExtra("Picture", item.getLogo().getPictureUrl());
 

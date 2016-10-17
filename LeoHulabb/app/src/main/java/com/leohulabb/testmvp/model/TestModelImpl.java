@@ -1,5 +1,5 @@
-package com.leohulabb.testmsp.model;
-import com.leohulabb.testmsp.contract.TestContract;
+package com.leohulabb.testmvp.model;
+import com.leohulabb.testmvp.contract.TestContract;
 
 /**
 * Created by MVPHelper on 2016/10/10

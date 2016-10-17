@@ -5,7 +5,7 @@ import com.leohulabb.data.APi.SchoolBody;
 import com.leohulabb.data.HttpResult;
 import com.leohulabb.data.Retrofit.ApiException;
 import com.leohulabb.data.Retrofit.RetrofitUtils;
-import com.leohulabb.data.UniversityListDto;
+import com.leohulabb.data.TestListData;
 
 import java.util.List;
 
@@ -38,9 +38,9 @@ public class HttpData extends RetrofitUtils
      * @param pageSize  页大小
      * @return 事件源Observable
      */
-    public Observable<List<UniversityListDto>> HttpDataToSchoolList(int pageIndex, int pageSize) {
+    public Observable<List<TestListData>> HttpDataToSchoolList(int pageIndex, int pageSize) {
         return service.getSchoolList(new SchoolBody("", "", "", "", pageIndex, pageSize))
-                .map(new HttpResultFunc<List<UniversityListDto>>())
+                .map(new HttpResultFunc<List<TestListData>>())
                 .distinct()
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
@@ -57,22 +57,11 @@ public class HttpData extends RetrofitUtils
         @Override
         public T call(HttpResult<T> httpResult) {
 
-                if (httpResult.getCode() != 1) {
-                    throw new ApiException(httpResult);
-                }
+            if (httpResult.getCode() != 1) {
+                throw new ApiException(httpResult);
+            }
 
             return httpResult.getResults();
         }
     }
-
-    /**
-     * 用来统一处理RxCacha的结果
-     */
-//    private  class HttpResultFuncCcche<T> implements Func1<Reply<T>, T> {
-//
-//        @Override
-//        public T call(Reply<T> httpResult) {
-//            return httpResult.getData();
-//        }
-//    }
 }

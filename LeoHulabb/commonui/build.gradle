@@ -23,7 +23,6 @@ android {
 
 dependencies {
     compile rootProject.ext.dependencies.appcompatV7
-    compile rootProject.ext.dependencies.supportV4
     compile rootProject.ext.dependencies.recyclerviewV7
 
     compile rootProject.ext.dependencies.rebound

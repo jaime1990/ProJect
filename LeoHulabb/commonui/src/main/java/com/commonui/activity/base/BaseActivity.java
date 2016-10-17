@@ -16,6 +16,7 @@ import com.commonutils.ActivityManager;
 import com.commonutils.ScreenUtils;
 import com.commonutils.TranslateUtil;
 import com.commonutils.ViewUtils;
+import com.commonutils.baserx.RxManager;
 
 /**
  * @desc:         基类
@@ -59,12 +60,14 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
     public T mPresenter;
     public E mModel;
     public Context context;
+    public RxManager mRxManager;
     private NavigationBar navigationBar;
     private WidgeButton btnBack;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mRxManager=new RxManager();
         doBeforeSetcontentView();
         setContentView(getLayoutId());
         initActivity();
@@ -91,8 +94,9 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
     public NavigationBar getNavigationBar(boolean isCanBack) {
 
         if (null != navigationBar) {
-            if (isCanBack)
+            if (isCanBack) {
                 navigationBar.setLeftMenu(getBtnBack());
+            }
             return navigationBar;
         }
         return null;
@@ -102,6 +106,12 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
     {
         btnBack = new WidgeButton(context);
         btnBack.setBackgroundResource(R.drawable.icon_fb);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         return btnBack;
     }
 
@@ -247,7 +257,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         super.onDestroy();
         if (mPresenter != null)
             mPresenter.onDestroy();
-
+        mRxManager.clear();
         ActivityManager.getActivityManager().finishActivity(this);
     }
 }

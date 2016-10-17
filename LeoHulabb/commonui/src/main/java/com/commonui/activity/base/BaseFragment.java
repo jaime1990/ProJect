@@ -9,8 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.commonui.R;
+import com.commonui.navigation.NavigationBar;
+import com.commonui.navigation.WidgeButton;
 import com.commonutils.TranslateUtil;
 import com.commonutils.ViewUtils;
+import com.commonutils.baserx.RxManager;
 
 /**
  * des:基类fragment
@@ -50,18 +54,22 @@ import com.commonutils.ViewUtils;
 //    public void initView() {
 //    }
 //}
-public abstract  class BaseFragment<T extends BasePresenter, E extends BaseModel> extends Fragment {
+public abstract  class BaseFragment<T extends BasePresenter, E extends BaseModel> extends Fragment
+{
     protected View rootView;
     protected Context context;
     public T mPresenter;
     public E mModel;
+    public RxManager mRxManager;
+    private NavigationBar navigationBar;
+    private WidgeButton btnBack;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (rootView == null)
             rootView = inflater.inflate(getLayoutResource(), container, false);
-
+        mRxManager=new RxManager();
         initFragmet();
         this.initPresenter();
         this.initView();
@@ -79,6 +87,16 @@ public abstract  class BaseFragment<T extends BasePresenter, E extends BaseModel
         if(mPresenter != null){
             mPresenter.context = this.getActivity();
         }
+
+        navigationBar = findView(R.id.navigationBar);
+    }
+
+    public NavigationBar getNavigationBar() {
+
+        if (null != navigationBar) {
+            return navigationBar;
+        }
+        return null;
     }
 
     //获取布局文件
@@ -189,5 +207,6 @@ public abstract  class BaseFragment<T extends BasePresenter, E extends BaseModel
         super.onDestroyView();
         if (mPresenter != null)
             mPresenter.onDestroy();
+        mRxManager.clear();
     }
 }

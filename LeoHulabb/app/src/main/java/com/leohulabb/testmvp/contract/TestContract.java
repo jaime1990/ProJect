@@ -1,4 +1,4 @@
-package com.leohulabb.testmsp.contract;
+package com.leohulabb.testmvp.contract;
 
 import com.commonui.activity.base.BaseModel;
 import com.commonui.activity.base.BasePresenter;

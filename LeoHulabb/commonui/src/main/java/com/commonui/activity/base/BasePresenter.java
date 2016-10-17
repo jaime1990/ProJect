@@ -2,24 +2,30 @@ package com.commonui.activity.base;
 
 import android.content.Context;
 
+import com.commonutils.baserx.RxManager;
+
 /**
- * des:基类presenter
- * Created by xsf
- * on 2016.07.11:55
- */
-public abstract class BasePresenter<T, E>{
+  * @desc:         MVP基类Presenter
+  * @author:       Leo
+  * @date:         2016/10/17
+  */
+public abstract class BasePresenter<T, E>
+{
     public Context context;
     public E mModel;
     public T mView;
+    public RxManager mRxManage = new RxManager();
 
     public void setVM(T v, E m) {
         this.mView = v;
         this.mModel = m;
         this.onStart();
     }
+
     public void onStart(){
     }
     
     public void onDestroy() {
+        mRxManage.clear();
     }
 }

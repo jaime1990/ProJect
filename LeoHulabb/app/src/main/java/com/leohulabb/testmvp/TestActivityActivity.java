@@ -1,4 +1,4 @@
-package com.leohulabb.testmsp;
+package com.leohulabb.testmvp;
 
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -7,9 +7,9 @@ import com.commonui.activity.base.BaseActivity;
 import com.commonui.toast.ToastManager;
 import com.leohulabb.R;
 import com.leohulabb.data.TestData;
-import com.leohulabb.testmsp.contract.TestContract;
-import com.leohulabb.testmsp.model.TestModelImpl;
-import com.leohulabb.testmsp.presenter.TestPresenterImpl;
+import com.leohulabb.testmvp.contract.TestContract;
+import com.leohulabb.testmvp.model.TestModelImpl;
+import com.leohulabb.testmvp.presenter.TestPresenterImpl;
 import com.leohulabb.utils.picassoUtils.PicassoImageLoader;
 
 public class TestActivityActivity extends BaseActivity<TestPresenterImpl, TestModelImpl> implements TestContract.View {

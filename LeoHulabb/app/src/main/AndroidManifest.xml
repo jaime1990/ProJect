@@ -27,17 +27,20 @@
             android:name=".splash.MainActivity"/>
 
         <activity
-            android:name=".testmsp.TestListActivityActivity"/>
+            android:name=".listmvp.TestListActivityActivity"/>
 
         <activity
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:name=".splash.GuideActivity"/>
 
         <activity
-            android:name=".testmsp.TestActivityActivity"/>
+            android:name=".testmvp.TestActivityActivity"/>
 
         <activity
-            android:name=".testmsp.ListActivity"/>
+            android:name=".listmvp.ListMvpActivity"/>
+
+        <activity
+            android:name=".testmvp.ListActivity"/>
 
         <activity
             android:name=".module.login.TestReboundActivity"/>

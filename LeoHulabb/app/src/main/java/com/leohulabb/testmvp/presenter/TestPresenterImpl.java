@@ -1,7 +1,7 @@
-package com.leohulabb.testmsp.presenter;
+package com.leohulabb.testmvp.presenter;
 import com.leohulabb.data.DatasEntity;
 import com.leohulabb.data.TestData;
-import com.leohulabb.testmsp.contract.TestContract;
+import com.leohulabb.testmvp.contract.TestContract;
 
 /**
 * Created by MVPHelper on 2016/10/10

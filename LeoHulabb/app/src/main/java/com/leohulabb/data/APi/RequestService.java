@@ -1,15 +1,13 @@
 package com.leohulabb.data.APi;
 
 import com.leohulabb.data.HttpResult;
-import com.leohulabb.data.UniversityListDto;
+import com.leohulabb.data.TestListData;
 import com.leohulabb.data.VideoListDto;
 
 import java.util.List;
 
 import retrofit2.http.Body;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -20,5 +18,5 @@ public interface RequestService {
 
     //获取学校列表
     @POST("Colleges/getCollegeList")
-    Observable<HttpResult<List<UniversityListDto>>> getSchoolList(@Body SchoolBody schoolBody);
+    Observable<HttpResult<List<TestListData>>> getSchoolList(@Body SchoolBody schoolBody);
 }
