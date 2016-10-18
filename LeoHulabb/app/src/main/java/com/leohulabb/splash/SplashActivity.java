@@ -33,8 +33,8 @@ public class SplashActivity extends BaseActivity<SplashPresenterImpl, BaseModel>
 
     @Override
     public void initView() {
-        ivLogo = findView(R.id.iv_logo);
-        tvName = findView(R.id.tv_name);
+        ivLogo = (ImageView) findViewById(R.id.iv_logo);
+        tvName = (LinearLayout) findViewById(R.id.tv_name);
     }
 
     @Override

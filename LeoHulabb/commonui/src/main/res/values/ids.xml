@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="banner_indicatorId" type="id" />
+    <item name="webviewId" type="id" />
     <item type="id" name="navigationBar_rightButton">false</item>
 </resources>

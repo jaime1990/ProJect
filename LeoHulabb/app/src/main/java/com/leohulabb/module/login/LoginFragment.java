@@ -1,5 +1,6 @@
 package com.leohulabb.module.login;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -9,7 +10,7 @@ import com.commonui.animation.AnimationManager;
 import com.commonui.guideview.BGABanner;
 import com.leohulabb.R;
 import com.leohulabb.listmvp.ListMvpActivity;
-import com.leohulabb.testmvp.ListActivity;
+import com.leohulabb.splash.BannerWebActivity;
 import com.leohulabb.testmvp.TestActivityActivity;
 import com.leohulabb.utils.BGABannerAdapter;
 
@@ -59,7 +60,17 @@ public class LoginFragment extends BaseFragment
     }
 
     @Override
-    public void setListener() {
+    public void setListener()
+    {
+        banner.setOnItemClickListener(new BGABanner.OnItemClickListener() {
+            @Override
+            public void onBannerItemClick(BGABanner banner, View view, Object model, int position) {
+                Intent intent = new Intent(context, BannerWebActivity.class);
+                intent.putExtra(BannerWebActivity.WEBURL, "https://www.baidu.com");
+                startActivity(intent);
+            }
+        });
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +88,6 @@ public class LoginFragment extends BaseFragment
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(ListActivity.class);
             }
         });
 //        button.setOnClickListener(new OnClickCustomListener() {

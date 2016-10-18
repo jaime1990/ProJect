@@ -243,9 +243,13 @@ public class ViewHolderHelper extends RecyclerView.ViewHolder {
     /**
      * 关于事件的
      */
-    public ViewHolderHelper setOnClickListener(int viewId,
-                                               View.OnClickListener listener) {
+    public ViewHolderHelper setOnClickListener(int viewId, View.OnClickListener listener) {
         View view = getView(viewId);
+        view.setOnClickListener(listener);
+        return this;
+    }
+
+    public ViewHolderHelper setOnClickListener(View view, View.OnClickListener listener) {
         view.setOnClickListener(listener);
         return this;
     }
@@ -266,6 +270,10 @@ public class ViewHolderHelper extends RecyclerView.ViewHolder {
 
     public void updatePosition(int position) {
         mPosition = position;
+    }
+
+    public int getmPosition() {
+        return mPosition;
     }
 
     public int getLayoutId() {

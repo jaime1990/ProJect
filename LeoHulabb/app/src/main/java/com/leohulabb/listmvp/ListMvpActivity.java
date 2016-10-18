@@ -1,19 +1,23 @@
 package com.leohulabb.listmvp;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
-import android.widget.ImageView;
+import android.view.View;
+import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.commonui.activity.base.BaseHYListActivity;
+import com.commonui.loadingview.LoadingTip;
+import com.commonui.recyclerview.other.IRecyclerView;
 import com.commonui.recyclerview.other.LoadMoreFooterView;
 import com.commonui.recyclerview.other.adapter.CommonRecycleViewAdapter;
 import com.commonui.recyclerview.other.adapter.ViewHolderHelper;
+import com.commonui.toast.ToastManager;
 import com.leohulabb.R;
 import com.leohulabb.data.TestListData;
 import com.leohulabb.listmvp.contract.ListContract;
 import com.leohulabb.listmvp.model.ListModelImpl;
 import com.leohulabb.listmvp.presenter.ListPresenterImpl;
+import com.leohulabb.testmvp.TestActivityActivity;
 
 import java.util.List;
 
@@ -31,20 +35,67 @@ public class ListMvpActivity extends BaseHYListActivity<ListPresenterImpl, ListM
     @Override
     protected void initRecyclerView()
     {
+        final TestListData testListData = new TestListData();
+        testListData.setCnName("咖喱吨国际大学");
+        testListData.setHits(666666);
+
+        final TestListData testlistData = new TestListData();
+        testlistData.setCnName("胡扯国际大学");
+        testlistData.setHits(10000);
+
         adapter = new CommonRecycleViewAdapter<TestListData>(getContext(),R.layout.test_list_item_layout) {
             @Override
-            public void convert(ViewHolderHelper helper, TestListData item) {
+            public void convert(final ViewHolderHelper helper, final TestListData item) {
                 helper.setText(R.id.listview_tv_title,item.getCnName()).setText(R.id.listview_tv_content,"热度:"+item.getHits());
-                Glide.with(context)
-                        .load(item.getLogo().getPictureUrl())
-                        .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                        .crossFade()
-                        .centerCrop().override(1090, 1090*3/4)
-                        .placeholder(R.mipmap.bg_square_ing)
-                        .into((ImageView) helper.getView(R.id.listview_image_url));
-
+                helper.setImageUrl(R.id.listview_image_url, item.getLogo().getPictureUrl());
                 adapter.openLoadAnimation(CommonRecycleViewAdapter.SLIDEIN_BOTTOM);
-                adapter.addAnimation(helper);
+
+                if (helper.getmPosition() % 4 == 1)
+                helper.setOnClickListener(helper.getConvertView(), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(context, TestActivityActivity.class);
+                        intent.putExtra("Picture", item.getLogo().getPictureUrl());
+                        startActivity(intent);
+                    }
+                });
+
+                if (helper.getmPosition() % 4 == 2)
+                    helper.setOnClickListener(helper.getConvertView(), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            removeAt(helper.getmPosition());
+                            ToastManager.show(context, "delete" + item.getCnName());
+//                            Intent intent = new Intent(context, TestActivityActivity.class);
+//                            intent.putExtra("Picture", item.getLogo().getPictureUrl());
+//                            startActivity(intent);
+                        }
+                    });
+
+                if (helper.getmPosition() % 4 == 3)
+                    helper.setOnClickListener(helper.getConvertView(), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            replaceAt(helper.getmPosition(), testListData);
+                            ToastManager.show(context, "replace" + item.getCnName() + "-To-" + testListData.getCnName(), Toast.LENGTH_LONG);
+//                            Intent intent = new Intent(context, TestActivityActivity.class);
+//                            intent.putExtra("Picture", item.getLogo().getPictureUrl());
+//                            startActivity(intent);
+                        }
+                    });
+
+                if (helper.getmPosition() % 4 == 0)
+                    helper.setOnClickListener(helper.getConvertView(), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            addAt(helper.getmPosition(), testlistData);
+                            removeAt(helper.getmPosition());
+                            ToastManager.show(context, "add" + testlistData.getCnName());
+//                            Intent intent = new Intent(context, TestActivityActivity.class);
+//                            intent.putExtra("Picture", item.getLogo().getPictureUrl());
+//                            startActivity(intent);
+                        }
+                    });
             }
         };
 
@@ -76,8 +127,8 @@ public class ListMvpActivity extends BaseHYListActivity<ListPresenterImpl, ListM
 
     @Override
     protected void initBaseView() {
-        loadingView = findView(R.id.loadedTip);
-        recyclerView = findView(R.id.rv_list);
+        loadingView = (LoadingTip) findViewById(R.id.loadedTip);
+        recyclerView = (IRecyclerView) findViewById(R.id.rv_list);
     }
 
     @Override
@@ -98,21 +149,6 @@ public class ListMvpActivity extends BaseHYListActivity<ListPresenterImpl, ListM
         } else {
             recyclerView.setLoadMoreStatus(LoadMoreFooterView.Status.GONE);
             adapter.addAll(lists);
-        }
-    }
-
-    @Override
-    public void showLoadFailMsg() {
-        if (adapter.getPageBean().isRefresh())
-            super.showLoadFailMsg();
-        else {
-            recyclerView.setLoadMoreStatus(LoadMoreFooterView.Status.ERROR);
-            recyclerView.setFootViewRetry(new LoadMoreFooterView.OnRetryListener() {
-                @Override
-                public void onRetry(LoadMoreFooterView view) {
-                    mPresenter.loadResultData(PageIndex, PageSize);
-                }
-            });
         }
     }
 }

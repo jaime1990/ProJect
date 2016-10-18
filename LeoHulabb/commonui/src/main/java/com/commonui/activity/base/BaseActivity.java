@@ -15,7 +15,6 @@ import com.commonui.navigation.WidgeButton;
 import com.commonutils.ActivityManager;
 import com.commonutils.ScreenUtils;
 import com.commonutils.TranslateUtil;
-import com.commonutils.ViewUtils;
 import com.commonutils.baserx.RxManager;
 
 /**
@@ -61,7 +60,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
     public E mModel;
     public Context context;
     public RxManager mRxManager;
-    private NavigationBar navigationBar;
+    public NavigationBar navigationBar;
     private WidgeButton btnBack;
 
     @Override
@@ -88,7 +87,12 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
             mPresenter.context = this;
         }
 
-        navigationBar = findView(R.id.navigationBar);
+        navigationBar = (NavigationBar) findViewById(R.id.navigationBar);
+    }
+
+    public NavigationBar getNavigationBar()
+    {
+        return getNavigationBar(false);
     }
 
     public NavigationBar getNavigationBar(boolean isCanBack) {
@@ -183,10 +187,6 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
             intent.putExtras(bundle);
         }
         startActivity(intent);
-    }
-
-    public <E extends View> E findView(int resId) {
-        return ViewUtils.findViewById(this, resId);
     }
 
     /**

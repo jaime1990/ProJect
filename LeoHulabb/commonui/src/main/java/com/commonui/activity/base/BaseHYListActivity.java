@@ -151,6 +151,7 @@ public abstract class BaseHYListActivity<T extends BasePresenter, E extends Base
         PageIndex = 1;
         isFirstLoad = false;
         recyclerView.setRefreshing(true);
+        recyclerView.setLoadMoreStatus(LoadMoreFooterView.Status.LOADING);
         loadRefreshData();
     }
 
@@ -169,5 +170,11 @@ public abstract class BaseHYListActivity<T extends BasePresenter, E extends Base
         isFirstLoad = false;
         recyclerView.setLoadMoreStatus(LoadMoreFooterView.Status.LOADING);
         loadMoreData();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        recyclerView = null;
     }
 }

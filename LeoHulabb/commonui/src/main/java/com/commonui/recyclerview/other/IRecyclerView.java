@@ -829,5 +829,4 @@ public class IRecyclerView extends RecyclerView
             ((LoadMoreFooterView) mLoadMoreFooterView).setOnRetryListener(listener);
         }
     }
-
 }

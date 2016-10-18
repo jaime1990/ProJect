@@ -26,8 +26,7 @@
         <activity
             android:name=".splash.MainActivity"/>
 
-        <activity
-            android:name=".listmvp.TestListActivityActivity"/>
+        <activity android:name=".splash.BannerWebActivity"/>
 
         <activity
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
@@ -38,9 +37,6 @@
 
         <activity
             android:name=".listmvp.ListMvpActivity"/>
-
-        <activity
-            android:name=".testmvp.ListActivity"/>
 
         <activity
             android:name=".module.login.TestReboundActivity"/>

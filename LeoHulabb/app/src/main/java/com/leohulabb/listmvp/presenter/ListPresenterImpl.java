@@ -41,11 +41,6 @@ public class ListPresenterImpl extends ListContract.Presenter {
                     @Override
                     public void onNext(List<TestListData> universityListDtos)
                     {
-                        if (PageIndex == 3) {
-                            mView.showLoadCompleteAllData();
-                            return;
-                        }
-
                         if (universityListDtos.size() <= 0)    //网络请求返回空
                         {
                             /**
