@@ -54,7 +54,8 @@ public class RxManager
      */
     public void add(Subscription m) {
         /*订阅管理*/
-        mCompositeSubscription.add(m);
+        if (null != m)
+            mCompositeSubscription.add(m);
     }
 
     /**

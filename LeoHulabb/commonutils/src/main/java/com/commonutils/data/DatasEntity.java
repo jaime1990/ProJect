@@ -1,0 +1,65 @@
+package com.commonutils.data;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+/**
+ * des:假数据
+ * Created by xsf
+ * on 2016.07.11:14
+ */
+public class DatasEntity {
+
+    public static TestData getDataTest()
+    {
+        String str = "{\"ApplyTime\":null,\"Becareful\":null,\"CreateId\":\"User100124165\",\"EndTime\":null,\"ExpenseType\":1,\"FancierAddress\":\"杭州市上城区仕海足球\",\"FancierBattleId\":\"FBattle100000456\",\"FancierCircleId\":null,\"FancierImage\":\"http:\\/\\/picqn.hulabanban.com\\/e4db30a296b4439ab15795ecc27f2b79.jpg\",\"FancierName\":\"上城区足球挑战赛\",\"FancierState\":1,\"FancierTime\":\"2016\\/10\\/12 9:00:00\",\"GuesTcaptainId\":null,\"GuestId\":null,\"GuestName\":null,\"GuestTeamId\":null,\"GuestTeamName\":null,\"HomeTeamId\":\"Team100000313\",\"HomeTeamName\":null,\"ImageUrl\":null,\"IsTrial\":false,\"Lat\":null,\"Lng\":null,\"Mb\":null,\"ReadNum\":0,\"ReleaseTeamId\":null,\"Result\":null,\"ResultState\":0,\"ResultTime\":null,\"Score\":null,\"ShareNum\":0,\"TotalScore\":0,\"Type\":2,\"UserName\":\"余生等汝归\",\"WinRate\":null}";
+        return new Gson().fromJson(str, TestData.class);
+    }
+    public static ArrayList<TestData> getDataListTest()
+    {
+        String str = "[{\"ApplyTime\":null,\"Becareful\":null,\"CreateId\":\"User100121486\",\"EndTime\":null,\"ExpenseType\":2,\"FancierAddress\":\"杭州市下城区杭州城北体育公园\",\"FancierBattleId\":\"FBattle100000468\",\"FancierCircleId\":null,\"FancierImage\":\"http:\\/\\/pic.hulabanban.com\\/8eee0191a3a04d33aca678dff4d70ecd\",\"FancierName\":\"一起来打球\",\"FancierState\":1,\"FancierTime\":\"2016\\/10\\/19 18:00:00\",\"GuesTcaptainId\":null,\"GuestId\":null,\"GuestName\":null,\"GuestTeamId\":null,\"GuestTeamName\":null,\"HomeTeamId\":\"Team100000260\",\"HomeTeamName\":null,\"ImageUrl\":null,\"IsTrial\":false,\"Lat\":null,\"Lng\":null,\"Mb\":null,\"ReadNum\":0,\"ReleaseTeamId\":null,\"Result\":null,\"ResultState\":0,\"ResultTime\":null,\"Score\":null,\"ShareNum\":0,\"TotalScore\":0,\"Type\":2,\"UserName\":\"希罗\",\"WinRate\":null},{\"ApplyTime\":null,\"Becareful\":null,\"CreateId\":\"User100121486\",\"EndTime\":null,\"ExpenseType\":2,\"FancierAddress\":\"杭州市西湖区黄龙体育中心\",\"FancierBattleId\":\"FBattle100000466\",\"FancierCircleId\":null,\"FancierImage\":\"http:\\/\\/pic.hulabanban.com\\/ba0f77dada5f4c91bbd0f1bcc175b779\",\"FancierName\":\"黄龙老年馆打羽毛球\",\"FancierState\":1,\"FancierTime\":\"2016\\/10\\/11 18:40:00\",\"GuesTcaptainId\":null,\"GuestId\":null,\"GuestName\":null,\"GuestTeamId\":null,\"GuestTeamName\":null,\"HomeTeamId\":\"\",\"HomeTeamName\":null,\"ImageUrl\":null,\"IsTrial\":false,\"Lat\":null,\"Lng\":null,\"Mb\":null,\"ReadNum\":0,\"ReleaseTeamId\":null,\"Result\":null,\"ResultState\":0,\"ResultTime\":null,\"Score\":null,\"ShareNum\":0,\"TotalScore\":0,\"Type\":1,\"UserName\":\"希罗\",\"WinRate\":null},{\"ApplyTime\":null,\"Becareful\":null,\"CreateId\":\"User100129009\",\"EndTime\":null,\"ExpenseType\":2,\"FancierAddress\":\"中江县钟记爆炒\",\"FancierBattleId\":\"FBattle100000465\",\"FancierCircleId\":null,\"FancierImage\":\"http:\\/\\/pic.hulabanban.com\\/ba0f77dada5f4c91bbd0f1bcc175b779\",\"FancierName\":\"决战\",\"FancierState\":1,\"FancierTime\":\"2017\\/11\\/7 7:20:00\",\"GuesTcaptainId\":null,\"GuestId\":null,\"GuestName\":null,\"GuestTeamId\":null,\"GuestTeamName\":null,\"HomeTeamId\":null,\"HomeTeamName\":null,\"ImageUrl\":null,\"IsTrial\":false,\"Lat\":null,\"Lng\":null,\"Mb\":null,\"ReadNum\":0,\"ReleaseTeamId\":null,\"Result\":null,\"ResultState\":0,\"ResultTime\":null,\"Score\":null,\"ShareNum\":0,\"TotalScore\":0,\"Type\":1,\"UserName\":\"粉-藍藍\",\"WinRate\":null},{\"ApplyTime\":null,\"Becareful\":null,\"CreateId\":\"User100128447\",\"EndTime\":null,\"ExpenseType\":1,\"FancierAddress\":\"龙海市长边中学\",\"FancierBattleId\":\"FBattle100000464\",\"FancierCircleId\":null,\"FancierImage\":\"http:\\/\\/picqn.hulabanban.com\\/508c3c0b5822479d871460fc868accbe.jpg\",\"FancierName\":\"随便打\",\"FancierState\":7,\"FancierTime\":\"2016\\/9\\/28 20:00:00\",\"GuesTcaptainId\":null,\"GuestId\":null,\"GuestName\":null,\"GuestTeamId\":null,\"GuestTeamName\":null,\"HomeTeamId\":null,\"HomeTeamName\":null,\"ImageUrl\":null,\"IsTrial\":false,\"Lat\":null,\"Lng\":null,\"Mb\":null,\"ReadNum\":0,\"ReleaseTeamId\":null,\"Result\":null,\"ResultState\":0,\"ResultTime\":null,\"Score\":null,\"ShareNum\":0,\"TotalScore\":0,\"Type\":1,\"UserName\":\"慢慢！\",\"WinRate\":null},{\"ApplyTime\":null,\"Becareful\":null,\"CreateId\":\"User100121486\",\"EndTime\":null,\"ExpenseType\":2,\"FancierAddress\":\"杭州市下城区银江羽毛球馆\",\"FancierBattleId\":\"FBattle100000450\",\"FancierCircleId\":null,\"FancierImage\":\"http:\\/\\/picqn.hulabanban.com\\/fdd756b31e9341e4b6dc73f2e2fdab44.jpg\",\"FancierName\":\"羽毛球约起来\",\"FancierState\":7,\"FancierTime\":\"2016\\/10\\/10 18:10:00\",\"GuesTcaptainId\":null,\"GuestId\":null,\"GuestName\":null,\"GuestTeamId\":null,\"GuestTeamName\":null,\"HomeTeamId\":\"\",\"HomeTeamName\":null,\"ImageUrl\":null,\"IsTrial\":false,\"Lat\":null,\"Lng\":null,\"Mb\":null,\"ReadNum\":0,\"ReleaseTeamId\":null,\"Result\":null,\"ResultState\":0,\"ResultTime\":null,\"Score\":null,\"ShareNum\":0,\"TotalScore\":0,\"Type\":1,\"UserName\":\"希罗\",\"WinRate\":null},{\"ApplyTime\":null,\"Becareful\":null,\"CreateId\":\"User100121486\",\"EndTime\":null,\"ExpenseType\":2,\"FancierAddress\":\"杭州市富阳区金贝羽毛球馆\",\"FancierBattleId\":\"FBattle100000449\",\"FancierCircleId\":null,\"FancierImage\":\"http:\\/\\/picqn.hulabanban.com\\/e6a6adff477d43d2a7edbfb735626369.jpg\",\"FancierName\":\"羽毛球约战\",\"FancierState\":7,\"FancierTime\":\"2016\\/10\\/9 20:10:00\",\"GuesTcaptainId\":null,\"GuestId\":null,\"GuestName\":null,\"GuestTeamId\":null,\"GuestTeamName\":null,\"HomeTeamId\":\"\",\"HomeTeamName\":null,\"ImageUrl\":null,\"IsTrial\":false,\"Lat\":null,\"Lng\":null,\"Mb\":null,\"ReadNum\":0,\"ReleaseTeamId\":null,\"Result\":null,\"ResultState\":0,\"ResultTime\":null,\"Score\":null,\"ShareNum\":0,\"TotalScore\":0,\"Type\":1,\"UserName\":\"希罗\",\"WinRate\":null},{\"ApplyTime\":null,\"Becareful\":null,\"CreateId\":\"User100121486\",\"EndTime\":null,\"ExpenseType\":2,\"FancierAddress\":\"杭州市下城区杭州城北体育公园\",\"FancierBattleId\":\"FBattle100000448\",\"FancierCircleId\":null,\"FancierImage\":\"http:\\/\\/picqn.hulabanban.com\\/6e0ed86f4ea24a29b7958552620c7a77.jpg\",\"FancierName\":\"日常练习\",\"FancierState\":7,\"FancierTime\":\"2016\\/10\\/8 18:25:00\",\"GuesTcaptainId\":null,\"GuestId\":null,\"GuestName\":null,\"GuestTeamId\":null,\"GuestTeamName\":null,\"HomeTeamId\":\"\",\"HomeTeamName\":null,\"ImageUrl\":null,\"IsTrial\":false,\"Lat\":null,\"Lng\":null,\"Mb\":null,\"ReadNum\":0,\"ReleaseTeamId\":null,\"Result\":null,\"ResultState\":0,\"ResultTime\":null,\"Score\":null,\"ShareNum\":0,\"TotalScore\":0,\"Type\":1,\"UserName\":\"希罗\",\"WinRate\":null},{\"ApplyTime\":null,\"Becareful\":null,\"CreateId\":\"User100124305\",\"EndTime\":null,\"ExpenseType\":2,\"FancierAddress\":\"杭州市西湖区文三路\",\"FancierBattleId\":\"FBattle100000446\",\"FancierCircleId\":null,\"FancierImage\":\"http:\\/\\/picqn.hulabanban.com\\/5a3db53903b4400c978fafb387385065.jpg\",\"FancierName\":\"天天羽毛球馆一起打球\",\"FancierState\":7,\"FancierTime\":\"2016\\/9\\/23 18:00:00\",\"GuesTcaptainId\":null,\"GuestId\":null,\"GuestName\":null,\"GuestTeamId\":null,\"GuestTeamName\":null,\"HomeTeamId\":\"\",\"HomeTeamName\":null,\"ImageUrl\":null,\"IsTrial\":false,\"Lat\":null,\"Lng\":null,\"Mb\":null,\"ReadNum\":0,\"ReleaseTeamId\":null,\"Result\":null,\"ResultState\":0,\"ResultTime\":null,\"Score\":null,\"ShareNum\":0,\"TotalScore\":0,\"Type\":1,\"UserName\":\"你的微笑慌乱我的骄傲\",\"WinRate\":null},{\"ApplyTime\":null,\"Becareful\":null,\"CreateId\":\"User100124304\",\"EndTime\":null,\"ExpenseType\":2,\"FancierAddress\":\"杭州市西湖区西湖体育馆(公交站)\",\"FancierBattleId\":\"FBattle100000444\",\"FancierCircleId\":null,\"FancierImage\":\"http:\\/\\/picqn.hulabanban.com\\/a5300ff1521d441bba49e0dd46b37c2d.jpg\",\"FancierName\":\"打打球，交交朋友\",\"FancierState\":7,\"FancierTime\":\"2016\\/9\\/22 18:00:00\",\"GuesTcaptainId\":null,\"GuestId\":null,\"GuestName\":null,\"GuestTeamId\":null,\"GuestTeamName\":null,\"HomeTeamId\":\"\",\"HomeTeamName\":null,\"ImageUrl\":null,\"IsTrial\":false,\"Lat\":null,\"Lng\":null,\"Mb\":null,\"ReadNum\":0,\"ReleaseTeamId\":null,\"Result\":null,\"ResultState\":0,\"ResultTime\":null,\"Score\":null,\"ShareNum\":0,\"TotalScore\":0,\"Type\":1,\"UserName\":\"心为你跳动\",\"WinRate\":null},{\"ApplyTime\":null,\"Becareful\":null,\"CreateId\":\"User100124303\",\"EndTime\":null,\"ExpenseType\":1,\"FancierAddress\":\"嘉兴市南湖区嘉兴体育馆(公交站)\",\"FancierBattleId\":\"FBattle100000443\",\"FancierCircleId\":null,\"FancierImage\":\"http:\\/\\/picqn.hulabanban.com\\/c20f8d9e1de347899cddcf7980c744b8.jpg\",\"FancierName\":\"每周练练球\",\"FancierState\":7,\"FancierTime\":\"2016\\/9\\/21 18:55:00\",\"GuesTcaptainId\":null,\"GuestId\":null,\"GuestName\":null,\"GuestTeamId\":null,\"GuestTeamName\":null,\"HomeTeamId\":\"\",\"HomeTeamName\":null,\"ImageUrl\":null,\"IsTrial\":false,\"Lat\":null,\"Lng\":null,\"Mb\":null,\"ReadNum\":0,\"ReleaseTeamId\":null,\"Result\":null,\"ResultState\":0,\"ResultTime\":null,\"Score\":null,\"ShareNum\":0,\"TotalScore\":0,\"Type\":1,\"UserName\":\"船长\",\"WinRate\":null},{\"ApplyTime\":null,\"Becareful\":null,\"CreateId\":\"User100124300\",\"EndTime\":null,\"ExpenseType\":1,\"FancierAddress\":\"绍兴市上虞区蓝天羽毛球馆\",\"FancierBattleId\":\"FBattle100000439\",\"FancierCircleId\":null,\"FancierImage\":\"http:\\/\\/picqn.hulabanban.com\\/01f13e5678c945098083e2f98c0a9540.jpg\",\"FancierName\":\"要减肥了！\",\"FancierState\":7,\"FancierTime\":\"2016\\/9\\/20 19:00:00\",\"GuesTcaptainId\":null,\"GuestId\":null,\"GuestName\":null,\"GuestTeamId\":null,\"GuestTeamName\":null,\"HomeTeamId\":\"\",\"HomeTeamName\":null,\"ImageUrl\":null,\"IsTrial\":false,\"Lat\":null,\"Lng\":null,\"Mb\":null,\"ReadNum\":0,\"ReleaseTeamId\":null,\"Result\":null,\"ResultState\":0,\"ResultTime\":null,\"Score\":null,\"ShareNum\":0,\"TotalScore\":0,\"Type\":1,\"UserName\":\"死性不改我活该\",\"WinRate\":null},{\"ApplyTime\":null,\"Becareful\":null,\"CreateId\":\"User100124299\",\"EndTime\":null,\"ExpenseType\":2,\"FancierAddress\":\"湖州市南浔区南浔镇百间楼社区卫生服务站\",\"FancierBattleId\":\"FBattle100000438\",\"FancierCircleId\":null,\"FancierImage\":\"http:\\/\\/pic.hulabanban.com\\/3f435f62b1fe49918a26c304ae298f28\",\"FancierName\":\"嘉华练练球\",\"FancierState\":7,\"FancierTime\":\"2016\\/9\\/20 18:05:00\",\"GuesTcaptainId\":null,\"GuestId\":null,\"GuestName\":null,\"GuestTeamId\":null,\"GuestTeamName\":null,\"HomeTeamId\":\"\",\"HomeTeamName\":null,\"ImageUrl\":null,\"IsTrial\":false,\"Lat\":null,\"Lng\":null,\"Mb\":null,\"ReadNum\":0,\"ReleaseTeamId\":null,\"Result\":null,\"ResultState\":0,\"ResultTime\":null,\"Score\":null,\"ShareNum\":0,\"TotalScore\":0,\"Type\":1,\"UserName\":\"余生你要陪我浪\",\"WinRate\":null}]";
+        return new Gson().fromJson(str, new TypeToken<ArrayList<TestData>>(){}.getType());
+    }
+
+    /**
+     * 图片
+     */
+    private static String[]Urls={"http://d.hiphotos.baidu.com/image/pic/item/e4dde71190ef76c6e453882a9f16fdfaaf516729.jpg", "http://h.hiphotos.baidu.com/image/pic/item/30adcbef76094b36db47d2e4a1cc7cd98c109de6.jpg","http://g.hiphotos.baidu.com/image/pic/item/0d338744ebf81a4c27dc0dcdd52a6059242da6cc.jpg"
+            ,"http://c.hiphotos.baidu.com/image/h%3D200/sign=d21f63f99d3df8dcb93d8891fd1072bf/78310a55b319ebc415951b978026cffc1f1716ca.jpg","http://d.hiphotos.baidu.com/image/pic/item/54fbb2fb43166d22dc28839a442309f79052d265.jpg"
+    ,"http://c.hiphotos.baidu.com/image/pic/item/03087bf40ad162d9d0e7560313dfa9ec8a13cda7.jpg","http://g.hiphotos.baidu.com/image/h%3D200/sign=16f4ef3e35adcbef1e3479069cae2e0e/6d81800a19d8bc3e7763d030868ba61ea9d345e5.jpg"
+    ,"http://g.hiphotos.baidu.com/image/pic/item/8d5494eef01f3a29a3b0e6c49b25bc315c607cbb.jpg","http://c.hiphotos.baidu.com/image/h%3D200/sign=548da2d73f6d55fbdac671265d224f40/a044ad345982b2b7a2b8f7cd33adcbef76099b90.jpg"
+    ,"http://g.hiphotos.baidu.com/image/pic/item/7acb0a46f21fbe09359315d16f600c338644ad22.jpg","http://h.hiphotos.baidu.com/image/h%3D200/sign=9d4948d52c738bd4db21b531918a876c/6a600c338744ebf85db15337dbf9d72a6159a7f1.jpg"
+    ,"http://e.hiphotos.baidu.com/image/h%3D200/sign=7683f02abc096b639e1959503c328733/203fb80e7bec54e74a142d1bbb389b504fc26a3e.jpg"};
+
+    /**
+     * 获取随机图片串
+     * @param num
+     * @return
+     */
+    public static String getRandomPhotoUrlString(int num) {
+        StringBuilder sdbResult = new StringBuilder();
+        if(num>0) {
+            String[] photoUrls = new String[num>9?9:num];
+            for (int i = 0; i< num ; i++) {
+                if ( sdbResult.length() > 0 )
+                {
+                    sdbResult.append( ";" ).append( Urls[new Random().nextInt(Urls.length)] );
+                }else{
+                    sdbResult.append( Urls[new Random().nextInt(Urls.length)] );
+                }
+
+            }
+        }
+        return sdbResult.toString();
+    }
+    /**
+     * 获取随机图片串
+     * @return
+     */
+    public static String getRandomPhotoUrl() {
+        return  Urls[new Random().nextInt(Urls.length)];
+    }
+}

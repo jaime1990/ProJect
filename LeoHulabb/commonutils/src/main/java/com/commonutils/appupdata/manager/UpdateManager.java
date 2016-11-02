@@ -7,8 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.widget.Toast;
 
-import shanyao.downloadmanager.DownLoadService;
-import shanyao.downloadmanager.Utils.DeviceUtils;
+import com.commonutils.SettingUtil;
+import com.commonutils.appupdata.DownLoadService;
 
 /**
  * Created by zs on 2016/7/7.
@@ -29,9 +29,9 @@ public class UpdateManager {
          * 在这里请求后台接口，获取更新的内容和最新的版本号
          */
         // 版本的更新信息
-        String version_info = "更新内容\n" + "    1. 车位分享异常处理\n" + "    2. 发布车位折扣格式统一\n" + "    ";
-        int mVersion_code = DeviceUtils.getVersionCode(mContext);// 当前的版本号
-        int nVersion_code = 2;
+        String version_info = "更新内容\n" + "    1. 添加新东西\n" + "    2. 修复老bug\n" + "    ";
+        int mVersion_code = SettingUtil.getVersionCode(mContext);// 当前的版本号
+        int nVersion_code = 202;
         if (mVersion_code < nVersion_code) {
             // 显示提示对话
             showNoticeDialog(version_info);

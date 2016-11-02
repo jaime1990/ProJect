@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.commonutils.appupdata.manager.UpdateManager;
 import com.leohulabb.R;
 import com.leohulabb.utils.picassoUtils.PicassoImageLoader;
 import com.leohulabb.utils.picassoUtils.transformation.GrayscaleTransformation;
@@ -69,6 +70,13 @@ public class TestPicassoItemAdapter extends RecyclerView.Adapter<TestPicassoItem
             default:
                 break;
         }
+
+        holder.image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new UpdateManager(context).checkUpdate(true);
+            }
+        });
     }
 
     @Override

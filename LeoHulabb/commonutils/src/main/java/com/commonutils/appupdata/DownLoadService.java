@@ -11,6 +11,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import com.commonutils.appupdata.manager.fileload.FileCallback;
+import com.commonutils.appupdata.manager.fileload.FileResponseBody;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -22,8 +25,6 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.http.GET;
-import shanyao.downloadmanager.manager.fileload.FileCallback;
-import shanyao.downloadmanager.manager.fileload.FileResponseBody;
 
 /**
  * Created by zs on 2016/7/8.
@@ -142,9 +143,9 @@ public class DownLoadService extends Service {
      */
     public void initNotification() {
         builder = new NotificationCompat.Builder(mContext)
-                .setSmallIcon(R.mipmap.ic_launcher)
+//                .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentText("0%")
-                .setContentTitle("华清泊车更新")
+                .setContentTitle("我的软件更新")
                 .setProgress(100, 0, false);
         notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFY_ID, builder.build());
