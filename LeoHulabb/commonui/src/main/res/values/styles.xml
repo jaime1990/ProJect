@@ -46,4 +46,12 @@
         <item name="android:marqueeRepeatLimit">marquee_forever</item>
     </style>
 
+    <!--底部弹出带按钮的列表-->
+    <style name="dialogui_bottom_style" parent="android:Animation">
+        <!--进入时的动画-->
+        <item name="@android:windowEnterAnimation">@anim/dialogui_enter</item>
+        <!--退出时的动画-->
+        <item name="@android:windowExitAnimation">@anim/dialogui_exit</item>
+    </style>
+
 </resources>

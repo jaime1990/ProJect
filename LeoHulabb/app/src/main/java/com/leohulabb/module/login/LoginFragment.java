@@ -10,6 +10,7 @@ import com.commonui.animation.AnimationManager;
 import com.commonui.guideview.BGABanner;
 import com.leohulabb.R;
 import com.leohulabb.listmvp.ListMvpActivity;
+import com.leohulabb.module.DialogActivity;
 import com.leohulabb.splash.BannerWebActivity;
 import com.leohulabb.testmvp.TestActivityActivity;
 import com.leohulabb.utils.BGABannerAdapter;
@@ -88,6 +89,7 @@ public class LoginFragment extends BaseFragment
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(DialogActivity.class);
             }
         });
 //        button.setOnClickListener(new OnClickCustomListener() {

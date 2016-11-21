@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:lean="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <com.commonui.imageview.lean.LeanImageView
         android:id="@+id/iv_logo"
+        android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
+        lean:angle="30"
+        lean:diagonalGravity="top|left"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

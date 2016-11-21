@@ -175,6 +175,14 @@ public class ActivityManager {
     }
 
     /**
+     * 应用退出，结束所有的activity
+     */
+    public void appExit() {
+        finishAllActivity();
+        System.exit(0);
+    }
+
+    /**
      * 退出应用程序
      */
     public void appExit(Context context) {

@@ -36,6 +36,9 @@
             android:name=".testmvp.TestActivityActivity"/>
 
         <activity
+            android:name=".module.DialogActivity"/>
+
+        <activity
             android:name=".listmvp.ListMvpActivity"/>
 
         <activity

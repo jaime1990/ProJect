@@ -201,4 +201,17 @@
         <attr name="loadMoreEnabled" format="boolean" />
         <attr name="refreshFinalMoveOffset" format="dimension" />
     </declare-styleable>
+
+    <!--斜边imageview-->
+    <declare-styleable name="LeanImageView">
+        <attr name="angle" format="integer" />
+        <attr name="diagonalGravity" format="integer">
+            <flag name="left" value="1" />
+            <flag name="right" value="2" />
+            <flag name="bottom" value="4" />
+            <flag name="top" value="8" />
+        </attr>
+        <attr name="horizontalShift" format="dimension" />
+    </declare-styleable>
+
 </resources>

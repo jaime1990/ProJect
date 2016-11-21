@@ -67,14 +67,24 @@ public abstract  class BaseFragment<T extends BasePresenter, E extends BaseModel
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (rootView == null)
+
+        mRxManager = new RxManager();
+
+        if (rootView == null) {
             rootView = inflater.inflate(getLayoutResource(), container, false);
-        mRxManager=new RxManager();
-        initFragmet();
-        this.initPresenter();
-        this.initView();
-        this.setData();
-        this.setListener();
+            initFragmet();
+            this.initPresenter();
+            this.initView();
+            this.setData();
+            this.setListener();
+        }
+
+        // 缓存的mView需要判断是否已经被加过parent，如果有parent需要从parent删除，要不然会发生这个mView已经有parent的错误。
+        ViewGroup parent = (ViewGroup) rootView.getParent();
+        if (parent != null)
+        {
+            parent.removeView(rootView);
+        }
 
         return rootView;
     }
