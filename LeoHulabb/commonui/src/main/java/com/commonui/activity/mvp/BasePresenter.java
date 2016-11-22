@@ -1,7 +1,7 @@
 package com.commonui.activity.mvp;
 
-import com.common.utils.EmptyUtils;
-import com.rxbus.RxManager;
+import com.commonutils.EmptyUtils;
+import com.commonutils.baserx.RxManager;
 
 import java.lang.ref.SoftReference;
 

@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.common.listener.OnOnceClickListener;
-import com.common.view.toast.ToastManager;
+import com.commonui.activity.listener.OnOnceClickListener;
+import com.commonui.toast.ToastManager;
 
 /**
  * @desc:         MVP模式
