@@ -1,41 +1,49 @@
 package com.leohulabb.splash;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
-import android.view.ViewGroup;
+import android.support.v4.app.Fragment;
 
+import com.commonui.activity.FragmentController;
 import com.commonui.activity.base.BaseActivity;
 import com.commonui.navigation.NavigationBar;
 import com.commonui.navigation.WidgeButton;
-import com.commonui.tabview.CommonBottomTabLayout;
-import com.commonui.tabview.CustomTabEntity;
-import com.commonui.tabview.OnTabSelectListener;
+import com.commonui.tablayout.BottomTabLayout;
+import com.commonui.tablayout.CustomTabEntity;
+import com.commonui.tablayout.OnTabSelectListener;
+import com.commonui.tablayout.TabEntity;
 import com.commonutils.LogUtils;
 import com.leohulabb.R;
-import com.leohulabb.module.TabEntity;
-import com.leohulabb.module.login.LoginFragment;
-import com.leohulabb.module.login.TestFragment;
+import com.leohulabb.module.ButtonFragment;
+import com.leohulabb.module.LoginFragment;
+import com.leohulabb.module.TestFragment;
 
 import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity
 {
-    private CommonBottomTabLayout tabLayout;
     private NavigationBar navigationBar;
 
-    private String[] mTitles = {"美女","视频"};
-    private int[] mIconUnselectIds = {
-            R.mipmap.ic_tab_bar_home,R.mipmap.ic_tab_bar_find,R.mipmap.ic_tab_bar_person,R.mipmap.ic_tab_bar_home};
-    private int[] mIconSelectIds = {
-            R.mipmap.ic_tab_bar_home_selected,R.mipmap.ic_tab_bar_find_selected, R.mipmap.ic_tab_bar_person_selected,R.mipmap.ic_tab_bar_home_selected};
+    //记录最近一次点击的位置
+    private int clickPosition;
+
+    //Fragment管理类
+    private FragmentController fragmentController;
+
+    //模块名
+    private String[] mTitles = {"活动", "赛事", "我的"};
+
+    //模块选中图片
+    private int[] mIconUnselectIds = {R.mipmap.menu_home, R.mipmap.menu_fashaoyou, R.mipmap.menu_personal};
+
+    //模块未选中图片
+    private int[] mIconSelectIds = {R.mipmap.menu_home_hov, R.mipmap.menu_fashaoyou_hov, R.mipmap.menu_personal_hov};
+
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
+    private BottomTabLayout mTabLayout;
 
     private LoginFragment newsMainFragment;
     private TestFragment photosMainFragment;
-    private static int tabLayoutHeight;
+    private ButtonFragment buttonFragment;
 
     @Override
     public int getLayoutId() {
@@ -48,7 +56,6 @@ public class MainActivity extends BaseActivity
 
     @Override
     public void initView() {
-        tabLayout = (CommonBottomTabLayout) findViewById(R.id.tab_layout);
 
         WidgeButton[] widgeButtons = new WidgeButton[] {
                 new WidgeButton(this, R.string.base_back),
@@ -61,9 +68,6 @@ public class MainActivity extends BaseActivity
         navigationBar.setRightMenu(new WidgeButton(this, R.string.base_back));
 
         initTab();
-        //初始化frament
-        tabLayout.measure(0,0);
-        tabLayoutHeight=tabLayout.getMeasuredHeight();
     }
 
     @Override
@@ -83,15 +87,25 @@ public class MainActivity extends BaseActivity
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
         }
-        tabLayout.setTabData(mTabEntities);
-        //点击监听
-        tabLayout.setOnTabSelectListener(new OnTabSelectListener() {
+
+        mTabLayout = (BottomTabLayout) findViewById(R.id.tab_layout);
+
+        mTabLayout.setTabData(mTabEntities);
+        mTabLayout.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
-                SwitchTo(position);
+//                if (position == 2 && EmptyUtils.isEmpty(DataCenter.getInstance().getToken())) {
+//                    mTabLayout.setCurrentTab(clickPosition);
+//                    DataUtil.certiLogin(context);
+//                } else {
+                    clickPosition = position;
+                    fragmentController.showFragment(position);
+//                }
             }
+
             @Override
             public void onTabReselect(int position) {
+                // TODO: 2016/11/17  单个Tab重复点击
             }
         });
     }
@@ -102,88 +116,28 @@ public class MainActivity extends BaseActivity
     @Override
     public void initFragment(Bundle savedInstanceState) {
         super.initFragment(savedInstanceState);
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         int currentTabPosition = 0;
         if (savedInstanceState != null) {
             newsMainFragment = (LoginFragment) getSupportFragmentManager().findFragmentByTag("newsMainFragment");
             photosMainFragment = (TestFragment) getSupportFragmentManager().findFragmentByTag("photosMainFragment");
+            buttonFragment = (ButtonFragment) getSupportFragmentManager().findFragmentByTag("buttonFragment");
             currentTabPosition = savedInstanceState.getInt("HOME_CURRENT_TAB_POSITION");
         } else {
             newsMainFragment = new LoginFragment();
             photosMainFragment = new TestFragment();
+            buttonFragment = new ButtonFragment();
 
-            transaction.add(R.id.main_container, newsMainFragment, "newsMainFragment");
-            transaction.add(R.id.main_container, photosMainFragment, "photosMainFragment");
         }
-        transaction.commit();
-        SwitchTo(currentTabPosition);
-        tabLayout.setCurrentTab(currentTabPosition);
-    }
 
-    /**
-     * 切换
-     */
-    private void SwitchTo(int position) {
-        LogUtils.d("TAG", "主页菜单position" + position);
-        tabLayout.showDot(position);
+        ArrayList<Fragment> fragments = new ArrayList<>();
+        fragments.add(newsMainFragment);
+        fragments.add(photosMainFragment);
+        fragments.add(buttonFragment);
 
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        switch (position) {
-            //首页
-            case 0:
-                transaction.hide(photosMainFragment);
-                transaction.show(newsMainFragment);
-                transaction.commitAllowingStateLoss();
-                break;
-            //美女
-            case 1:
-                transaction.hide(newsMainFragment);
-                transaction.show(photosMainFragment);
-                transaction.commitAllowingStateLoss();
-                break;
-            //视频
-            case 2:
-                transaction.hide(newsMainFragment);
-                transaction.hide(photosMainFragment);
-                transaction.commitAllowingStateLoss();
-                break;
-            //关注
-            case 3:
-                transaction.hide(newsMainFragment);
-                transaction.hide(photosMainFragment);
-                transaction.commitAllowingStateLoss();
-                break;
-            default:
-                break;
-        }
-    }
+        fragmentController = FragmentController.getInstance(this, R.id.main_container, fragments);
 
-    /**
-     * 菜单显示隐藏动画
-     * @param showOrHide
-     */
-    private void startAnimation(boolean showOrHide){
-        final ViewGroup.LayoutParams layoutParams = tabLayout.getLayoutParams();
-        ValueAnimator valueAnimator;
-        ObjectAnimator alpha;
-        if(!showOrHide){
-            valueAnimator = ValueAnimator.ofInt(tabLayoutHeight, 0);
-            alpha = ObjectAnimator.ofFloat(tabLayout, "alpha", 1, 0);
-        }else{
-            valueAnimator = ValueAnimator.ofInt(0, tabLayoutHeight);
-            alpha = ObjectAnimator.ofFloat(tabLayout, "alpha", 0, 1);
-        }
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                layoutParams.height= (int) valueAnimator.getAnimatedValue();
-                tabLayout.setLayoutParams(layoutParams);
-            }
-        });
-        AnimatorSet animatorSet=new AnimatorSet();
-        animatorSet.setDuration(500);
-        animatorSet.playTogether(valueAnimator,alpha);
-        animatorSet.start();
+        mTabLayout.setCurrentTab(currentTabPosition);
+        fragmentController.showFragment(currentTabPosition);
     }
 
     @Override
@@ -192,9 +146,9 @@ public class MainActivity extends BaseActivity
         //保存当前选中的选项状态
         //奔溃前保存位置
         LogUtils.e("TAG", "onSaveInstanceState进来了1");
-        if (tabLayout != null) {
+        if (mTabLayout != null) {
             LogUtils.e("TAG", "onSaveInstanceState进来了2");
-            outState.putInt("HOME_CURRENT_TAB_POSITION", tabLayout.getCurrentTab());
+            outState.putInt("HOME_CURRENT_TAB_POSITION", mTabLayout.getCurrentTab());
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.leohulabb.module.login;
+package com.leohulabb.module;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -13,6 +13,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.commonui.activity.LayoutPagerAdapter;
 import com.commonui.activity.base.BaseFragment;
 import com.commonui.indicator.ColorTransitionPagerTitleView;
 import com.commonui.indicator.CommonNavigator;

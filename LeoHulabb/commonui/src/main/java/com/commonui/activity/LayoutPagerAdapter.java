@@ -1,4 +1,4 @@
-package com.leohulabb.module.login;
+package com.commonui.activity;
 
 import android.support.v4.view.PagerAdapter;
 import android.view.View;

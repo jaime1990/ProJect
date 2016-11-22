@@ -1,5 +1,6 @@
 package com.leohulabb;
 
+import com.commonui.toast.ToastManager;
 import com.commonutils.ContextUtils;
 
 /**
@@ -17,5 +18,6 @@ public class BaseApplication extends ContextUtils {
     public void onCreate() {
         super.onCreate();
         ourInstance = this;
+        ToastManager.init(this);
     }
 }

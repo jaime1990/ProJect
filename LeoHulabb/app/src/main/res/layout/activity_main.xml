@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    xmlns:nav="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@color/navigation_background_color"
+    android:background="@color/white"
     android:layout_height="match_parent" >
 
     <include
@@ -17,19 +17,13 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/tab_layout" />
 
-    <com.commonui.tabview.CommonBottomTabLayout
-        android:id="@+id/tab_layout"
+    <com.commonui.tablayout.BottomTabLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
+        android:id="@+id/tab_layout"
         android:layout_alignParentBottom="true"
-        tl:tab_indicator_height="0dp"
-        tl:tab_iconHeight="20dp"
-        tl:tab_iconWidth="20dp"
-        tl:tab_indicator_color="@color/gray"
-        tl:tab_textSelectColor="@color/selector_text_color"
-        tl:tab_textUnselectColor="@color/normal_text_color"
-        tl:tab_textsize="11sp"
-        tl:tab_underline_height="0dp" />
+        android:layout_height="50dp"
+        nav:nav_textSelectColor="#06C838"
+        nav:nav_textUnselectColor="#8E9094"
+        nav:nav_textsize="11sp"/>
 
 </RelativeLayout>

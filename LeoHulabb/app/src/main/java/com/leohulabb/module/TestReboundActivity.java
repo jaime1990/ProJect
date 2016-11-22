@@ -1,4 +1,4 @@
-package com.leohulabb.module.login;
+package com.leohulabb.module;
 
 import android.app.Activity;
 import android.os.Bundle;

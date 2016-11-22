@@ -1,4 +1,4 @@
-package com.leohulabb.module.login;
+package com.leohulabb.module;
 
 import android.content.Intent;
 import android.view.View;
@@ -10,7 +10,6 @@ import com.commonui.animation.AnimationManager;
 import com.commonui.guideview.BGABanner;
 import com.leohulabb.R;
 import com.leohulabb.listmvp.ListMvpActivity;
-import com.leohulabb.module.DialogActivity;
 import com.leohulabb.splash.BannerWebActivity;
 import com.leohulabb.testmvp.TestActivityActivity;
 import com.leohulabb.utils.BGABannerAdapter;

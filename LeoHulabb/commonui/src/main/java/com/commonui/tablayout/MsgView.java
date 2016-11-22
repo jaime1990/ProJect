@@ -1,4 +1,4 @@
-package com.commonui.tabview;
+package com.commonui.tablayout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -37,13 +37,13 @@ public class MsgView extends TextView {
     }
 
     private void obtainAttributes(Context context, AttributeSet attrs) {
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.MsgView);
-        backgroundColor = ta.getColor(R.styleable.MsgView_mv_backgroundColor, Color.TRANSPARENT);
-        cornerRadius = ta.getDimensionPixelSize(R.styleable.MsgView_mv_cornerRadius, 0);
-        strokeWidth = ta.getDimensionPixelSize(R.styleable.MsgView_mv_strokeWidth, 0);
-        strokeColor = ta.getColor(R.styleable.MsgView_mv_strokeColor, Color.TRANSPARENT);
-        isRadiusHalfHeight = ta.getBoolean(R.styleable.MsgView_mv_isRadiusHalfHeight, false);
-        isWidthHeightEqual = ta.getBoolean(R.styleable.MsgView_mv_isWidthHeightEqual, false);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.NavMsgView);
+        backgroundColor = ta.getColor(R.styleable.NavMsgView_mv_backgroundColor, Color.TRANSPARENT);
+        cornerRadius = ta.getDimensionPixelSize(R.styleable.NavMsgView_mv_cornerRadius, 0);
+        strokeWidth = ta.getDimensionPixelSize(R.styleable.NavMsgView_mv_strokeWidth, 0);
+        strokeColor = ta.getColor(R.styleable.NavMsgView_mv_strokeColor, Color.TRANSPARENT);
+        isRadiusHalfHeight = ta.getBoolean(R.styleable.NavMsgView_mv_isRadiusHalfHeight, false);
+        isWidthHeightEqual = ta.getBoolean(R.styleable.NavMsgView_mv_isWidthHeightEqual, false);
 
         ta.recycle();
     }

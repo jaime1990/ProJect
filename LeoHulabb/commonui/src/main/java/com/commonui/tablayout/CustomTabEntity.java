@@ -1,4 +1,4 @@
-package com.commonui.tabview;
+package com.commonui.tablayout;
 
 import android.support.annotation.DrawableRes;
 

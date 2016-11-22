@@ -1,6 +1,4 @@
-package com.leohulabb.module;
-
-import com.commonui.tablayout.CustomTabEntity;
+package com.commonui.tablayout;
 
 public class TabEntity implements CustomTabEntity {
     public String title;

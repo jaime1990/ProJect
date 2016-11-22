@@ -1,4 +1,4 @@
-package com.commonui.tabview;
+package com.commonui.tablayout;
 
 public interface OnTabSelectListener {
     void onTabSelect(int position);

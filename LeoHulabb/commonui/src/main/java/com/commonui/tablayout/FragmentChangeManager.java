@@ -1,4 +1,4 @@
-package com.commonui.tabview;
+package com.commonui.tablayout;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

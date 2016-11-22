@@ -26,7 +26,7 @@ import com.commonui.indicator.ViewPagerHelper;
 import com.commonutils.SizeUtils;
 import com.leohulabb.R;
 import com.leohulabb.data.TestData;
-import com.leohulabb.module.login.LayoutPagerAdapter;
+import com.commonui.activity.LayoutPagerAdapter;
 import com.leohulabb.testmvp.contract.TestContract;
 import com.leohulabb.testmvp.model.TestModelImpl;
 import com.leohulabb.testmvp.presenter.TestPresenterImpl;

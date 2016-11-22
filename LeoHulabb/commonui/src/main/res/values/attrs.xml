@@ -149,53 +149,36 @@
         <attr name="share_text" format="string"/>
     </declare-styleable>
 
-    <declare-styleable name="CommonBottomTabLayout">
-        <attr name="tab_indicator_color" format="color"/>
-        <attr name="tab_indicator_height" format="dimension"/>
-        <attr name="tab_indicator_width" format="dimension"/>
-        <attr name="tab_indicator_margin_left" format="dimension"/>
-        <attr name="tab_indicator_margin_top" format="dimension"/>
-        <attr name="tab_indicator_margin_right" format="dimension"/>
-        <attr name="tab_indicator_margin_bottom" format="dimension"/>
-        <attr name="tab_indicator_corner_radius" format="dimension"/>
-        <attr name="tab_indicator_gravity" format="dimension"/>
-        <attr name="tab_indicator_style" format="dimension"/>
-        <attr name="tab_indicator_anim_enable" format="boolean"/>
-        <attr name="tab_indicator_anim_duration" format="dimension"/>
-        <attr name="tab_indicator_bounce_enable" format="boolean"/>
-        <attr format="dimension" name="tab_iconWidth"/>
-        <attr format="dimension" name="tab_iconHeight"/>
-        <attr format="boolean" name="tab_iconVisible"/>
-        <attr format="enum" name="tab_iconGravity">
-        <enum name="LEFT" value="3"/>
-        <enum name="TOP" value="48"/>
-        <enum name="RIGHT" value="5"/>
-        <enum name="BOTTOM" value="80"/>
-        </attr>
-        <attr format="dimension" name="tab_iconMargin"/>
-        <attr name="tab_divider_color" format="color"/>
-        <attr name="tab_divider_width" format="dimension"/>
-        <attr name="tab_divider_padding" format="dimension"/>
-        <attr name="tab_tab_padding" format="dimension"/>
-        <attr name="tab_tab_space_equal" format="boolean"/>
-        <attr name="tab_tab_width" format="dimension"/>
-        <attr name="tab_textsize" format="dimension"/>
-        <attr name="tab_textSelectColor" format="color"/>
-        <attr name="tab_textUnselectColor" format="color"/>
-        <attr name="tab_textBold" format="dimension"/>
-        <attr name="tab_textAllCaps" format="boolean"/>
-        <attr name="tab_underline_color" format="color"/>
-        <attr name="tab_underline_height" format="dimension"/>
-        <attr name="tab_underline_gravity" format="dimension"/>
-    </declare-styleable>
+    <!--自带背景效果的按钮-->
+    <declare-styleable name="StateButton">
 
-    <declare-styleable name="MsgView">
-        <attr format="color" name="mv_backgroundColor"/>
-        <attr format="dimension" name="mv_cornerRadius"/>
-        <attr format="dimension" name="mv_strokeWidth"/>
-        <attr format="color" name="mv_strokeColor"/>
-        <attr format="boolean" name="mv_isRadiusHalfHeight"/>
-        <attr format="boolean" name="mv_isWidthHeightEqual"/>
+        <!--text color-->
+        <attr name="normalTextColor" format="color|reference"/>
+        <attr name="pressedTextColor" format="color|reference"/>
+        <attr name="unableTextColor" format="color|reference"/>
+
+        <!--stroke width and color, dash width, dash gap-->
+        <attr name="strokeDashWidth" format="dimension|reference"/>
+        <attr name="strokeDashGap" format="dimension|reference"/>
+        <attr name="normalStrokeWidth" format="dimension|reference"/>
+        <attr name="pressedStrokeWidth" format="dimension|reference"/>
+        <attr name="unableStrokeWidth" format="dimension|reference"/>
+        <attr name="normalStrokeColor" format="color|reference"/>
+        <attr name="pressedStrokeColor" format="color|reference"/>
+        <attr name="unableStrokeColor" format="color|reference"/>
+
+        <!--background color-->
+        <attr name="normalBackgroundColor" format="color|reference"/>
+        <attr name="pressedBackgroundColor" format="color|reference"/>
+        <attr name="unableBackgroundColor" format="color|reference"/>
+
+        <!--background radius-->
+        <attr name="radius" format="dimension|reference"/>
+        <attr name="round" format="boolean|reference"/>
+
+        <!--animation duration-->
+        <attr name="animationDuration" format="integer|reference"/>
+
     </declare-styleable>
 
     <!--自定义recyclerview-->
@@ -217,6 +200,49 @@
             <flag name="top" value="8" />
         </attr>
         <attr name="horizontalShift" format="dimension" />
+    </declare-styleable>
+
+    <!--底部模块切换栏-->
+    <declare-styleable name="NavBottomTabLayout">
+
+        <!-- tab -->
+        <attr name="nav_tab_padding" format="dimension"/>
+        <attr name="nav_tab_space_equal" format="dimension"/>
+        <attr name="nav_tab_width" format="dimension"/>
+
+        <!-- title -->
+        <attr name="nav_textsize" format="dimension"/>
+        <attr name="nav_textSelectColor" format="color"/>
+        <attr name="nav_textUnselectColor" format="color"/>
+        <attr name="nav_textBold" format="dimension"/>
+        <attr name="nav_textAllCaps" format="boolean"/>
+
+        <!-- icon -->
+        <!-- 设置icon宽度 -->
+        <attr name="nav_iconWidth" format="dimension"/>
+        <!-- 设置icon高度 -->
+        <attr name="nav_iconHeight" format="dimension"/>
+        <!-- 设置icon是否可见 -->
+        <attr name="nav_iconVisible" format="boolean"/>
+        <!-- 设置icon与文字间距 -->
+        <attr name="nav_iconMargin" format="dimension"/>
+
+    </declare-styleable>
+
+    <!--底部模块切换栏通知小红点-->
+    <declare-styleable name="NavMsgView">
+        <!-- 圆角矩形背景色 -->
+        <attr name="mv_backgroundColor" format="color"/>
+        <!-- 圆角弧度,单位dp-->
+        <attr name="mv_cornerRadius" format="dimension"/>
+        <!-- 圆角弧度,单位dp-->
+        <attr name="mv_strokeWidth" format="dimension"/>
+        <!-- 圆角边框颜色-->
+        <attr name="mv_strokeColor" format="color"/>
+        <!-- 圆角弧度是高度一半-->
+        <attr name="mv_isRadiusHalfHeight" format="boolean"/>
+        <!-- 圆角矩形宽高相等,取较宽高中大值-->
+        <attr name="mv_isWidthHeightEqual" format="boolean"/>
     </declare-styleable>
 
 </resources>
