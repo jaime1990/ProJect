@@ -10,10 +10,10 @@
         android:id="@+id/iv_logo"
         android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
-        lean:angle="30"
-        lean:diagonalGravity="top|left"
+        lean:angle="20"
+        lean:diagonalGravity="top|right"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="280dp"/>
 
     <TextView
         android:id="@+id/tv_address"
@@ -31,4 +31,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <com.commonui.indicator.MagicIndicator
+        android:id="@+id/tab_indicator"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:background="#ffffff"
+        android:layout_height="45dp" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_above="@+id/tab_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+    <com.commonui.editview.DeleteEditText
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:focusable="true"
+        android:layout_above="@+id/viewpager"
+        android:focusableInTouchMode="true"
+        android:layout_centerVertical="true"
+        android:hint="hello world"
+        lean:del_logo_size="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </RelativeLayout>

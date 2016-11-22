@@ -4,16 +4,9 @@ import android.support.v4.view.ViewPager;
 
 /**
  * 简化和ViewPager绑定
- * @author Leo
- * Created at 2016/9/26
  */
-public class ViewPagerHelper
-{
-    /**
-     * 绑定indicator与viewpager
-     * @param magicIndicator 自定义indicator
-     * @param viewPager      滑页指示器
-     */
+
+public class ViewPagerHelper {
     public static void bind(final MagicIndicator magicIndicator, ViewPager viewPager) {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 

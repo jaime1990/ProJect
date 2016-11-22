@@ -19,7 +19,7 @@ import com.commonui.R;
   * @author:       Leo
   * @date:         2016/10/13
   */
-public class BaseEditText extends RelativeLayout
+public class NumCountEditText extends RelativeLayout
  {
     //类型1(单数类型)：TextView显示总字数，然后根据输入递减.例：100，99，98
     //类型2(百分比类型)：TextView显示总字数和当前输入的字数，例：0/100，1/100，2/100
@@ -31,11 +31,11 @@ public class BaseEditText extends RelativeLayout
     private String TYPES = SINGULAR;//类型
     private int MaxNum = 100;//最大字符
 
-    public BaseEditText(Context context) {
+    public NumCountEditText(Context context) {
         this(context, null);
     }
 
-    public BaseEditText(Context context, AttributeSet attrs) {
+    public NumCountEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         LayoutInflater.from(context).inflate(R.layout.base_editview_layout, this, true);
         etContent = (EditText) findViewById(R.id.etContent);
@@ -47,7 +47,7 @@ public class BaseEditText extends RelativeLayout
      * 设置显示
      * @return
      */
-    public BaseEditText show(){
+    public NumCountEditText show(){
         if(TYPES.equals(SINGULAR)){//类型1
             tvNum.setText(String.valueOf(MaxNum));
         }else if(TYPES.equals(PERCENTAGE)){//类型2
@@ -65,7 +65,7 @@ public class BaseEditText extends RelativeLayout
      * @param color --颜色值
      * @return
      */
-    public BaseEditText setLineColor(String color){
+    public NumCountEditText setLineColor(String color){
         vLine.setBackgroundColor(Color.parseColor(color));
         return this;
     }
@@ -75,7 +75,7 @@ public class BaseEditText extends RelativeLayout
      * @param type --类型
      * @return
      */
-    public BaseEditText setType(String type){
+    public NumCountEditText setType(String type){
         TYPES = type;
         return this;
     }
@@ -85,7 +85,7 @@ public class BaseEditText extends RelativeLayout
      * @param num --字数
      * @return
      */
-    public BaseEditText setLength(int num){
+    public NumCountEditText setLength(int num){
         this.MaxNum = num;
         return this;
     }
@@ -95,7 +95,7 @@ public class BaseEditText extends RelativeLayout
      * @param str --设置内容
      * @return
      */
-    public BaseEditText setEtHint(String str){
+    public NumCountEditText setEtHint(String str){
         etContent.setHint(str);
         return this;
     }
@@ -105,7 +105,7 @@ public class BaseEditText extends RelativeLayout
      * @param px --最小高度(单位px)
      * @return
      */
-    public BaseEditText setEtMinHeight(int px){
+    public NumCountEditText setEtMinHeight(int px){
         etContent.setMinHeight(px);
         return this;
     }

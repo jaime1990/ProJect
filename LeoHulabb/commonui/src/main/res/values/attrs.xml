@@ -21,6 +21,11 @@
         <attr name="civ_fill_color" format="color" />
     </declare-styleable>
 
+    <!--带删除图标的输入框-->
+    <declare-styleable name="DeleteEditView">
+        <attr name="del_logo_size" format="dimension" />
+    </declare-styleable>
+
     <!--刷新控件外框-->
     <declare-styleable name="SpringView">
         <attr name="type">

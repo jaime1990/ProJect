@@ -3,7 +3,6 @@ package com.leohulabb.listmvp;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
-import android.widget.Toast;
 
 import com.commonui.activity.base.BaseHYListActivity;
 import com.commonui.loadingview.LoadingTip;
@@ -65,7 +64,7 @@ public class ListMvpActivity extends BaseHYListActivity<ListPresenterImpl, ListM
                         @Override
                         public void onClick(View v) {
                             removeAt(helper.getmPosition());
-                            ToastManager.show(context, "delete" + item.getCnName());
+                            ToastManager.show("delete" + item.getCnName());
 //                            Intent intent = new Intent(context, TestActivityActivity.class);
 //                            intent.putExtra("Picture", item.getLogo().getPictureUrl());
 //                            startActivity(intent);
@@ -77,7 +76,7 @@ public class ListMvpActivity extends BaseHYListActivity<ListPresenterImpl, ListM
                         @Override
                         public void onClick(View v) {
                             replaceAt(helper.getmPosition(), testListData);
-                            ToastManager.show(context, "replace" + item.getCnName() + "-To-" + testListData.getCnName(), Toast.LENGTH_LONG);
+                            ToastManager.longShow("replace" + item.getCnName() + "-To-" + testListData.getCnName());
 //                            Intent intent = new Intent(context, TestActivityActivity.class);
 //                            intent.putExtra("Picture", item.getLogo().getPictureUrl());
 //                            startActivity(intent);
@@ -90,7 +89,7 @@ public class ListMvpActivity extends BaseHYListActivity<ListPresenterImpl, ListM
                         public void onClick(View v) {
                             addAt(helper.getmPosition(), testlistData);
                             removeAt(helper.getmPosition());
-                            ToastManager.show(context, "add" + testlistData.getCnName());
+                            ToastManager.show("add" + testlistData.getCnName());
 //                            Intent intent = new Intent(context, TestActivityActivity.class);
 //                            intent.putExtra("Picture", item.getLogo().getPictureUrl());
 //                            startActivity(intent);

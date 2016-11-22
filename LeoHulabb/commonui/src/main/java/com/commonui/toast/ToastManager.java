@@ -1,46 +1,128 @@
 package com.commonui.toast;
 
 import android.content.Context;
+import android.os.Handler;
 import android.widget.Toast;
 
+import com.commonutils.StringUtils;
+
 /**
- * @desc:   Toast管理类
- * @author: Leo
- * @date:   2016/09/28
- */
+  * @desc:         Toast管理类 防止重复多次弹出toast
+  * @author:       Leo
+  * @date:         2016/10/26
+  */
 public class ToastManager
 {
-    static Toast toast;
+    private static SuperToast toast = null;
+    private static final Object sysnObject = new Object();
+    private static Handler handler = null;
+    private static Context context;
 
-    private ToastManager() {
-        throw new AssertionError();
+    /**
+     * @param context application的上下文
+     */
+    public static void init(Context context) {
+        ToastManager.context = context.getApplicationContext();
+        handler = new Handler(context.getMainLooper());
     }
 
-    public static void show(Context paramContext, int paramInt) {
-        show(paramContext, paramContext.getResources().getText(paramInt), 0);
-    }
-
-    public static void show(Context paramContext, int paramInt1, int paramInt2) {
-        show(paramContext, paramContext.getResources().getText(paramInt1), paramInt2);
-    }
-
-    public static void show(Context paramContext, CharSequence paramCharSequence) {
-        show(paramContext, paramCharSequence, 0);
-    }
-
-    public static void show(Context paramContext, CharSequence paramCharSequence, int paramInt) {
-        if (toast != null) {
-            toast.setText(paramCharSequence);
-            toast.setDuration(paramInt);
-            toast.show();//
+    private static void tip(final String message, int duration) {
+        if (StringUtils.isEmpty(message))
             return;
-        }
-        toast = Toast.makeText(paramContext, paramCharSequence, paramInt);
-        toast.show();
+
+        new ToastThread(new StringToastRunnable(context, message, duration)).start();
     }
 
-    public static void toastCancle() {
-        if (toast != null)
-            toast.cancel();
+    private static void tip(final int msgId, int duration) {
+        new ToastThread(new StringIdToastRunnable(context, msgId, duration)).start();
+    }
+
+    public static void show(final String message) {
+        tip(message, Toast.LENGTH_SHORT);
+    }
+
+    public static void show(final int msgId) {
+        tip(msgId, Toast.LENGTH_SHORT);
+    }
+
+    public static void longShow(String message) {
+        tip(message, Toast.LENGTH_LONG);
+    }
+
+    public static void longShow(int msgId) {
+        tip(msgId, Toast.LENGTH_LONG);
+    }
+
+    public static void shortShow(String message) {
+        tip(message, Toast.LENGTH_SHORT);
+    }
+
+    public static void shortShow(int msgId) {
+        tip(msgId, Toast.LENGTH_SHORT);
+    }
+
+    static class ToastThread extends Thread {
+        public ToastThread(Runnable runnable) {
+            super(runnable);
+        }
+    }
+
+    static class StringToastRunnable implements Runnable {
+
+        Context context;
+        String msg;
+        int duration;
+
+        public StringToastRunnable(Context context, String msg, int duration) {
+            this.context = context;
+            this.msg = msg;
+            this.duration = duration;
+        }
+
+        @Override
+        public void run() {
+
+            handler.post(new Runnable() {
+
+                @Override
+                public void run() {
+                    synchronized (sysnObject) {
+                        if (toast != null) {
+                            toast.cancel();
+                        }
+
+                        SuperToast.init().textNormal(msg);
+                    }
+                }
+            });
+        }
+    }
+
+    static class StringIdToastRunnable implements Runnable {
+
+        Context context;
+        int msgId;
+        int duration;
+
+        public StringIdToastRunnable(Context context, int msgId, int duration) {
+            this.context = context;
+            this.msgId = msgId;
+            this.duration = duration;
+        }
+
+        @Override
+        public void run() {
+            synchronized (sysnObject) {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (toast != null) {
+                            toast.cancel();
+                        }
+                        SuperToast.init().textNormal(msgId);
+                    }
+                });
+            }
+        }
     }
 }

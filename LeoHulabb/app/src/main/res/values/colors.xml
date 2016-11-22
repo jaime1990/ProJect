@@ -21,4 +21,7 @@
     <!--app整体基调色-->
     <color name="base_color">#5dd27b</color>
 
+    <color name="indicator_text_selected">#3b3b3b</color>
+    <color name="indicator_text_normal">#b2b2b2</color>
+
 </resources>

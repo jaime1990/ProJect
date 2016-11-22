@@ -2,10 +2,9 @@ package com.commonui.indicator;
 
 import android.content.Context;
 
+
 /**
  * 两种颜色过渡的指示器标题
- * @author Leo
- * Created at 2016/9/26
  */
 public class ColorTransitionPagerTitleView extends SimplePagerTitleView {
 

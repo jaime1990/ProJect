@@ -6,12 +6,9 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 /**
- * 自定义布局的Indicater
- * @author Leo
- * Created at 2016/9/26
+ * 整个框架的入口，核心
  */
-public class MagicIndicator extends FrameLayout
-{
+public class MagicIndicator extends FrameLayout {
     private IPagerNavigator mNavigator;
 
     public MagicIndicator(Context context) {

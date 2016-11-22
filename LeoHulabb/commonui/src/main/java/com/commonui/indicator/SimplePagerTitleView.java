@@ -9,10 +9,9 @@ import android.widget.TextView;
 
 import com.commonutils.SizeUtils;
 
+
 /**
  * 带文本的指示器标题
- * @author Leo
- * Created at 2016/9/26
  */
 public class SimplePagerTitleView extends TextView implements IMeasurablePagerTitleView {
     protected int mSelectedColor;

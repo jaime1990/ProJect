@@ -6,13 +6,12 @@ import android.util.SparseBooleanArray;
 /**
  * 方便扩展IPagerNavigator的帮助类，将ViewPager的3个回调方法转换成
  * onSelected、onDeselected、onEnter等回调，方便扩展
- * @author Leo
- * Created at 2016/9/26
+ * 博客: http://hackware.lucode.net
+ * Created by hackware on 2016/6/26.
  */
-public class NavigatorHelper
-{
-    private int mCurrentIndex;       //当前滑动位置
-    private int mTotalCount;         //滑页总长度
+public class NavigatorHelper {
+    private int mCurrentIndex;
+    private int mTotalCount;
     private int mScrollState = ScrollState.SCROLL_STATE_IDLE;
 
     // 转换后的回调
@@ -23,7 +22,7 @@ public class NavigatorHelper
     private SparseArray<Float> mLeavedPercents = new SparseArray<Float>();
 
     private float mLastPositionOffsetSum;
-    private int mLastIndex;        //上次滑动位置
+    private int mLastIndex;
     private boolean mSkimOver;
 
     public NavigatorHelper() {
@@ -33,8 +32,7 @@ public class NavigatorHelper
         return Math.max(Math.min(index, mTotalCount - 1), 0);
     }
 
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels)
-    {
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
         if (mNavigatorScrollListener != null) {
             float currentPositionOffsetSum = position + positionOffset;
             boolean leftToRight = currentPositionOffsetSum >= mLastPositionOffsetSum;

@@ -2,11 +2,8 @@ package com.commonui.indicator;
 
 /**
  * 保存指示器标题的坐标
- * @author Leo
- * Created at 2016/9/26
  */
-public class PositionData
-{
+public class PositionData {
     public int mLeft;
     public int mTop;
     public int mRight;

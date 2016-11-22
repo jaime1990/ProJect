@@ -51,6 +51,39 @@ public class KeyBoardUtils
     }
 
     /**
+     * 动态隐藏软键盘
+     * @param view activity根视图
+     */
+    public static void hideSoftKeyBoard(View view)
+    {
+        if (view == null)
+        {
+            return;
+        }
+        InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(
+                Context.INPUT_METHOD_SERVICE);
+        if (imm.isActive())
+        {
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
+    /**
+     * 动态弹出软键盘
+     * @param view activity根视图
+     */
+    public static void showSoftKeyBoard(View view)
+    {
+        if (view == null)
+        {
+            return;
+        }
+        InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(
+                Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(view, 0);
+    }
+
+    /**
      * 点击屏幕空白区域隐藏软键盘（方法1）
      * <p>在onTouch中处理，未获焦点则隐藏</p>
      * <p>参照以下注释代码</p>

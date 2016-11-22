@@ -195,6 +195,13 @@ public class StringUtils {
     }
 
     /**
+     * 判断两个字符串是否为空
+     */
+    public static boolean isNotNull(String string, String string2) {
+        return isNotNull(string) && isNotNull(string2);
+    }
+
+    /**
      * 判断字符串是否为空和是否等于""
      */
     public static boolean isNotNull2(String string) {
@@ -205,12 +212,24 @@ public class StringUtils {
         }
     }
 
-    /*
+    /**
      *  判断字符串是否为空和是否等于""和"null"
      */
     public static boolean isNotNullAndOther(String string, String string2) {
-        if (string != null && !string.equals(string2)) {
-            //不为空且不与string2想等时返回true
+        if (isNotNull(string, string2) && !string.equals(string2)) {
+            //不为空且不与string2相等时返回true
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     *  判断字符串是否为空和是否等于""和"null"
+     */
+    public static boolean isNotNullAndEqual(String string, String string2) {
+        if (isNotNull(string, string2) && string.equals(string2)) {
+            //不为空且与string2相等时返回true
             return true;
         } else {
             return false;
@@ -358,28 +377,59 @@ public class StringUtils {
     }
 
     /**
-     * 验证是否是手机格式
+     * 获得前一个字符串
+     * @param string
+     * @param split 通过":"截取
+     * @return
      */
-    public static boolean isMobileNO(String mobiles) {
-        /*
-        移动：134、135、136、137、138、139、150、151、157(TD)、158、159、187、188
-	    联通：130、131、132、152、155、156、185、186
-	    电信：133、153、180、189、（1349卫通）
-	    总结起来就是第一位必定为1，第二位必定为3或5或8，其他位置的可以为0-9
-	    */
-        String telRegex = "[1][358]\\d{9}";//"[1]"代表第1位为数字1，"[358]"代表第二位可以为3、5、8中的一个，"\\d{9}"代表后面是可以是0～9的数字，有9位。
-        if (TextUtils.isEmpty(mobiles)) return false;
-        else return mobiles.matches(telRegex);
+    public static String cutPreString(String string, String split) {
+        String pre = "";
+        if (!EmptyUtils.isEmpty(string)) {
+            pre = string.substring(0, string.indexOf(split));
+        }
+        return pre;
     }
 
     /**
-     * 验证是否是邮箱格式格式
+     * 获得后一个字符串
+     * @param string
+     * @param split 通过":"截取
+     * @return
      */
-    public static boolean isEmailAdd(String email) {
-        String emailRegex = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
-        if (TextUtils.isEmpty(email))
-            return false;
-        else
-            return email.matches(emailRegex);
+    public static String cutNextString(String string, String split) {
+        String pre = "";
+        if (!EmptyUtils.isEmpty(string)) {
+            pre = string.substring(string.indexOf(split) + 1, string.length());
+        }
+        return pre;
+    }
+
+    public static Boolean isHttpPic(String input) {
+        if (input != null && !"".equals(input) && input.length() > 3) {
+            String content = StringCut(input, 1, 4);
+
+            if ("http".equals(content))
+                return true;
+        }
+        return false;
+    }
+
+    public static Boolean isWeChatPic(String input) {
+        if (input != null && !"".equals(input) && input.length() > 18) {
+            String content = StringCut(input, 1, 18);
+
+            if ("http://wx.qlogo.cn".equals(content))
+                return true;
+        }
+        return false;
+    }
+
+    public static String setUserIcon(String input) {
+        if (isWeChatPic(input))
+            return input;
+        else if (isHttpPic(input))
+            return input + "!small";
+
+        return "";
     }
 }

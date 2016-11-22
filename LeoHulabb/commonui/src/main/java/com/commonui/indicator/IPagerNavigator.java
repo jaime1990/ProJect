@@ -2,8 +2,6 @@ package com.commonui.indicator;
 
 /**
  * 抽象的ViewPager导航器
- * @author Leo
- * Created at 2016/9/26
  */
 public interface IPagerNavigator {
 

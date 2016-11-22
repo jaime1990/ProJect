@@ -14,9 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Indicator下方指示线
- * @author Leo
- * Created at 2016/9/26
+ * 直线viewpager指示器，带颜色渐变
  */
 public class LinePagerIndicator extends View implements IPagerIndicator {
     public static final int MODE_MATCH_EDGE = 0;   // 直线宽度 == title宽度 - 2 * mXOffset
@@ -30,9 +28,9 @@ public class LinePagerIndicator extends View implements IPagerIndicator {
     private Interpolator mEndInterpolator = new LinearInterpolator();
 
     private float mYOffset;   // 相对于底部的偏移量，如果你想让直线位于title上方，设置它即可
-    private float mLineHeight;   //默认线高
+    private float mLineHeight;
     private float mXOffset;
-    private float mLineWidth;    //默认线宽
+    private float mLineWidth;
     private float mRoundRadius;
 
     private Paint mPaint;
@@ -46,8 +44,7 @@ public class LinePagerIndicator extends View implements IPagerIndicator {
         init(context);
     }
 
-    private void init(Context context)
-    {
+    private void init(Context context) {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setStyle(Paint.Style.FILL);
         mLineHeight = SizeUtils.dp2px(context, 3);

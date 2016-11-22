@@ -6,7 +6,7 @@
     android:fadingEdge="none"
     android:scrollbars="none">
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
 
@@ -14,6 +14,7 @@
             android:id="@+id/indicator_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="2dp"
             android:orientation="horizontal" />
 
         <LinearLayout
@@ -22,11 +23,6 @@
             android:layout_height="match_parent"
             android:orientation="horizontal" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_alignParentBottom="true"
-            android:background="@color/view_gap_color"
-            android:layout_height="@dimen/view_gap_size_0.5" />
-    </RelativeLayout>
+    </FrameLayout>
 
 </HorizontalScrollView>

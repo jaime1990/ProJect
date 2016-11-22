@@ -1,12 +1,10 @@
 package com.commonui.indicator;
 
+
 /**
  * 实现颜色渐变，考虑到兼容性，不使用内置的ArgbEvaluator
- * @author Leo
- * Created at 2016/9/26
  */
-public class ArgbEvaluatorHolder
-{
+public class ArgbEvaluatorHolder {
     public static int eval(float fraction, int startValue, int endValue) {
         int startA = (startValue >> 24) & 0xff;
         int startR = (startValue >> 16) & 0xff;

@@ -2,8 +2,6 @@ package com.commonui.indicator;
 
 /**
  * 抽象的指示器标题，适用于CommonNavigator
- * @author Leo
- * Created at 2016/9/26
  */
 public interface IPagerTitleView {
     /**

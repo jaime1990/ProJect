@@ -111,7 +111,7 @@ public abstract class BaseHYListActivity<T extends BasePresenter, E extends Base
                 @Override
                 public void reload() {
                     if (!NetworkUtils.isWorked(context)) {
-                        ToastManager.show(context, Constant.ERROR_TITLE);
+                        ToastManager.show(Constant.ERROR_TITLE);
                         return;
                     }
                     loadRefreshData();
@@ -123,7 +123,7 @@ public abstract class BaseHYListActivity<T extends BasePresenter, E extends Base
                 @Override
                 public void onRetry(LoadMoreFooterView view) {
                     if (!NetworkUtils.isWorked(context)) {
-                        ToastManager.show(context, Constant.ERROR_TITLE);
+                        ToastManager.show(Constant.ERROR_TITLE);
                         return;
                     }
                     loadMoreData();

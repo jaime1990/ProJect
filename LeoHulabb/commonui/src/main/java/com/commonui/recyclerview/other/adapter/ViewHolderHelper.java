@@ -20,7 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.commonui.imageloader.glide.ImageLoaderUtils;
+import com.commonui.imageloader.ImageLoaderUtils;
 
 import java.io.File;
 
@@ -102,56 +102,17 @@ public class ViewHolderHelper extends RecyclerView.ViewHolder {
 
     public ViewHolderHelper setImageUrl(int viewId, String url) {
         ImageView view = getView(viewId);
-        ImageLoaderUtils.display(mContext,view,url);
+        ImageLoaderUtils.display(url, view);
         return this;
     }
     public ViewHolderHelper setBigImageUrl(int viewId, String url) {
         ImageView view = getView(viewId);
-        ImageLoaderUtils.displayBigPhoto(mContext,view,url);
+        ImageLoaderUtils.displayBigPhoto(url, view);
         return this;
     }
     public ViewHolderHelper setSmallImageUrl(int viewId, String url) {
         ImageView view = getView(viewId);
-        ImageLoaderUtils.displaySmallPhoto(mContext,view,url);
-        return this;
-    }
-    public ViewHolderHelper setImageRoundUrl(int viewId, String url) {
-        ImageView view = getView(viewId);
-        ImageLoaderUtils.displayRound(mContext,view,url);
-        return this;
-    }
-    public ViewHolderHelper setImageFile(int viewId, File url) {
-        ImageView view = getView(viewId);
-        ImageLoaderUtils.display(mContext,view,url);
-        return this;
-    }
-    public ViewHolderHelper setImageDrawable(int viewId, Drawable drawable) {
-        ImageView view = getView(viewId);
-        view.setImageDrawable(drawable);
-        return this;
-    }
-
-    public ViewHolderHelper setBackgroundColor(int viewId, int color) {
-        View view = getView(viewId);
-        view.setBackgroundColor(color);
-        return this;
-    }
-
-    public ViewHolderHelper setBackgroundRes(int viewId, int backgroundRes) {
-        View view = getView(viewId);
-        view.setBackgroundResource(backgroundRes);
-        return this;
-    }
-
-    public ViewHolderHelper setTextColor(int viewId, int textColor) {
-        TextView view = getView(viewId);
-        view.setTextColor(textColor);
-        return this;
-    }
-
-    public ViewHolderHelper setTextColorRes(int viewId, int textColorRes) {
-        TextView view = getView(viewId);
-        view.setTextColor(mContext.getResources().getColor(textColorRes));
+        ImageLoaderUtils.displaySmallPhoto(url, view);
         return this;
     }
 
