@@ -1,5 +1,7 @@
 package com.commonutils.appupdata.manager.fileload;
 
+import com.commonutils.baserx.RxBus;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -16,11 +18,12 @@ import rx.subscriptions.CompositeSubscription;
 /**
  * Created by zs on 2016/7/7.
  */
-public abstract class FileCallback implements Callback<ResponseBody>{
+public abstract class FileCallback implements Callback<ResponseBody> {
     /**
      * 订阅下载进度
      */
     private CompositeSubscription rxSubscriptions = new CompositeSubscription();
+
     /**
      * 目标文件存储的文件夹路径
      */
@@ -95,6 +98,7 @@ public abstract class FileCallback implements Callback<ResponseBody>{
                     }
                 }));
     }
+
     /**
      * 取消订阅，防止内存泄漏
      */

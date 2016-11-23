@@ -1,5 +1,6 @@
 package com.commonutils.appupdata.manager.fileload;
 
+import com.commonutils.baserx.RxBus;
 
 import java.io.IOException;
 
@@ -10,7 +11,6 @@ import okio.Buffer;
 import okio.BufferedSource;
 import okio.ForwardingSource;
 import okio.Okio;
-
 
 public class FileResponseBody extends ResponseBody {
 

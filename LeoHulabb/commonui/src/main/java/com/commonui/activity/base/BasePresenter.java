@@ -2,7 +2,7 @@ package com.commonui.activity.base;
 
 import android.content.Context;
 
-import com.commonutils.baserx.RxManager;
+import com.commonutils.baserx.RxBusManager;
 
 /**
   * @desc:         MVP基类Presenter
@@ -14,7 +14,7 @@ public abstract class BasePresenter<T, E>
     public Context context;
     public E mModel;
     public T mView;
-    public RxManager mRxManage = new RxManager();
+    public RxBusManager mRxManage = new RxBusManager();
 
     public void setVM(T v, E m) {
         this.mView = v;

@@ -15,7 +15,7 @@ import com.commonui.navigation.WidgeButton;
 import com.commonutils.ActivityManager;
 import com.commonutils.ScreenUtils;
 import com.commonutils.TranslateUtil;
-import com.commonutils.baserx.RxManager;
+import com.commonutils.baserx.RxBusManager;
 
 /**
  * @desc:         基类
@@ -59,14 +59,14 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
     public T mPresenter;
     public E mModel;
     public Context context;
-    public RxManager mRxManager;
+    public RxBusManager mRxManager;
     public NavigationBar navigationBar;
     private WidgeButton btnBack;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mRxManager=new RxManager();
+        mRxManager = new RxBusManager();
         doBeforeSetcontentView();
         setContentView(getLayoutId());
         initActivity();

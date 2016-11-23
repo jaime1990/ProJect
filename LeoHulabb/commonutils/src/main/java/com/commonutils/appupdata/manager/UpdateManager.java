@@ -7,7 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.widget.Toast;
 
-import com.commonutils.SettingUtil;
+import com.commonutils.AppUtils;
 import com.commonutils.appupdata.DownLoadService;
 
 /**
@@ -30,9 +30,9 @@ public class UpdateManager {
          */
         // 版本的更新信息
         String version_info = "更新内容\n" + "    1. 添加新东西\n" + "    2. 修复老bug\n" + "    ";
-        int mVersion_code = SettingUtil.getVersionCode(mContext);// 当前的版本号
-        int nVersion_code = 202;
-        if (mVersion_code < nVersion_code) {
+        String mVersion_code = AppUtils.getVersionName(mContext);// 当前的版本号
+        String nVersion_code = "1.1.0";
+        if (!mVersion_code.equals(nVersion_code)) {
             // 显示提示对话
             showNoticeDialog(version_info);
         } else {

@@ -40,7 +40,6 @@ public class TestFragment extends BaseFragment
 {
     private MagicIndicator tabIndicator;
     private ViewPager pager;
-    private TextView textView;
 
     @Override
     protected int getLayoutResource() {
@@ -62,7 +61,6 @@ public class TestFragment extends BaseFragment
 
         tabIndicator = (MagicIndicator) findView(R.id.tab_indicator);
         pager = (ViewPager) findView(R.id.viewpager);
-        textView = (TextView) findView(R.id.text);
     }
 
     List<LinearLayout> mListViews = new ArrayList<>();

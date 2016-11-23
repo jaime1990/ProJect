@@ -14,7 +14,7 @@ import com.commonui.navigation.NavigationBar;
 import com.commonui.navigation.WidgeButton;
 import com.commonutils.TranslateUtil;
 import com.commonutils.ViewUtils;
-import com.commonutils.baserx.RxManager;
+import com.commonutils.baserx.RxBusManager;
 
 /**
  * des:基类fragment
@@ -60,7 +60,7 @@ public abstract  class BaseFragment<T extends BasePresenter, E extends BaseModel
     protected Context context;
     public T mPresenter;
     public E mModel;
-    public RxManager mRxManager;
+    public RxBusManager mRxManager;
     private NavigationBar navigationBar;
     private WidgeButton btnBack;
 
@@ -68,7 +68,7 @@ public abstract  class BaseFragment<T extends BasePresenter, E extends BaseModel
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        mRxManager = new RxManager();
+        mRxManager = new RxBusManager();
 
         if (rootView == null) {
             rootView = inflater.inflate(getLayoutResource(), container, false);

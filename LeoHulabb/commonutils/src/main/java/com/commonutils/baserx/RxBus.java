@@ -1,132 +1,121 @@
 package com.commonutils.baserx;
 
-import android.support.annotation.NonNull;
-
-import com.commonutils.LogUtils;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashMap;
+import java.util.Map;
 
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
+import rx.Subscriber;
 import rx.subjects.PublishSubject;
+import rx.subjects.SerializedSubject;
 import rx.subjects.Subject;
 
 /**
- * 用RxJava实现的EventBus
- * Created by xsf
- * on 2016.08.14:50
+ * Desction:
+ * Author:pengjianbo
+ * Date:16/7/22 下午2:40
  */
 public class RxBus {
-    private static RxBus instance;
 
-    public static synchronized RxBus getInstance() {
-        if (null == instance) {
-            instance = new RxBus();
-        }
-        return instance;
+    private static volatile RxBus mInstance;
+    private final Subject<Object, Object> mBus;
+    private final Map<Class<?>, Object> mStickyEventMap;
+
+    public RxBus() {
+        mBus = new SerializedSubject<>(PublishSubject.create());
+        mStickyEventMap = new HashMap<>();
     }
 
-    private RxBus() {
-    }
-
-    @SuppressWarnings("rawtypes")
-    private ConcurrentHashMap<Object, List<Subject>> subjectMapper = new ConcurrentHashMap<Object, List<Subject>>();
-
-    /**
-     * 订阅事件源
-     *
-     * @param mObservable
-     * @param mAction1
-     * @return
-     */
-    public RxBus OnEvent(Observable<?> mObservable, Action1<Object> mAction1) {
-        mObservable.observeOn(AndroidSchedulers.mainThread()).subscribe(mAction1, new Action1<Throwable>() {
-            @Override
-            public void call(Throwable throwable) {
-                throwable.printStackTrace();
-            }
-        });
-        return getInstance();
-    }
-
-    /**
-     * 注册事件源
-     *
-     * @param tag
-     * @return
-     */
-    @SuppressWarnings({"rawtypes"})
-    public <T> Observable<T> register(@NonNull Object tag) {
-        List<Subject> subjectList = subjectMapper.get(tag);
-        if (null == subjectList) {
-            subjectList = new ArrayList<Subject>();
-            subjectMapper.put(tag, subjectList);
-        }
-        Subject<T, T> subject;
-        subjectList.add(subject = PublishSubject.create());
-        LogUtils.d("RxBus", "register"+tag + "  size:" + subjectList.size());
-        return subject;
-    }
-
-    @SuppressWarnings("rawtypes")
-    public void unregister(@NonNull Object tag) {
-        List<Subject> subjects = subjectMapper.get(tag);
-        if (null != subjects) {
-            subjectMapper.remove(tag);
-        }
-    }
-
-    /**
-     * 取消监听
-     *
-     * @param tag
-     * @param observable
-     * @return
-     */
-    @SuppressWarnings("rawtypes")
-    public RxBus unregister(@NonNull Object tag,
-                            @NonNull Observable<?> observable) {
-        if (null == observable)
-            return getInstance();
-        List<Subject> subjects = subjectMapper.get(tag);
-        if (null != subjects) {
-            subjects.remove(observable);
-            if (isEmpty(subjects)) {
-                subjectMapper.remove(tag);
-                LogUtils.d("RxBus", "unregister"+ tag + "  size:" + subjects.size());
+    public static RxBus getDefault() {
+        if (mInstance == null) {
+            synchronized (RxBus.class) {
+                if (mInstance == null) {
+                    mInstance = new RxBus();
+                }
             }
         }
-        return getInstance();
-    }
-
-    public void post(@NonNull Object content) {
-        post(content.getClass().getName(), content);
+        return mInstance;
     }
 
     /**
-     * 触发事件
-     *
-     * @param content
+     * 发送事件
      */
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public void post(@NonNull Object tag, @NonNull Object content) {
-        LogUtils.d("RxBus", "post"+ "eventName: " + tag);
-        List<Subject> subjectList = subjectMapper.get(tag);
-        if (!isEmpty(subjectList)) {
-            for (Subject subject : subjectList) {
-                subject.onNext(content);
-                LogUtils.d("RxBus", "onEvent"+ "eventName: " + tag);
+    public void post(Object event) {
+        mBus.onNext(event);
+    }
+
+    /**
+     * 根据传递的 eventType 类型返回特定类型(eventType)的 被观察者
+     */
+    public <T> Observable<T> toObservable(Class<T> eventType) {
+        return mBus.ofType(eventType);
+    }
+
+    /**
+     * 判断是否有订阅者
+     */
+    public boolean hasObservers() {
+        return mBus.hasObservers();
+    }
+
+    public void reset() {
+        mInstance = null;
+    }
+
+    /**
+     * 发送一个新Sticky事件
+     */
+    public void postSticky(Object event) {
+        synchronized (mStickyEventMap) {
+            mStickyEventMap.put(event.getClass(), event);
+        }
+        post(event);
+    }
+
+    /**
+     * 根据传递的 eventType 类型返回特定类型(eventType)的 被观察者
+     */
+    public <T> Observable<T> toObservableSticky(final Class<T> eventType) {
+        synchronized (mStickyEventMap) {
+            Observable<T> observable = mBus.ofType(eventType);
+            final Object event = mStickyEventMap.get(eventType);
+
+            if (event != null) {
+                return Observable.merge(observable, Observable.create(new Observable.OnSubscribe<T>() {
+                    @Override
+                    public void call(Subscriber<? super T> subscriber) {
+                        subscriber.onNext(eventType.cast(event));
+                    }
+                }));
+            } else {
+                return observable;
             }
         }
     }
 
-    @SuppressWarnings("rawtypes")
-    public static boolean isEmpty(Collection<Subject> collection) {
-        return null == collection || collection.isEmpty();
+    /**
+     * 根据eventType获取Sticky事件
+     */
+    public <T> T getStickyEvent(Class<T> eventType) {
+        synchronized (mStickyEventMap) {
+            return eventType.cast(mStickyEventMap.get(eventType));
+        }
     }
 
+    /**
+     * 移除指定eventType的Sticky事件
+     */
+    public <T> T removeStickyEvent(Class<T> eventType) {
+        synchronized (mStickyEventMap) {
+            return eventType.cast(mStickyEventMap.remove(eventType));
+        }
+    }
+
+    /**
+     * 移除所有的Sticky事件
+     */
+    public void removeAllStickyEvents() {
+        synchronized (mStickyEventMap) {
+            mStickyEventMap.clear();
+        }
+    }
 }

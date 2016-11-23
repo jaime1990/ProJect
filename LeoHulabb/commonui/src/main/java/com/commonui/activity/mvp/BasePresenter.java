@@ -1,7 +1,7 @@
 package com.commonui.activity.mvp;
 
 import com.commonutils.EmptyUtils;
-import com.commonutils.baserx.RxManager;
+import com.commonutils.baserx.RxBusManager;
 
 import java.lang.ref.SoftReference;
 
@@ -14,7 +14,7 @@ import java.lang.ref.SoftReference;
 public abstract class BasePresenter<V extends BaseView> {
 
     private SoftReference<V> mViewRef;
-    protected RxManager rxManager;
+    protected RxBusManager rxManager;
     protected V mView;
 
     public void attachView(V view) {
@@ -22,7 +22,7 @@ public abstract class BasePresenter<V extends BaseView> {
             throw new NullPointerException("BasePresenter#attechView view can not be null");
         }
         mViewRef = new SoftReference<>(view);
-        rxManager = new RxManager();
+        rxManager = new RxBusManager();
         mView = view;
     }
 

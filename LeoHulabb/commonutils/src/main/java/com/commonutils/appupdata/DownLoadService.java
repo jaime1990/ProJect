@@ -5,12 +5,13 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Environment;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import com.commonutils.PathUtils;
+import com.commonutils.R;
 import com.commonutils.appupdata.manager.fileload.FileCallback;
 import com.commonutils.appupdata.manager.fileload.FileResponseBody;
 
@@ -34,12 +35,11 @@ public class DownLoadService extends Service {
     /**
      * 目标文件存储的文件夹路径
      */
-    private String  destFileDir = Environment.getExternalStorageDirectory().getAbsolutePath() + File
-            .separator + "M_DEFAULT_DIR";
+    private String destFileDir = PathUtils.ApplicationBasePath + PathUtils.ApplicationUpdatePath;
     /**
      * 目标文件存储的文件名
      */
-    private String destFileName = "shan_yao.apk";
+    private String destFileName = "";
 
     private Context mContext;
     private int preProgress = 0;
@@ -51,6 +51,7 @@ public class DownLoadService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         mContext = this;
+        destFileName = mContext.getString(R.string.app_name) + ".apk";
         loadFile();
         return super.onStartCommand(intent, flags, startId);
     }
@@ -143,7 +144,7 @@ public class DownLoadService extends Service {
      */
     public void initNotification() {
         builder = new NotificationCompat.Builder(mContext)
-//                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.icon_launch)
                 .setContentText("0%")
                 .setContentTitle("我的软件更新")
                 .setProgress(100, 0, false);

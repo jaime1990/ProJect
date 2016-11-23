@@ -10,6 +10,8 @@ import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
+import android.util.Log;
 import android.webkit.MimeTypeMap;
 
 import java.io.File;
@@ -134,6 +136,7 @@ public class AppUtils {
         private String packageName;
         private String packagePath;
         private String versionName;
+        private Bundle metaData;
         private int versionCode;
         private boolean isSD;
         private boolean isUser;
@@ -152,6 +155,14 @@ public class AppUtils {
 
         public void setSD(boolean SD) {
             isSD = SD;
+        }
+
+        public Bundle getMetaData() {
+            return metaData;
+        }
+
+        public void setMetaData(Bundle metaData) {
+            this.metaData = metaData;
         }
 
         public boolean isUser() {
@@ -213,7 +224,7 @@ public class AppUtils {
          * @param isUser      是否是用户程序
          */
         public AppInfo(String name, Drawable icon, String packageName, String packagePath,
-                       String versionName, int versionCode, boolean isSD, boolean isUser) {
+                       String versionName, int versionCode, boolean isSD, boolean isUser, Bundle metaData) {
             this.setName(name);
             this.setIcon(icon);
             this.setPackageName(packageName);
@@ -222,19 +233,8 @@ public class AppUtils {
             this.setVersionCode(versionCode);
             this.setSD(isSD);
             this.setUser(isUser);
+            this.setMetaData(metaData);
         }
-
-//        @Override
-//        public String toString() {
-//            return getName() + "\n"
-//                    + getIcon() + "\n"
-//                    + getPackageName() + "\n"
-//                    + getPackagePath() + "\n"
-//                    + getVersionName() + "\n"
-//                    + getVersionCode() + "\n"
-//                    + isSD() + "\n"
-//                    + isUser() + "\n";
-//        }
     }
 
     /**
@@ -256,6 +256,59 @@ public class AppUtils {
     }
 
     /**
+     * 获取app注册渠道名
+     * @param context 上下文
+     * @return  注册渠道名
+     */
+    public static String getRegistChannelName(Context context) {
+        String channel = "unknown";
+        try {
+            channel = context.getPackageManager().getApplicationInfo(context.getApplicationContext().getPackageName(), PackageManager.GET_META_DATA).metaData.getString("GEGISTER_CHANNEL");
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return channel;
+    }
+
+    /**
+     * 获取app打包渠道名
+     * @param context 上下文
+     * @return  打包渠道名
+     */
+    public static String getPacketChannelName(Context context)
+    {
+        String channel = "";
+
+        try {
+            channel = context.getPackageManager().getApplicationInfo(context.getApplicationContext().getPackageName(), PackageManager.GET_META_DATA).metaData.getString("UMENG_CHANNEL");
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return channel;
+    }
+
+    /**
+     * 获取app版本名
+     * @param context 上下文
+     * @return  版本名
+     */
+    public static String getVersionName(Context context) {
+        String versionName = "";
+        try {
+            // ---get the package info---
+            PackageManager pm = context.getPackageManager();
+            PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
+            versionName = pi.versionName;
+            if (versionName == null || versionName.length() <= 0) {
+                return "";
+            }
+        } catch (Exception e) {
+            Log.e("VersionInfo", "Exception", e);
+        }
+        return versionName;
+    }
+
+    /**
      * 得到AppInfo的Bean
      *
      * @param pm 包的管理
@@ -269,10 +322,11 @@ public class AppUtils {
         String packageName = pi.packageName;
         String packagePath = ai.sourceDir;
         String versionName = pi.versionName;
+        Bundle metaData = ai.metaData;
         int versionCode = pi.versionCode;
         boolean isSD = (ApplicationInfo.FLAG_SYSTEM & ai.flags) != ApplicationInfo.FLAG_SYSTEM;
         boolean isUser = (ApplicationInfo.FLAG_SYSTEM & ai.flags) != ApplicationInfo.FLAG_SYSTEM;
-        return new AppInfo(name, icon, packageName, packagePath, versionName, versionCode, isSD, isUser);
+        return new AppInfo(name, icon, packageName, packagePath, versionName, versionCode, isSD, isUser, metaData);
     }
 
     /**
@@ -315,5 +369,20 @@ public class AppUtils {
             }
         }
         return false;
+    }
+
+    /**
+     * 打开指定app
+     * @param context 上下文
+     * "com.hulaoo" 为指定app的包名
+     */
+    public static void openApp(Context context)
+    {
+        PackageManager packageManager = context.getPackageManager();
+        Intent intent = packageManager.getLaunchIntentForPackage("com.hulaoo");
+        if(intent == null) {
+            System.out.println("APP not found!");
+        }
+        context.startActivity(intent);
     }
 }

@@ -7,7 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.commonutils.appupdata.manager.UpdateManager;
+import com.commonui.dialog.PayDialogManager;
+import com.commonui.toast.ToastManager;
 import com.leohulabb.R;
 import com.leohulabb.utils.picassoUtils.PicassoImageLoader;
 import com.leohulabb.utils.picassoUtils.transformation.GrayscaleTransformation;
@@ -46,7 +47,7 @@ public class TestPicassoItemAdapter extends RecyclerView.Adapter<TestPicassoItem
     }
 
     @Override
-    public void onBindViewHolder(TestPicassoItemAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(TestPicassoItemAdapter.ViewHolder holder, final int position) {
 
         switch (mDataSet.get(position))
         {
@@ -74,7 +75,29 @@ public class TestPicassoItemAdapter extends RecyclerView.Adapter<TestPicassoItem
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new UpdateManager(context).checkUpdate(true);
+
+                PayDialogManager dialogManager;
+
+                if (position % 2 == 0) {
+                    dialogManager = new PayDialogManager(context);
+                    dialogManager.showPaySuccess();
+                    dialogManager.setPayResultListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ToastManager.show("查看订单详情");
+                        }
+                    });
+                } else {
+                    dialogManager = new PayDialogManager(context);
+                    dialogManager.showPayFailed();
+                    dialogManager.setTvTimecountStr("05:26");
+                    dialogManager.setPayResultListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ToastManager.show("重新支付");
+                        }
+                    });
+                }
             }
         });
     }
