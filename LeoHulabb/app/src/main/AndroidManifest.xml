@@ -11,7 +11,7 @@
         android:theme="@style/TranslucentTheme" >
         <activity
             android:name=".splash.SplashActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            android:theme="@style/SplashTheme" >
 
             <!--使用全屏style，同时代码中隐藏状态栏便可实现状态栏隐藏效果-->
             <intent-filter>

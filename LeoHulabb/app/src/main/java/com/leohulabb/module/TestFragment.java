@@ -123,7 +123,6 @@ public class TestFragment extends BaseFragment
                         }
 
                         pager.setCurrentItem(index);
-
                     }
                 });
                 return titleView;

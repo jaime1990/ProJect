@@ -47,7 +47,9 @@ public class ButtonFragment extends BaseFragment
         background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(TestReboundActivity.class);
+//                startActivity(TestReboundActivity.class);
+                PayDialogFragment payDetailFragment = new PayDialogFragment();
+                payDetailFragment.show(getActivity().getSupportFragmentManager(),"payDetailFragment");
             }
         });
 

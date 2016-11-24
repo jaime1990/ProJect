@@ -25,6 +25,12 @@
     <!--4.4以上设置状态栏颜色-->
     <style name="TranslucentTheme" parent="AppTheme"/>
 
+    <!--splash全屏解决启动黑白屏-->
+    <style name="SplashTheme" parent="android:Theme.NoTitleBar.Fullscreen">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
     <declare-styleable name="ProgressWheel">
         <attr format="boolean" name="matProg_progressIndeterminate"/>
         <attr format="color" name="matProg_barColor"/>
@@ -40,5 +46,15 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--DialogFragment底部弹框-->
+    <style name="BottomDialog" parent="@style/AppTheme">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
 
 </resources>
