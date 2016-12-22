@@ -254,4 +254,36 @@
         <attr name="mv_isWidthHeightEqual" format="boolean"/>
     </declare-styleable>
 
+    <!--自定义卡券-->
+    <declare-styleable name="MyCouponView">
+        <attr name="couponTextSize" format="dimension"/>
+        <attr name="couponTextOffset" format="dimension"/>
+        <attr name="couponTextColor" format="color"/>
+        <attr name="couponTextStr" format="string"/>
+        <attr name="couponTextBackground" format="color"/>
+        <attr name="couponRadius" format="dimension"/>
+        <attr name="couponGap" format="dimension"/>
+        <attr name="couponColor" format="color"/>
+        <attr name="couponLength" format="dimension"/>
+        <attr name="couponPic" format="reference"/>
+        <attr name="couponPicMarginTop" format="dimension"/>
+        <attr name="couponPicMarginRight" format="dimension"/>
+        <attr name="couponMode" format="enum">
+            <enum name="none" value="0"/>
+            <enum name="tag" value="1"/>
+            <enum name="select" value="2"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="SmileyLoadingView">
+        <!-- animation duration -->
+        <attr name="duration" format="integer"/>
+        <!-- stroke width -->
+        <attr name="strokeWidth" format="dimension"/>
+        <!-- stroke color -->
+        <attr name="strokeColor" format="color"/>
+        <!-- animation repeat count -->
+        <attr name="animRepeatCount" format="integer"/>
+    </declare-styleable>
+
 </resources>

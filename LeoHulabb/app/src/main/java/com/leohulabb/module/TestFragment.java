@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.commonui.activity.LayoutPagerAdapter;
 import com.commonui.activity.base.BaseFragment;
+import com.commonui.button.CountdownButton;
 import com.commonui.indicator.ColorTransitionPagerTitleView;
 import com.commonui.indicator.CommonNavigator;
 import com.commonui.indicator.CommonNavigatorAdapter;
@@ -40,6 +41,7 @@ public class TestFragment extends BaseFragment
 {
     private MagicIndicator tabIndicator;
     private ViewPager pager;
+    private CountdownButton btnCountDown;
 
     @Override
     protected int getLayoutResource() {
@@ -61,6 +63,7 @@ public class TestFragment extends BaseFragment
 
         tabIndicator = (MagicIndicator) findView(R.id.tab_indicator);
         pager = (ViewPager) findView(R.id.viewpager);
+        btnCountDown = (CountdownButton) findView(R.id.btn_count);
     }
 
     List<LinearLayout> mListViews = new ArrayList<>();
@@ -163,6 +166,11 @@ public class TestFragment extends BaseFragment
 
     @Override
     public void setListener() {
-
+//        btnCountDown.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
     }
 }

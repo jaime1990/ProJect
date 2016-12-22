@@ -1,4 +1,4 @@
-package com.commonui.dialog;
+package com.commonui.button;
 
 import android.content.Context;
 import android.os.Handler;
@@ -12,14 +12,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * 自定义倒计时按钮
- * <p/>
- *
- * @author Dylan
- *         [佛祖保佑 永无BUG]
- *         Created by Dylan on 2016/10/5 0005.
+ * @desc: 自定义倒计时按钮
+ * @author: Leo
+ * @date: 2016/12/7
  */
-public class CountdownButton extends Button implements View.OnClickListener {
+public class CountdownButton extends Button implements View.OnClickListener
+{
     /**
      * 倒计时时长，默认倒计时时间60秒；
      */
@@ -39,7 +37,7 @@ public class CountdownButton extends Button implements View.OnClickListener {
     /**
      * 在开始倒计时之后那个秒数数字之后所要显示的字，默认是秒
      */
-    private String afterText = "秒";
+    private String afterText = "秒重新获取";
     /**
      * 按钮点击事件
      */
@@ -88,7 +86,8 @@ public class CountdownButton extends Button implements View.OnClickListener {
     /**
      * 设置倒计时时长
      *
-     * @param length 默认毫秒
+     * @param length
+     *         默认毫秒
      */
     public void setLength(long length) {
         this.length = length;
@@ -96,8 +95,6 @@ public class CountdownButton extends Button implements View.OnClickListener {
 
     /**
      * 设置未点击时显示的文字
-     *
-     * @param beforeText
      */
     public void setBeforeText(String beforeText) {
         this.beforeText = beforeText;
@@ -105,8 +102,6 @@ public class CountdownButton extends Button implements View.OnClickListener {
 
     /**
      * 设置未点击后显示的文字
-     *
-     * @param beforeText
      */
     public void setAfterText(String beforeText) {
         this.afterText = afterText;
@@ -114,8 +109,6 @@ public class CountdownButton extends Button implements View.OnClickListener {
 
     /**
      * 设置监听按钮点击事件
-     *
-     * @param onclickListener
      */
     @Override
     public void setOnClickListener(OnClickListener onclickListener) {
@@ -128,8 +121,6 @@ public class CountdownButton extends Button implements View.OnClickListener {
 
     /**
      * 点击按钮后的操作
-     *
-     * @param v
      */
     @Override
     public void onClick(View v) {
