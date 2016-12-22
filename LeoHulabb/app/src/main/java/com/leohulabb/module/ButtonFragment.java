@@ -56,7 +56,12 @@ public class ButtonFragment extends BaseFragment
         //设置四个角不同的圆角
         radius = (StateButton) findView(R.id.different_radius_test);
         radius.setRadius(new float[]{0, 0, 20, 20, 40, 40, 60, 60});
-
+        radius.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(TestCustomViewActivity.class);
+            }
+        });
 
         //设置不同状态下边框颜色，宽度
         stroke = (StateButton) findView(R.id.stroke_test);

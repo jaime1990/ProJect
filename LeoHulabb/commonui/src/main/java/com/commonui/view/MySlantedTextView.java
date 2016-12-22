@@ -17,7 +17,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.pulltolargerlistview.R;
+import com.commonui.R;
 
 /**
  * @desc:         优惠卡券

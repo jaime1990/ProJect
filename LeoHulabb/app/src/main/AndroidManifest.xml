@@ -47,6 +47,8 @@
         <activity
             android:name=".module.PermissionTestActivity"/>
 
+        <activity android:name=".module.TestCustomViewActivity"/>
+
         <!--文件下载服务-->
         <service android:name="com.commonutils.appupdata.DownLoadService"/>
 

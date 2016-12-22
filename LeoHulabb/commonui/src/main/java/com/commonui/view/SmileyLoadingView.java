@@ -16,7 +16,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
-import com.pulltolargerlistview.R;
+import com.commonui.R;
 
 /**
  * Create by andy (https://github.com/andyxialm)
